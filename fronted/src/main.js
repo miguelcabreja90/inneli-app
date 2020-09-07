@@ -42,7 +42,7 @@ axios.interceptors.request.use(function(config) {
  *
  * Eg. ./components/index.vue -> <example-component></example-component>
  */
-setupComponents(Vue)
+setupComponents(Vue);
 
 new Vue({
   vuetify,
