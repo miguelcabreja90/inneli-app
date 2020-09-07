@@ -1,6 +1,7 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
+import { sync } from 'vuex-router-sync'
 import store from "./store";
 import axios from "axios";
 import vuetify from './plugins/vuetify' // path to vuetify export
@@ -35,6 +36,7 @@ axios.interceptors.request.use(function(config) {
   return config;
 });
 
+sync(store, router)
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
