@@ -3,6 +3,9 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import axios from "axios";
+import vuetify from './plugins/vuetify' // path to vuetify export
+import { setupComponents } from './config/setup-components'
+import { i18n } from './lang'
 
 Vue.config.productionTip = false;
 
@@ -32,7 +35,18 @@ axios.interceptors.request.use(function(config) {
   return config;
 });
 
+/**
+ * The following block of code may be used to automatically register your
+ * Vue components. It will recursively scan this directory for the Vue
+ * components and automatically register them with their 'basename'.
+ *
+ * Eg. ./components/index.vue -> <example-component></example-component>
+ */
+setupComponents(Vue)
+
 new Vue({
+  vuetify,
+  i18n,
   router,
   store,
   render: h => h(App)
