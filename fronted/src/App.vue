@@ -2,7 +2,7 @@
   <div id="app">
     <header>
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <router-link class="navbar-brand" to="/">Vue Frontpage</router-link>
+        <router-link class="navbar-brand" to="/">Inneli</router-link>
         <button
             aria-controls="navbarCollapse"
             aria-expanded="false"
