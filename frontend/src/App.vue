@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <nav-bar></nav-bar>
+        <page-navbar></page-navbar>
     </header>
     <main class="container" role="main">
       <router-view />
@@ -11,10 +11,8 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
-import NavBar from "./components/core/nav-bar";
 
 export default {
-  components: {NavBar},
   computed: {
     ...mapGetters("auth", ["user"])
   },
