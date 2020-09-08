@@ -16,7 +16,7 @@ __Back-end__
 
 __Front-end__
 
-- Go to the sub-folder `cd fronted`
+- Go to the sub-folder `cd frontend`
 - Copy __.env.local.example__ to __.env.local__ and edit URL of your API
 - Run __npm install__ 
 - Run __npm run serve__ 
