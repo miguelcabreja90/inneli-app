@@ -2,14 +2,14 @@
   <div class="themeSetting">
     <v-toolbar color="blue">
       <v-toolbar-title>
-        Theme Settings
+        {{ this.$t("setting.title") }}
       </v-toolbar-title>
     </v-toolbar>
     <v-container>
       <v-layout column>
         <v-flex>
           <v-subheader class="px-1 my-2">
-            Color Option
+            {{ this.$t("setting.themeColor") }}
           </v-subheader>
           <div class="color-option">
             <v-layout wrap>
@@ -32,16 +32,16 @@
           </div>
           <div class="theme-options">
             <v-subheader class="px-1 my-2">
-              Language
+              {{ this.$t("setting.themeLocale") }}
             </v-subheader>
             <v-divider></v-divider>
             <div class="my-3">
-              <v-btn-toggle v-model="i18nBarOption">
+              <v-btn-toggle v-model="themeLocale">
                 <v-btn flat value="es">
-                  Spanish
+                  {{ this.$t("setting.spanish") }}
                 </v-btn>
                 <v-btn flat value="en">
-                  English
+                  {{ this.$t("setting.english") }}
                 </v-btn>
               </v-btn-toggle>
             </div>
@@ -53,90 +53,42 @@
 </template>
 <script>
 import colors from "vuetify/es5/util/colors"
-import { mapState, mapActions } from "vuex"
+import { mapActions, mapState } from "vuex"
 
 export default {
   data() {
     return {
-      themeColor: "indigo",
-      i18nBarOption: "en",
       colors: colors
     }
   },
   computed: {
-    ...mapState("settings", ["language"]),
+    ...mapState("settings", ["language", "theme", "mapColor"]),
     themeColorOptions() {
-      return [
-        {
-          key: "blue",
-          value: {
-            sideNav: "blue",
-            mainNav: "blue",
-            sideMenu: "white"
-          }
-        },
-        {
-          key: "teal",
-          value: {
-            sideNav: "teal",
-            mainNav: "teal",
-            sideMenu: "white"
-          }
-        },
-        {
-          key: "red",
-          value: {
-            sideNav: "red",
-            mainNav: "red",
-            sideMenu: "white"
-          }
-        },
-        {
-          key: "orange",
-          value: {
-            sideNav: "orange",
-            mainNav: "orange",
-            sideMenu: "white"
-          }
-        },
-        {
-          key: "indigo",
-          value: {
-            sideNav: "indigo",
-            mainNav: "indigo",
-            sideMenu: "white"
-          }
-        },
-        {
-          key: "cyan",
-          value: {
-            sideNav: "cyan",
-            mainNav: "cyan",
-            sideMenu: "white"
-          }
-        }
-      ]
-    }
-  },
-  watch: {
+      return this.mapColor
+    },
     themeColor: {
-      handler(val) {
+      get: function() {
+        return this.theme
+      },
+      set: function(val) {
+        this.$emit("emitter-theme", val)
         this.$vuetify.theme.primary = this.colors[val].base
-      },
-      immediate: true
+        this.updateTheme(val)
+      }
     },
-    sideBarOption: {
-      handler(val) {
-        this.$vuetify.dark = val === "dark"
+    themeLocale: {
+      get: function() {
+        return this.language
       },
-      immediate: true
-    },
-    i18nBarOption: {
-      handler(lang) {
-        console.log(lang)
-        this.$i18n.locale = lang
+      set: function(val) {
+        this.$emit("emitter-locale", val)
+        this.$i18n.locale = val
+        this.updateLanguage(val)
       }
     }
+  },
+  methods: {
+    ...mapActions("settings", ["updateLanguage", "updateTheme"])
   }
 }
 </script>
@@ -146,11 +98,14 @@ export default {
     position: relative
     display: block
     cursor: pointer
+
     & input[type="radio"]
-      display:none
-      &+span
+      display: none
+
+      & + span
         position: relative
-        &>.overlay
+
+        & > .overlay
           display: none;
           position: absolute
           top: 0;
@@ -159,22 +114,27 @@ export default {
           left: 0;
           width: 100%;
           height: 100%;
-          background-color: rgba(0,0,0,.3);
+          background-color: rgba(0, 0, 0, .3);
           text-align: center;
           line-height: 30px;
           color: #fff;
-      &:checked+span>.overlay
-        display:block
+
+      &:checked + span > .overlay
+        display: block
+
     & .bg
       background-color: #f1f1f1
+
   &--item
     overflow: hidden;
     display: block;
-    box-shadow: 0 0 2px rgba(0,0,0,.1);
+    box-shadow: 0 0 2px rgba(0, 0, 0, .1);
     margin-bottom: 15px;
+
     &--header
       height: 10px
-    &>span
+
+    & > span
       display: block;
       float: left;
       width: 50%;

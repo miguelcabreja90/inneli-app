@@ -1,5 +1,8 @@
 {
   "home": "Inicio",
+  "english": "Ingles",
+  "spanish": "Español",
+  "settingLocale": "Idioma",
   "login": {
     "title": "Bienvenido",
     "account": "Correo",
@@ -15,5 +18,12 @@
   },
   "user": {
     "name": "Nombre Completo"
+  },
+  "setting": {
+    "title": "Config. de tema",
+    "english": "Ingles",
+    "spanish": "Español",
+    "themeLocale": "Idioma",
+    "themeColor": "Color"
   }
 }

@@ -15,5 +15,12 @@
   },
   "user": {
     "name": "Full Name"
+  },
+  "setting": {
+    "title": "Theme Settings",
+    "english": "English",
+    "spanish": "Spanish",
+    "themeLocale": "Language",
+    "themeColor": "Color Option"
   }
 }
