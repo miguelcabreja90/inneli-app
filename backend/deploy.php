@@ -1,10 +1,10 @@
 <?php
 namespace Deployer;
 
-require 'recipe/symfony.php';
+require 'recipe/laravel.php';
 
 // Project name
-set('application', 'inneli-app');
+set('application', 'inneli');
 
 // Project repository
 set('repository', 'https://github.com/miguelcabreja90/inneli-app.git');
@@ -36,5 +36,5 @@ after('deploy:failed', 'deploy:unlock');
 
 // Migrate database before symlink new release.
 
-before('deploy:symlink', 'database:migrate');
+before('deploy:symlink', 'artisan:migrate');
 
