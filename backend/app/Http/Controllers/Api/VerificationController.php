@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Foundation\Auth\VerifiesEmails;
@@ -65,7 +64,6 @@ class VerificationController extends Controller
      * @param Request $request
      * @return Response
      *
-     * @throws AuthorizationException
      */
     public function verify(Request $request)
     {
