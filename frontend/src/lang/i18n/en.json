@@ -1,0 +1,19 @@
+{
+  "home": "Home",
+  "login": {
+    "title": "Welcome",
+    "account": "Email",
+    "password": "Password",
+    "submit": "LOGIN",
+    "register": "REGISTER"
+  },
+  "toobar": {
+    "search": "Search",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+  "user": {
+    "name": "Full Name"
+  }
+}

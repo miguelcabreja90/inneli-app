@@ -1,73 +1,57 @@
 <template>
-  <div id="app">
-    <header>
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <router-link class="navbar-brand" to="/">Inneli</router-link>
-        <button
-          aria-controls="navbarCollapse"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-          class="navbar-toggler"
-          data-target="#navbarCollapse"
-          data-toggle="collapse"
-          type="button"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div id="navbarCollapse" class="collapse navbar-collapse">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <router-link class="nav-link" to="/">Home</router-link>
-            </li>
-            <li v-show="!user" class="nav-item">
-              <router-link class="nav-link" to="/login">Login</router-link>
-            </li>
-            <li v-show="!user" class="nav-item">
-              <router-link class="nav-link" to="/register"
-                >Register
-              </router-link>
-            </li>
-            <li v-show="user" class="nav-item">
-              <a class="nav-link" href="#" @click="logout">Logout</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </header>
-
-    <main class="container" role="main">
-      <router-view />
-    </main>
+  <div class="app-root">
+    <router-view></router-view>
+    <!-- theme setting -->
+    <v-btn small fab dark falt fixed top="top" right="right" class="setting-fab" color="red" @click="openThemeSettings">
+      <v-icon>settings</v-icon>
+    </v-btn>
+    <!-- setting drawer -->
+    <v-navigation-drawer class="setting-drawer" temporary right v-model="rightDrawer" hide-overlay fixed>
+      <theme-settings></theme-settings>
+    </v-navigation-drawer>
+    <!-- global snackbar -->
+    <v-snackbar :timeout="3000" bottom right :color="snackbar.color" v-model="snackbar.show">
+      {{ snackbar.text }}
+      <v-btn dark flat @click.native="snackbar.show = false" icon>
+        <v-icon>close</v-icon>
+      </v-btn>
+    </v-snackbar>
   </div>
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import ThemeSettings from "./components/core/ThemeSettings"
 
 export default {
-  computed: {
-    ...mapGetters("auth", ["user"])
+  components: {
+    ThemeSettings
   },
-
-  mounted() {
-    if (localStorage.getItem("authToken")) {
-      this.getUserData();
+  data() {
+    return {
+      rightDrawer: false,
+      snackbar: {
+        show: false,
+        text: "",
+        color: ""
+      }
     }
   },
-
+  created() {
+    // add app events
+  },
   methods: {
-    ...mapActions("auth", ["sendLogoutRequest", "getUserData"]),
-
-    logout() {
-      this.sendLogoutRequest();
-      this.$router.push("/");
+    openThemeSettings() {
+      this.$vuetify.goTo(0)
+      this.rightDrawer = !this.rightDrawer
     }
   }
-};
+}
 </script>
 
-<style>
-body > div > .container {
-  padding: 60px 15px 0;
+<style scoped>
+.setting-fab {
+  top: 50% !important;
+  right: 0;
+  border-radius: 0;
 }
 </style>

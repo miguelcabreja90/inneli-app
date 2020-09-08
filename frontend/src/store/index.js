@@ -1,10 +1,11 @@
-import Vue from "vue";
-import Vuex from "vuex";
-import axios from "axios";
-import VueAxios from "vue-axios";
-import auth from "./modules/auth";
+import Vue from "vue"
+import Vuex from "vuex"
+import axios from "axios"
+import VueAxios from "vue-axios"
+import auth from "./module/auth"
+import settings from "./module/settings"
 
-Vue.use(Vuex, VueAxios, axios);
+Vue.use(Vuex, VueAxios, axios)
 
 export default new Vuex.Store({
   namespaced: true,
@@ -15,7 +16,8 @@ export default new Vuex.Store({
   },
 
   modules: {
-    auth
+    auth,
+    settings
   },
 
   getters: {
@@ -26,15 +28,15 @@ export default new Vuex.Store({
 
   mutations: {
     setErrors(state, errors) {
-      state.errors = errors;
+      state.errors = errors
     },
     setWindowHeight(state, { windowHeight }) {
-      state.windowHeight = windowHeight;
+      state.windowHeight = windowHeight
     },
     setWindowWidth(state, { windowWidth }) {
-      state.windowWidth = windowWidth;
+      state.windowWidth = windowWidth
     }
   },
 
   actions: {}
-});
+})

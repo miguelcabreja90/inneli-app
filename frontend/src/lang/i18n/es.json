@@ -1,0 +1,19 @@
+{
+  "home": "Inicio",
+  "login": {
+    "title": "Bienvenido",
+    "account": "Correo",
+    "password": "Contraseña",
+    "submit": "ACEPTAR",
+    "register": "REGISTRAR"
+  },
+  "toobar": {
+    "search": "Buscar",
+    "profile": "Perfil",
+    "settings": "Settings",
+    "logout": "Salir"
+  },
+  "user": {
+    "name": "Nombre Completo"
+  }
+}

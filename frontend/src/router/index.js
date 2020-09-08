@@ -1,58 +1,29 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import { getToken } from "@/data/localStorage";
+import Vue from "vue"
+import VueRouter from "vue-router"
+import { protectedRoute, publicRoute } from "./config"
+import NProgress from "nprogress"
+import "nprogress/nprogress.css"
 
-Vue.use(VueRouter);
+const routes = publicRoute.concat(protectedRoute)
 
-const guest = (to, from, next) => {
-  if (!getToken()) {
-    return next();
-  } else {
-    return next("/");
-  }
-};
-const auth = (to, from, next) => {
-  if (getToken()) {
-    return next();
-  } else {
-    return next("/login");
-  }
-};
-
-const routes = [
-  {
-    path: "/",
-    name: "Home",
-    component: () => import(/* webpackChunkName: "home" */ "../views/Home.vue")
-  },
-  {
-    path: "/login",
-    name: "Login",
-    beforeEnter: guest,
-    component: () =>
-      import(/* webpackChunkName: "login" */ "../views/Auth/Login.vue")
-  },
-  {
-    path: "/register",
-    name: "Register",
-    beforeEnter: guest,
-    component: () =>
-      import(/* webpackChunkName: "register" */ "../views/Auth/Register.vue")
-  },
-  {
-    path: "/verify/:hash",
-    name: "Verify",
-    beforeEnter: auth,
-    props: true,
-    component: () =>
-      import(/* webpackChunkName: "verify" */ "../views/Auth/Verify.vue")
-  }
-];
-
+Vue.use(VueRouter)
 const router = new VueRouter({
-  mode: "history",
+  mode: "hash",
+  linkActiveClass: "active",
   base: process.env.BASE_URL,
-  routes
-});
+  routes: routes
+})
+// router gard's
+// eslint-disable-next-line no-unused-vars
+router.beforeEach((to, from, next) => {
+  NProgress.start()
+  //auth route is authenticated
+  next()
+})
 
-export default router;
+// eslint-disable-next-line no-unused-vars
+router.afterEach((to, from) => {
+  NProgress.done()
+})
+
+export default router
