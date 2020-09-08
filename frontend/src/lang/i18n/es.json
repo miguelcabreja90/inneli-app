@@ -1,8 +1,8 @@
 {
   "home": "Inicio",
-  "english": "Ingles",
-  "spanish": "Español",
-  "settingLocale": "Idioma",
+  "rules": {
+    "required": "Este campo es obligatorio."
+  },
   "login": {
     "title": "Bienvenido",
     "account": "Correo",

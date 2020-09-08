@@ -1,5 +1,8 @@
 {
   "home": "Home",
+  "rules": {
+    "required": "This field is required."
+  },
   "login": {
     "title": "Welcome",
     "account": "Email",
