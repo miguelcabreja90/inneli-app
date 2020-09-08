@@ -77,7 +77,7 @@ const mutations = {
     state.isLoggedIn = false;
   },
   [LOGIN_FAILED](state, error) {
-    console.log({state,error})
+    console.log({ state, error });
   }
 };
 
