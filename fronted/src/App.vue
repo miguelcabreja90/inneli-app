@@ -40,7 +40,7 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
-import NavBar from "./components/utils/nav-bar";
+import NavBar from "./components/core/nav-bar";
 
 export default {
   components: {NavBar},
