@@ -9,6 +9,7 @@ export default {
   // menu
   menu: {
     home: 'Home',
+    dashboard: 'Dashboard',
     access_denied: 'Access Deny'
   },
   rule: {
