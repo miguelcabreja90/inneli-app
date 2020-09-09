@@ -13,14 +13,6 @@
         <span class="hidden-sm-and-down">INNELI APP</span>
       </v-toolbar-title>
     </v-toolbar>
-    <div class="pa-3">
-      <a :href="sponsor.href">
-        <v-img
-          :src="drawerWidth === 64 ? sponsor.srcMini : sponsor.src"
-          alt="Optic fiber component provider"
-        />
-      </a>
-    </div>
     <v-list class="pa-0">
       <template v-for="(item, key) in computeMenu">
         <template v-if="item.children && item.children.length > 0">
@@ -151,11 +143,6 @@ export default {
       drawer: true,
       scrollSettings: {
         maxScrollbarLength: 160
-      },
-      sponsor: {
-        href: '#',
-        src: '/static/sponsor.png',
-        srcMini: '/static/sponsor_mini.png'
       }
     }
   },

@@ -6,13 +6,9 @@ export default {
   login: 'login',
   username: 'Username',
   password: 'Password',
-  //app drawer
-  sponsor: 'Inneli',
   // menu
   menu: {
     home: 'Home',
-    media: 'Media',
-    dashboard: 'Dashboard',
     access_denied: 'Access Deny'
   },
   rule: {

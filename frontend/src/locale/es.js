@@ -6,8 +6,6 @@ export default {
   login: 'login',
   username: 'Usuario',
   password: 'Contraseña',
-  //app drawer
-  sponsor: 'Inneli',
   // menu
   menu: {
     home: 'Inicio',
