@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'Api', 'as' => 'api.'], function () {
 
+    Route::get('ping', 'PingController@index')->name('ping');
+
     Route::post('login', 'LoginController@login')->name('login');
 
     Route::post('register', 'RegisterController@register')->name('register');

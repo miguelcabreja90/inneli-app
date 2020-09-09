@@ -6,9 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -76,7 +79,7 @@ class RegisterController extends Controller
      * }
      *
      * @param Request $request
-     * @return Response
+     * @return Application|RedirectResponse|Response|Redirector
      */
     public function register(Request $request)
     {
@@ -135,7 +138,7 @@ class RegisterController extends Controller
     protected function registered(Request $request, $user)
     {
         return response()->json([
-            'token' => $user->createToken($request->input('device_name'))->accessToken,
+            'token' => $user->createToken($request->input('inneli_app'))->accessToken,
             'user' => $request->user()
         ]);
     }

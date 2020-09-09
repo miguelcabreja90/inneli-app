@@ -83,7 +83,7 @@ class LoginController extends Controller
      * }
      *
      * @param Request $request
-     * @return RedirectResponse|Response|JsonResponse
+     * @return JsonResponse|RedirectResponse|Response|\Symfony\Component\HttpFoundation\Response|void
      *
      * @throws ValidationException
      */
@@ -113,6 +113,10 @@ class LoginController extends Controller
         return $this->sendFailedLoginResponse($request);
     }
 
+    /**
+     * @param Request $request
+     * @return JsonResponse|mixed
+     */
     protected function sendLoginResponse(Request $request)
     {
         $this->clearLoginAttempts($request);
@@ -122,8 +126,7 @@ class LoginController extends Controller
         }
 
         return response()->json([
-            'token' => $request->user()->createToken($request->input('device_name'))->accessToken,
-            'user' => $request->user()
+            'token' => $request->user()->createToken($request->input('inneli_app'))->accessToken
         ]);
     }
 }
