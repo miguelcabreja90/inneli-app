@@ -1,28 +1,24 @@
-import Vue from "vue"
-import VueRouter from "vue-router"
-import { protectedRoute, publicRoute } from "./config"
-import NProgress from "nprogress"
-import "nprogress/nprogress.css"
-
+import Vue from 'vue'
+import Router from 'vue-router'
+import { publicRoute, protectedRoute } from './config'
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 const routes = publicRoute.concat(protectedRoute)
 
-Vue.use(VueRouter)
-const router = new VueRouter({
-  mode: "hash",
-  linkActiveClass: "active",
-  base: process.env.BASE_URL,
+Vue.use(Router)
+const router = new Router({
+  mode: 'hash',
+  linkActiveClass: 'active',
   routes: routes
 })
-// router gard's
-// eslint-disable-next-line no-unused-vars
+// router gards
 router.beforeEach((to, from, next) => {
   NProgress.start()
   //auth route is authenticated
   next()
 })
 
-// eslint-disable-next-line no-unused-vars
-router.afterEach((to, from) => {
+router.afterEach(() => {
   NProgress.done()
 })
 

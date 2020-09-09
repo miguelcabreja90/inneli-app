@@ -1,74 +1,115 @@
-import { AuthLayout, DefaultLayout } from "../components/layouts"
-
-import { getToken } from "@/config/localStorage"
-
-const guest = (to, from, next) => {
-  if (!getToken()) {
-    return next()
-  } else {
-    return next("/")
-  }
-}
-const auth = (to, from, next) => {
-  if (getToken()) {
-    return next()
-  } else {
-    return next("/login")
-  }
-}
+import {
+  LayoutAuth,
+  LayoutDefault,
+  LayoutChat,
+  RouteWrapper
+} from '@/components/layouts'
 
 export const publicRoute = [
-  /*{ path: "*", component: () => import(/!* webpackChunkName: "errors-404" *!/ "../views/error/NotFound.vue") },*/
   {
-    path: "*",
-    component: AuthLayout,
-    meta: { title: "Login" },
-    redirect: "/auth/login",
+    path: '*',
+    component: () => import('@/views/error/NotFound.vue')
+  },
+  {
+    path: '/auth',
+    component: LayoutAuth,
+    meta: {
+      title: 'Login'
+    },
+    redirect: '/auth/login',
     hidden: true,
     children: [
       {
-        path: "login",
-        beforeEnter: guest,
-        name: "login",
-        meta: { title: "Login" },
-        component: () => import(/* webpackChunkName: "login" */ "../views/auth/Login")
+        path: 'login',
+        name: 'login',
+        meta: {
+          title: 'Login'
+        },
+        component: () => import('@/views/auth/Login.vue')
       }
     ]
   },
+
   {
-    path: "/404",
-    name: "404",
-    meta: { title: "Not Found" },
-    component: () => import(/* webpackChunkName: "errors-404" */ "../views/error/NotFound.vue")
+    path: '/404',
+    name: '404',
+    meta: {
+      title: 'Not Found'
+    },
+    component: () => import('@/views/error/NotFound.vue')
   },
 
   {
-    path: "/500",
-    name: "500",
-    meta: { title: "Server Error" },
-    component: () => import(/* webpackChunkName: "errors-500" */ "../views/error/Error.vue")
+    path: '/500',
+    name: '500',
+    meta: {
+      title: 'Server Error'
+    },
+    component: () => import('@/views/error/Error.vue')
   }
 ]
 
 export const protectedRoute = [
   {
-    path: "/admin",
-    component: DefaultLayout,
-    meta: { title: "Home", group: "apps", icon: "" },
-    redirect: "/admin/dashboard",
+    path: '/',
+    component: LayoutDefault,
+    meta: {
+      title: 'home',
+      group: 'apps',
+      icon: ''
+    },
+    redirect: '/dashboard',
     children: [
       {
-        path: "/admin/dashboard",
-        name: "Dashboard",
-        beforeEnter: auth,
-        meta: { title: "Home", group: "apps", icon: "dashboard" },
-        component: () => import(/* webpackChunkName: "dashboard" */ "../views/Dashboard.vue")
+        path: '/dashboard',
+        name: 'dashboard',
+        meta: {
+          title: 'dashboard',
+          group: 'apps',
+          icon: 'mdi-view-dashboard'
+        },
+        component: () => import('@/views/Dashboard.vue')
+      },
+
+      {
+        path: '/403',
+        name: 'Forbidden',
+        meta: {
+          title: 'access_denied',
+          hiddenInMenu: true
+        },
+        component: () => import('@/views/error/Deny.vue')
+      }
+    ]
+  },
+
+  // chat app
+  {
+    path: '/chat',
+    name: 'Chat',
+    component: LayoutChat,
+    redirect: {
+      path: '/chat/messaging'
+    },
+    meta: {
+      title: 'Chat',
+      group: 'apps',
+      icon: 'chat_bubble'
+    },
+    children: [
+      {
+        path: '/chat/messaging/:uuid?',
+        name: 'ChatMessaging',
+        props: true,
+        component: () => import('@/views/chat/ChatMessaging.vue')
       },
       {
-        path: "/403",
-        name: "Forbidden",
-        meta: { title: "Access Denied", hiddenInMenu: true },
-        component: () => import(/* webpackChunkName: "error-403" */ "../views/error/Deny.vue")
+        path: '/chat/contact/:uuid?',
+        meta: {
+          public: true
+        },
+        name: 'ChatContact',
+        component: () => import('@/views/chat/ChatContact.vue')
       }
     ]
   }

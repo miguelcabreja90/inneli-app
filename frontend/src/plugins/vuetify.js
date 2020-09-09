@@ -1,15 +1,31 @@
-import Vue from "vue"
-import Vuetify from "vuetify/lib"
-import "../theme/default.styl"
-Vue.use(Vuetify, {
-  theme: {
-    primary: "#ee44aa",
-    secondary: "#424242",
-    accent: "#82B1FF",
-    error: "#FF5252",
-    info: "#2196F3",
-    success: "#4CAF50",
-    warning: "#FFC107"
+import Vue from 'vue'
+
+import Vuetify from 'vuetify/lib'
+// locale
+import es from '@/locale/es'
+import en from '@/locale/en'
+
+Vue.use(Vuetify)
+
+export default new Vuetify({
+  lang: {
+    locales: { es, en },
+    current: 'en'
   },
-  customProperties: true
+  theme: {
+    options: {
+      customProperties: true
+    },
+    themes: {
+      light: {
+        primary: '#ee44aa',
+        secondary: '#424242',
+        accent: '#82B1FF',
+        error: '#FF5252',
+        info: '#2196F3',
+        success: '#4CAF50',
+        warning: '#FFC107'
+      }
+    }
+  }
 })

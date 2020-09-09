@@ -1,27 +1,49 @@
 <template>
-  <div class="app-root">
+  <v-app :dark="true">
     <router-view></router-view>
     <!-- theme setting -->
-    <v-btn small fab dark falt fixed top="top" right="right" class="setting-fab" color="red" @click="openThemeSettings">
+    <v-btn
+      small
+      fab
+      dark
+      fixed
+      top="top"
+      right="right"
+      class="setting-fab"
+      color="red"
+      @click="openThemeSettings"
+    >
       <v-icon>settings</v-icon>
     </v-btn>
     <!-- setting drawer -->
-    <v-navigation-drawer class="setting-drawer" temporary right v-model="rightDrawer" hide-overlay fixed>
+    <v-navigation-drawer
+      class="setting-drawer"
+      temporary
+      right
+      v-model="rightDrawer"
+      hide-overlay
+      fixed
+    >
       <theme-settings></theme-settings>
     </v-navigation-drawer>
     <!-- global snackbar -->
-    <v-snackbar :timeout="3000" bottom right :color="snackbar.color" v-model="snackbar.show">
+    <v-snackbar
+      :timeout="3000"
+      bottom
+      right
+      :color="snackbar.color"
+      v-model="snackbar.show"
+    >
       {{ snackbar.text }}
-      <v-btn dark flat @click.native="snackbar.show = false" icon>
+      <v-btn dark text @click.native="snackbar.show = false" icon>
         <v-icon>close</v-icon>
       </v-btn>
     </v-snackbar>
-  </div>
+  </v-app>
 </template>
 
 <script>
-import ThemeSettings from "./components/core/ThemeSettings"
-
+import ThemeSettings from '@/components/ThemeSettings'
 export default {
   components: {
     ThemeSettings
@@ -31,11 +53,13 @@ export default {
       rightDrawer: false,
       snackbar: {
         show: false,
-        text: "",
-        color: ""
+        text: '',
+        color: ''
       }
     }
   },
+
+  mounted() {},
   created() {
     // add app events
   },
@@ -48,10 +72,9 @@ export default {
 }
 </script>
 
-<style scoped>
-.setting-fab {
-  top: 50% !important;
-  right: 0;
-  border-radius: 0;
-}
+<style lang="sass" scoped>
+.setting-fab
+  top: 50% !important
+  right: 0
+  border-radius: 0
 </style>

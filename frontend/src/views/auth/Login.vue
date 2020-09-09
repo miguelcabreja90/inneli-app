@@ -1,79 +1,128 @@
 <template>
-  <v-card class="elevation-1 pa-3 login-card">
-    <v-card-text>
-      <div class="layout column align-center">
-        <img src="/static/m.png" alt="Vue Material Admin" width="120" height="120"/>
-        <h1 class="flex my-4 primary--text">{{ $t("login.title") }}</h1>
-      </div>
-      <v-form v-model="valid" ref="form">
-        <v-text-field
-          append-icon="email"
-          name="login"
-          :label="$t('login.account')"
-          type="email"
-          v-model="details.email"
-          :rules="[rules.required]"
-        ></v-text-field>
-        <v-text-field
-          :type="hidePassword ? 'password' : 'text'"
-          :append-icon="hidePassword ? 'fa fa-eye' : 'fa fa-low-vision'"
-          name="password"
-          :label="$t('login.password')"
-          id="password"
-          v-model="details.password"
-          @click:append="hidePassword = !hidePassword"
-          :rules="[rules.required]"
-        ></v-text-field>
-      </v-form>
-    </v-card-text>
-    <div class="login-btn">
-      <v-btn icon>
-        <v-icon color="blue">fa fa-facebook-square fa-lg</v-icon>
-      </v-btn>
-      <v-btn icon>
-        <v-icon color="red">fa fa-google fa-lg</v-icon>
-      </v-btn>
-      <v-spacer></v-spacer>
-      <v-card-actions>
-        <div class="flex-grow-1"></div>
-        <v-btn block color="primary" :loading="pending" @click="login">{{ $t("login.submit") }}</v-btn>
-        <v-btn @click.stop="">{{ $t("login.register") }}</v-btn>
-      </v-card-actions>
-    </div>
-  </v-card>
+  <v-container class="page-login" fill-height>
+    <v-row>
+      <v-col>
+        <v-card class="pa-3 page-login__card" tile>
+          <v-card-title>
+            <img src="/static/m.png" alt="Inneli APP" width="55" />
+            <h1 class="primary--text display-1">
+              INNELI
+            </h1>
+          </v-card-title>
+          <v-card-text>
+            <v-form
+              ref="form"
+              class="my-10"
+              lazy-validation
+              v-model="formValid"
+            >
+              <v-text-field
+                append-icon="person"
+                autocomplete="off"
+                name="login"
+                :label="$vuetify.lang.t('$vuetify.username')"
+                :placeholder="$vuetify.lang.t('$vuetify.username')"
+                type="text"
+                required
+                :rules="formRule.username"
+                v-model="fromModel.username"
+              />
+              <v-text-field
+                append-icon="lock"
+                autocomplete="off"
+                name="password"
+                :label="$vuetify.lang.t('$vuetify.password')"
+                :placeholder="$vuetify.lang.t('$vuetify.password')"
+                type="password"
+                :rules="formRule.password"
+                required
+                v-model="fromModel.password"
+              />
+            </v-form>
+          </v-card-text>
+          <v-card-actions>
+            <v-tooltip v-for="item in socialIcons" :key="item.text" bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <v-icon
+                  class="mr-3"
+                  v-text="item.icon"
+                  v-bind="attrs"
+                  v-on="on"
+                  @click="handleSocialLogin"
+                />
+              </template>
+              <span>{{ item.text }}</span>
+            </v-tooltip>
+            <v-spacer />
+            <v-btn large tile color="primary" @click="login" :loading="loading">
+              {{ $vuetify.lang.t('$vuetify.login') }}
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex"
-
 export default {
+  name: 'PageLogin',
   data() {
     return {
-      dialog: false,
-      details: {
-        email: null,
-        password: null
+      loading: false,
+      formValid: false,
+      fromModel: {
+        username: '',
+        password: ''
       },
-      valid: false,
-      hidePassword: true,
-      rules: {
-        required: v => !!v || this.$t("rules.required")
-      }
+      formRule: {
+        username: [
+          (v) =>
+            !!v || this.$vuetify.lang.t('$vuetify.rule.required', ['username'])
+        ],
+        password: [
+          (v) =>
+            !!v || this.$vuetify.lang.t('$vuetify.rule.required', ['password'])
+        ]
+      },
+      socialIcons: [
+        {
+          text: 'Google',
+          icon: 'mdi-google'
+        },
+        {
+          text: 'Facebook',
+          icon: 'mdi-facebook'
+        },
+        {
+          text: 'Twitter',
+          icon: 'mdi-twitter'
+        }
+      ]
     }
   },
   computed: {
-    ...mapState("auth", ["userData", "isLoggedIn", "pending"])
+    prefix() {
+      return ''
+    }
   },
   methods: {
-    ...mapActions("auth", ["sendLoginRequest"]),
-    login: function() {
+    login() {
       if (this.$refs.form.validate()) {
-        this.sendLoginRequest(this.details).then(() => {
-          this.$router.push({ name: "Dashboard" })
-        })
+        this.loading = true
+        setTimeout(() => {
+          this.$router.push('/dashboard')
+        }, 1000)
       }
-    }
+    },
+    handleSocialLogin() {}
   }
 }
 </script>
-<style scoped lang="css"></style>
+
+<style lang="sass" scoped>
+.page-login
+  &__card
+  max-width: 600px
+  margin: 0 auto
+</style>

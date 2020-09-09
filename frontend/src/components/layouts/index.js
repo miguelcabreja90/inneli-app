@@ -1,4 +1,6 @@
-import AuthLayout from "@/components/layouts/AuthLayout"
-import DefaultLayout from "@/components/layouts/DefaultLayout"
+import LayoutAuth from '@/components/layouts/LayoutAuth'
+import LayoutDefault from '@/components/layouts/LayoutDefault'
+import LayoutChat from '@/components/layouts/LayoutChat'
+import RouteWrapper from '@/components/layouts/RouteWrapper'
 
-export { AuthLayout, DefaultLayout }
+export { LayoutAuth, LayoutDefault, LayoutChat, RouteWrapper }
