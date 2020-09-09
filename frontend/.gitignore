@@ -18,6 +18,7 @@ release
 *.njsproj
 *.sln
 .env.local
+.env
 
 dist/
 

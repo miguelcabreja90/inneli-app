@@ -18,8 +18,8 @@ __Front-end__
 
 - Go to the sub-folder `cd frontend`
 - Copy __.env.local.example__ to __.env.local__ and edit URL of your API
-- Run __npm install__ 
-- Run __npm run serve__ 
+- Run __yarn install__ 
+- Run __yarn run serve__ 
 - That's it: launch the URL that appears in the terminal - could be `http://[your_domain]`
 
 
