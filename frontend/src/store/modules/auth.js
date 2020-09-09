@@ -6,6 +6,7 @@ const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 const LOGIN_FAILED = 'LOGIN_FAILED'
 const LOGOUT = 'LOGOUT'
 const LOGIN = 'LOGIN'
+const SET_ERRORS = 'SET_ERRORS'
 
 const state = {
   isLoggedIn: !!localStorage.getToken(),
@@ -45,7 +46,7 @@ const actions = {
       .catch(() => localStorage.removeToken())
   },
   sendLoginRequest({ commit }, login) {
-    commit('setErrors', {}, { root: true })
+    commit(SET_ERRORS, {}, { root: true })
     commit(LOGIN)
 
     return auth.loginRequest(login).then(({ data }) => {
@@ -55,7 +56,7 @@ const actions = {
     })
   },
   sendRegisterRequest({ commit }, register) {
-    commit('setErrors', {}, { root: true })
+    commit(SET_ERRORS, {}, { root: true })
 
     return auth
       .registerRequest(register)
@@ -95,6 +96,9 @@ const mutations = {
   },
   [LOGIN_FAILED](state, error) {
     console.log({ state, error })
+  },
+  [SET_ERRORS](state, errors) {
+    state.errors = errors
   }
 }
 

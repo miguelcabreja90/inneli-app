@@ -27,9 +27,6 @@ const mutations = {
   setThemeColor(state, payload) {
     state.themeColor = payload
   },
-  setErrors(state, errors) {
-    state.errors = errors
-  },
   setWindowHeight(state, { windowHeight }) {
     state.windowHeight = windowHeight
   },
