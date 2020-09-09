@@ -1,15 +1,22 @@
 import colors from 'vuetify/es5/util/colors'
+import localStorage from '@/config/localStorage'
 
 const state = {
   mode: 'light',
-  themeColor: 'pink'
+  themeColor: localStorage.getTheme(),
+  errors: [],
+  windowHeight: 0,
+  windowWidth: 0
 }
 
 // getters
 const getters = {
   getThemeColor: (state) => {
     return colors[state.themeColor].base
-  }
+  },
+  errors: (state) => state.errors,
+  windowHeight: (state) => state.windowHeight,
+  windowWidth: (state) => state.windowWidth
 }
 
 // actions
@@ -19,11 +26,20 @@ const actions = {}
 const mutations = {
   setThemeColor(state, payload) {
     state.themeColor = payload
+  },
+  setErrors(state, errors) {
+    state.errors = errors
+  },
+  setWindowHeight(state, { windowHeight }) {
+    state.windowHeight = windowHeight
+  },
+  setWindowWidth(state, { windowWidth }) {
+    state.windowWidth = windowWidth
   }
 }
 
 export default {
-  namespace: true,
+  namespaced: true,
   state,
   getters,
   actions,

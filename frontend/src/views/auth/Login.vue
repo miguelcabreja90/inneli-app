@@ -20,12 +20,12 @@
                 append-icon="person"
                 autocomplete="off"
                 name="login"
-                :label="$vuetify.lang.t('$vuetify.username')"
-                :placeholder="$vuetify.lang.t('$vuetify.username')"
-                type="text"
+                :label="$vuetify.lang.t('$vuetify.email')"
+                :placeholder="$vuetify.lang.t('$vuetify.email')"
+                type="email"
                 required
-                :rules="formRule.username"
-                v-model="fromModel.username"
+                :rules="formRule.email"
+                v-model="fromModel.email"
               />
               <v-text-field
                 append-icon="lock"
@@ -65,53 +65,38 @@
 </template>
 
 <script>
+import { mapState, mapActions, mapGetters } from 'vuex'
 export default {
   name: 'PageLogin',
   data() {
     return {
-      loading: false,
       formValid: false,
-      fromModel: {
-        username: '',
-        password: ''
-      },
+      loading: false,
       formRule: {
-        username: [
+        email: [
           (v) =>
-            !!v || this.$vuetify.lang.t('$vuetify.rule.required', ['username'])
+            !!v || this.$vuetify.lang.t('$vuetify.rule.required', ['email'])
         ],
         password: [
           (v) =>
             !!v || this.$vuetify.lang.t('$vuetify.rule.required', ['password'])
         ]
-      },
-      socialIcons: [
-        {
-          text: 'Google',
-          icon: 'mdi-google'
-        },
-        {
-          text: 'Facebook',
-          icon: 'mdi-facebook'
-        },
-        {
-          text: 'Twitter',
-          icon: 'mdi-twitter'
-        }
-      ]
+      }
     }
   },
   computed: {
-    prefix() {
-      return ''
-    }
+    ...mapState('auth', ['isLoggedIn', 'fromModel', 'socialIcons']),
+    ...mapGetters('app', ['errors'])
   },
   methods: {
+    ...mapActions('auth', ['sendLoginRequest']),
     login() {
       if (this.$refs.form.validate()) {
         this.loading = true
         setTimeout(() => {
-          this.$router.push('/dashboard')
+          this.sendLoginRequest(this.fromModel).then(() => {
+            this.$router.push('/dashboard')
+          })
         }, 1000)
       }
     },
