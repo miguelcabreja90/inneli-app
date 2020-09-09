@@ -17,6 +17,7 @@ release
 *.ntvs*
 *.njsproj
 *.sln
+.env.local
 
 dist/
 
