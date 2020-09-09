@@ -97,22 +97,6 @@ export default {
           }
         },
         {
-          key: 'orange',
-          value: {
-            sideNav: 'orange',
-            mainNav: 'orange',
-            sideMenu: 'white'
-          }
-        },
-        {
-          key: 'purple',
-          value: {
-            sideNav: 'purple',
-            mainNav: 'purple',
-            sideMenu: 'white'
-          }
-        },
-        {
           key: 'indigo',
           value: {
             sideNav: 'indigo',
@@ -120,30 +104,6 @@ export default {
             sideMenu: 'white'
           }
         },
-        {
-          key: 'cyan',
-          value: {
-            sideNav: 'cyan',
-            mainNav: 'cyan',
-            sideMenu: 'white'
-          }
-        },
-        {
-          key: 'pink',
-          value: {
-            sideNav: 'pink',
-            mainNav: 'pink',
-            sideMenu: 'white'
-          }
-        },
-        {
-          key: 'green',
-          value: {
-            sideNav: 'green',
-            mainNav: 'green',
-            sideMenu: 'white'
-          }
-        }
       ]
     },
     availableLanguages() {
