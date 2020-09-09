@@ -28,4 +28,4 @@ yarn run lint
 
 ## License
 
-[MIT](https://github.com/tookit/vue-material-admin/blob/master/LICENSE)
+[MIT](https://github.com/miguelcabreja90/inneli-app/blob/master/frontend/LICENSE)
