@@ -18,12 +18,23 @@ const vuexLocal = new VuexPersistence({
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
+  state: {
+    errors: []
+  },
   modules: {
     app,
     auth,
     settings
   },
-  plugins: [vuexLocal.plugin]
+  plugins: [vuexLocal.plugin],
+  getters: {
+    errors: (state) => state.errors
+  },
+  mutations: {
+    SET_ERRORS(state, errors) {
+      state.errors = errors
+    }
+  }
 })
 
 export default store

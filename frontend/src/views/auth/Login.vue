@@ -86,7 +86,7 @@ export default {
   },
   computed: {
     ...mapState('auth', ['isLoggedIn', 'fromModel', 'socialIcons']),
-    ...mapGetters('app', ['errors'])
+    ...mapGetters(['errors'])
   },
   methods: {
     ...mapActions('auth', ['sendLoginRequest']),

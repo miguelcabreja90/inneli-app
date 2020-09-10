@@ -80,6 +80,7 @@
 </template>
 <script>
 import Util from '@/util'
+import { mapActions } from 'vuex'
 export default {
   name: 'AppToolbar',
   data() {
@@ -101,7 +102,7 @@ export default {
           icon: 'fullscreen_exit',
           href: '#',
           title: 'Logout',
-          click: this.handleLogut
+          click: this.handleLogout
         }
       ]
     }
@@ -143,14 +144,17 @@ export default {
     }
   },
   methods: {
+    ...mapActions('auth', ['sendLogoutRequest']),
     handleDrawerToggle() {
       this.$emit('side-icon-click')
     },
     handleFullScreen() {
       Util.toggleFullScreen()
     },
-    handleLogut() {
-      this.$router.push('/auth/login')
+    handleLogout() {
+      this.sendLogoutRequest().then(() => {
+        this.$router.push('/auth/login')
+      })
     },
     handleChangeLocale({ value }) {
       this.$vuetify.lang.current = value
