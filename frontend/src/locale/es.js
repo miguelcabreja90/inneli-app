@@ -18,7 +18,7 @@ export default {
     title: 'Ajuste de Tema',
     color: 'Opciones de color',
     lang: 'Idioma',
-    sidebar: 'Opción de barra lateral',
+    sidebar: 'Opción de barra lateral'
   },
   // rules
   rule: {

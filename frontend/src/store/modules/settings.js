@@ -2,7 +2,7 @@ import colors from 'vuetify/es5/util/colors'
 import localStorage from '@/config/localStorage'
 
 const state = {
-  mode: 'light',
+  mode: 'light'
 }
 
 // getters
