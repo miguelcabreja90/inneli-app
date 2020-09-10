@@ -10,12 +10,7 @@
             </h1>
           </v-card-title>
           <v-card-text>
-            <v-form
-              ref="form"
-              class="my-10"
-              lazy-validation
-              v-model="formValid"
-            >
+            <v-form ref="form" class="my-10" lazy-validation v-model="formValid">
               <v-text-field
                 append-icon="person"
                 autocomplete="off"
@@ -77,6 +72,7 @@
 
 <script>
   import {mapState, mapActions, mapGetters} from 'vuex'
+
   export default {
     name: "Register",
     data() {
@@ -97,15 +93,16 @@
           ],
           email: [
             (v) =>
-              !!v || this.$vuetify.lang.t('$vuetify.rule.required', ['email'])
+              !!v || this.$vuetify.lang.t('$vuetify.rule.required', ['email']),
+            v => /.+@.+/.test(v) || 'E-mail must be valid',
           ],
           password: [
-            (v) =>
-              !!v || this.$vuetify.lang.t('$vuetify.rule.required', ['password'])
+            (v) => !!v || this.$vuetify.lang.t('$vuetify.rule.required', ['password']),
+            v => (v || '').length >= 8 || 'A minimum of 8 characters is not allowed'
           ],
           password_confirmation: [
-            (v) =>
-              !!v || v !== this.password || this.$vuetify.lang.t('$vuetify.rule.required', ['confirm password'])
+            (v) => !!v || this.$vuetify.lang.t('$vuetify.rule.required', ['password confirm']),
+            v => (!!v && v) === this.fromModel.password || 'Pasword and Confirm do not match.',
           ],
         }
       }
@@ -115,21 +112,23 @@
       ...mapGetters(['errors']),
       prefix() {
         return ''
-      }
+      },
     },
     methods: {
-      ...mapActions('auth', ['sendRegisterRequest']),
+      ...
+        mapActions('auth', ['sendRegisterRequest']),
       registerUser() {
 
         if (this.$refs.form.validate()) {
           this.loading = true,
-          setTimeout(() => {
-            this.sendRegisterRequest(this.fromModel).then(() => {
-              this.$router.push('/dashboard')
-            })
-          }, 1000)
+            setTimeout(() => {
+              this.sendRegisterRequest(this.fromModel).then(() => {
+                this.$router.push('/dashboard')
+              })
+            }, 1000)
         }
-      },
+      }
+      ,
     }
   }
 </script>
