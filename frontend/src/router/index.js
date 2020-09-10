@@ -4,7 +4,6 @@ import { publicRoute, protectedRoute } from './config'
 import NProgress from 'nprogress'
 import localStorage from '@/config/localStorage'
 import 'nprogress/nprogress.css'
-
 const routes = publicRoute.concat(protectedRoute)
 
 Vue.use(Router)
@@ -17,11 +16,15 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   NProgress.start()
   //auth route is authenticated
-  if (localStorage.getToken() && to.fullPath !== '/auth/login') {
+  if (
+    (localStorage.getToken() && to.fullPath !== '/auth/login') ||
+    to.fullPath !== '/auth/register'
+  ) {
     return next()
-  } else if (to.fullPath === '/auth/login') {
-    next()
-  } else if (to.fullPath === '/auth/register') {
+  } else if (
+    to.fullPath === '/auth/login' ||
+    to.fullPath === '/auth/register'
+  ) {
     next()
   } else {
     return next('/auth/login')

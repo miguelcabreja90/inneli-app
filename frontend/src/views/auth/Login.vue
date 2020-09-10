@@ -54,11 +54,18 @@
               <span>{{ item.text }}</span>
             </v-tooltip>
             <v-spacer />
-            <v-btn large tile color="primary" @click="login">
+            <v-btn
+              large
+              tile
+              color="primary"
+              @click="login"
+              :loading="loading"
+              :disabled="!formValid"
+            >
               <v-icon>mdi-account</v-icon>
               {{ $vuetify.lang.t('$vuetify.login') }}
             </v-btn>
-            <v-btn large tile color="primary" :to="{ name: 'register' }">
+            <v-btn large tile color="secondary" :to="{ name: 'register' }">
               <v-icon>mdi-account-plus</v-icon>
               {{ $vuetify.lang.t('$vuetify.register') }}
             </v-btn>
@@ -83,6 +90,11 @@ export default {
             !!v ||
             this.$vuetify.lang.t('$vuetify.rule.required', [
               this.$vuetify.lang.t('$vuetify.email')
+            ]),
+          (v) =>
+            /.+@.+/.test(v) ||
+            this.$vuetify.lang.t('$vuetify.rule.bad_email', [
+              this.$vuetify.lang.t('$vuetify.email')
             ])
         ],
         password: [
@@ -90,7 +102,10 @@ export default {
             !!v ||
             this.$vuetify.lang.t('$vuetify.rule.required', [
               this.$vuetify.lang.t('$vuetify.password')
-            ])
+            ]),
+          (v) =>
+            (v || '').length >= 8 ||
+            this.$vuetify.lang.t('$vuetify.rule.min', ['8'])
         ]
       }
     }
@@ -106,7 +121,12 @@ export default {
         this.loading = true
         setTimeout(() => {
           this.sendLoginRequest(this.fromModel).then(() => {
-            this.$router.push('/dashboard')
+            if (this.isLoggedIn) {
+              this.loading = false
+              this.$router.push('/dashboard')
+            } else {
+              this.loading = false
+            }
           })
         }, 1000)
       }

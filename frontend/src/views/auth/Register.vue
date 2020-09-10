@@ -5,7 +5,7 @@
         <v-card class="pa-3 page-login__card" tile>
           <v-card-title>
             <h1 class="primary--text display-1 text-center">
-              {{ $vuetify.lang.t('$vuetify.register')}}
+              {{ $vuetify.lang.t('$vuetify.register') }}
             </h1>
           </v-card-title>
           <v-card-text>
@@ -62,7 +62,7 @@
             </v-form>
           </v-card-text>
           <v-card-actions>
-            <v-btn large tile color="primary" :to="{ name: 'login' }">
+            <v-btn large tile color="secondary" :to="{ name: 'login' }">
               <v-icon>mdi-account</v-icon>
               {{ $vuetify.lang.t('$vuetify.login') }}
             </v-btn>
@@ -73,6 +73,7 @@
               color="primary"
               @click="registerUser"
               :loading="loading"
+              :disabled="!formValid"
             >
               <v-icon>mdi-account-plus</v-icon>
               {{ $vuetify.lang.t('$vuetify.register') }}
@@ -107,7 +108,8 @@ export default {
             this.$vuetify.lang.t('$vuetify.rule.required', [
               this.$vuetify.lang.t('$vuetify.email')
             ]),
-          (v) => /.+@.+/.test(v) || 'E-mail must be valid'
+          (v) =>
+            /.+@.+/.test(v) || this.$vuetify.lang.t('$vuetify.rule.bad_email')
         ],
         password: [
           (v) =>

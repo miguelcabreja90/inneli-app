@@ -5,11 +5,11 @@ export default {
   //page login
   login: 'login',
   username: 'Username',
-  name:'Name',
+  name: 'Name',
   email: 'Email',
   password: 'Password',
-  confirm:'Confirm',
-  register:'Register',
+  confirm: 'Confirm',
+  register: 'Register',
   confirm_password: 'Confirm Password',
   // menu
   menu: {
@@ -26,9 +26,10 @@ export default {
   },
   rule: {
     required: '{0} is required',
-    min:'Just a minimum of {0} characters is allowed',
-    max:'Just a maximum of {0} characters is allowed',
-    match:'{0} and {1} do not match'
+    min: 'Just a minimum of {0} characters is allowed',
+    max: 'Just a maximum of {0} characters is allowed',
+    match: '{0} and {1} do not match',
+    bad_email: '{0}  must be valid'
   },
   messages: {
     refused: 'Failed: Connections refused.'
