@@ -13,25 +13,6 @@ export const publicRoute = [
     path: '/auth',
     component: LayoutAuth,
     meta: {
-      title: 'Login'
-    },
-    redirect: '/auth/login',
-    hidden: true,
-    children: [
-      {
-        path: 'login',
-        name: 'login',
-        meta: {
-          title: 'Login'
-        },
-        component: () => import('@/views/auth/Login.vue')
-      }
-    ]
-  },
-  {
-    path: '/auth',
-    component: LayoutAuth,
-    meta: {
       title: 'Register'
     },
     redirect: '/auth/register',
@@ -44,6 +25,25 @@ export const publicRoute = [
           title: 'Register'
         },
         component: () => import('@/views/auth/Register.vue')
+      }
+    ]
+  },
+  {
+    path: '/auth',
+    component: LayoutAuth,
+    meta: {
+      title: 'Login'
+    },
+    redirect: '/auth/login',
+    hidden: true,
+    children: [
+      {
+        path: 'login',
+        name: 'login',
+        meta: {
+          title: 'Login'
+        },
+        component: () => import('@/views/auth/Login.vue')
       }
     ]
   },

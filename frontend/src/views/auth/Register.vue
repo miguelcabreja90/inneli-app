@@ -87,6 +87,7 @@
 </template>
 
 <script>
+  import {mapState, mapActions, mapGetters} from 'vuex'
   export default {
     name: "Register",
     data() {
@@ -117,39 +118,29 @@
             (v) =>
               !!v || v !== this.password || this.$vuetify.lang.t('$vuetify.rule.required', ['confirm password'])
           ],
-        },
-        socialIcons: [
-          {
-            text: 'Google',
-            icon: 'mdi-google'
-          },
-          {
-            text: 'Facebook',
-            icon: 'mdi-facebook'
-          },
-          {
-            text: 'Twitter',
-            icon: 'mdi-twitter'
-          }
-        ]
+        }
       }
     },
     computed: {
+      ...mapState('auth', ['isLoggedIn', 'fromModel', 'socialIcons']),
+      ...mapGetters(['errors']),
       prefix() {
         return ''
       }
     },
     methods: {
+      ...mapActions('auth', ['sendRegisterRequest']),
       registerUser() {
+
         if (this.$refs.form.validate()) {
-          this.loading = true;
+          this.loading = true,
           setTimeout(() => {
-            this.$router.push('/dashboard')
+            this.sendRegisterRequest(this.fromModel).then(() => {
+              this.$router.push('/dashboard')
+            })
           }, 1000)
         }
       },
-      handleSocialLogin() {
-      }
     }
   }
 </script>
