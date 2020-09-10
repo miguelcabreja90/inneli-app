@@ -5,8 +5,12 @@ export default {
   //page login
   login: 'login',
   username: 'Username',
+  name:'Name',
   email: 'Email',
   password: 'Password',
+  confirm:'Confirm',
+  register:'Register',
+  confirm_password: 'Confirm Password',
   // menu
   menu: {
     home: 'Home',
@@ -21,7 +25,10 @@ export default {
     sidebar: 'Sidebar Option'
   },
   rule: {
-    required: '{0} is required'
+    required: '{0} is required',
+    min:'Just a minimum of {0} characters is allowed',
+    max:'Just a maximum of {0} characters is allowed',
+    match:'{0} and {1} do not match'
   },
   messages: {
     refused: 'Failed: Connections refused.'

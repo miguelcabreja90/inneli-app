@@ -60,7 +60,7 @@
             </v-btn>
             <v-btn large tile color="primary" :to="{ name: 'register' }">
               <v-icon>mdi-account-plus</v-icon>
-              {{ $vuetify.lang.t('Register') }}
+              {{ $vuetify.lang.t('$vuetify.register') }}
             </v-btn>
           </v-card-actions>
         </v-card>
@@ -80,11 +80,11 @@ export default {
       formRule: {
         email: [
           (v) =>
-            !!v || this.$vuetify.lang.t('$vuetify.rule.required', ['email'])
+            !!v || this.$vuetify.lang.t('$vuetify.rule.required', [this.$vuetify.lang.t('$vuetify.email')])
         ],
         password: [
           (v) =>
-            !!v || this.$vuetify.lang.t('$vuetify.rule.required', ['password'])
+            !!v || this.$vuetify.lang.t('$vuetify.rule.required', [this.$vuetify.lang.t('$vuetify.password')])
         ]
       }
     }

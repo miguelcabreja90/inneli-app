@@ -20,23 +20,23 @@
                 append-icon="person"
                 autocomplete="off"
                 name="register"
-                :label="$vuetify.lang.t('Name')"
-                :placeholder="$vuetify.lang.t('Name')"
+                :label="$vuetify.lang.t('$vuetify.name')"
+                :placeholder="$vuetify.lang.t('$vuetify.name')"
                 type="text"
                 required
                 :rules="formRule.name"
-                v-model="fromModel.name"
+                v-model="formRegister.name"
               />
               <v-text-field
                 append-icon="email"
                 autocomplete="off"
                 name="register"
-                :label="$vuetify.lang.t('Email')"
-                :placeholder="$vuetify.lang.t('Email')"
+                :label="$vuetify.lang.t('$vuetify.email')"
+                :placeholder="$vuetify.lang.t('$vuetify.email')"
                 type="email"
                 required
                 :rules="formRule.email"
-                v-model="fromModel.email"
+                v-model="formRegister.email"
               />
               <v-text-field
                 append-icon="lock"
@@ -47,18 +47,18 @@
                 type="password"
                 :rules="formRule.password"
                 required
-                v-model="fromModel.password"
+                v-model="formRegister.password"
               />
               <v-text-field
                 append-icon="lock"
                 autocomplete="off"
                 name="password_confirmation"
-                :label="$vuetify.lang.t('Confirm Password')"
-                :placeholder="$vuetify.lang.t('Confirm Password')"
+                :label="$vuetify.lang.t('$vuetify.confirm_password')"
+                :placeholder="$vuetify.lang.t('$vuetify.confirm_password')"
                 type="password"
                 :rules="formRule.password_confirmation"
                 required
-                v-model="fromModel.password_confirmation"
+                v-model="formRegister.password_confirmation"
               />
             </v-form>
           </v-card-text>
@@ -72,7 +72,7 @@
               :loading="loading"
             >
               <v-icon>mdi-account-plus</v-icon>
-              {{ $vuetify.lang.t('register') }}
+              {{ $vuetify.lang.t('$vuetify.register')}}
             </v-btn>
           </v-card-actions>
         </v-card>
@@ -90,43 +90,34 @@ export default {
     return {
       loading: false,
       formValid: false,
-      fromModel: {
-        name: '',
-        username: '',
-        email: '',
-        password: '',
-        password_confirmation: ''
-      },
       formRule: {
         name: [
-          (v) => !!v || this.$vuetify.lang.t('$vuetify.rule.required', ['name'])
+          (v) => !!v || this.$vuetify.lang.t('$vuetify.rule.required', [this.$vuetify.lang.t('$vuetify.name')])
         ],
         email: [
           (v) =>
-            !!v || this.$vuetify.lang.t('$vuetify.rule.required', ['email']),
+            !!v || this.$vuetify.lang.t('$vuetify.rule.required', [this.$vuetify.lang.t('$vuetify.email')]),
           (v) => /.+@.+/.test(v) || 'E-mail must be valid'
         ],
         password: [
           (v) =>
-            !!v || this.$vuetify.lang.t('$vuetify.rule.required', ['password']),
+            !!v || this.$vuetify.lang.t('$vuetify.rule.required', [this.$vuetify.lang.t('$vuetify.password')]),
           (v) =>
-            (v || '').length >= 8 || 'A minimum of 8 characters is not allowed'
+            (v || '').length >= 8 || this.$vuetify.lang.t('$vuetify.rule.min', ['8']),
         ],
         password_confirmation: [
           (v) =>
             !!v ||
-            this.$vuetify.lang.t('$vuetify.rule.required', [
-              'password confirm'
-            ]),
+            this.$vuetify.lang.t('$vuetify.rule.required', [this.$vuetify.lang.t('$vuetify.confirm_password')]),
           (v) =>
-            (!!v && v) === this.fromModel.password ||
-            'Pasword and Confirm do not match.'
+            (!!v && v) === this.formRegister.password ||this.$vuetify.lang.t('$vuetify.rule.match', [
+              this.$vuetify.lang.t('$vuetify.password')],[this.$vuetify.lang.t('$vuetify.confirm_password')]),
         ]
       }
     }
   },
   computed: {
-    ...mapState('auth', ['isLoggedIn', 'fromModel', 'socialIcons']),
+    ...mapState('auth', ['isLoggedIn', 'formRegister']),
     ...mapGetters(['errors']),
     prefix() {
       return ''
@@ -138,7 +129,7 @@ export default {
       if (this.$refs.form.validate()) {
         this.loading = true
         setTimeout(() => {
-          this.sendRegisterRequest(this.fromModel).then(() => {
+          this.sendRegisterRequest(this.formRegister).then(() => {
             this.$router.push('/dashboard')
           })
         }, 1000)
