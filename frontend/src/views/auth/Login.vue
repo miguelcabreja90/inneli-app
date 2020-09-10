@@ -80,11 +80,17 @@ export default {
       formRule: {
         email: [
           (v) =>
-            !!v || this.$vuetify.lang.t('$vuetify.rule.required', [this.$vuetify.lang.t('$vuetify.email')])
+            !!v ||
+            this.$vuetify.lang.t('$vuetify.rule.required', [
+              this.$vuetify.lang.t('$vuetify.email')
+            ])
         ],
         password: [
           (v) =>
-            !!v || this.$vuetify.lang.t('$vuetify.rule.required', [this.$vuetify.lang.t('$vuetify.password')])
+            !!v ||
+            this.$vuetify.lang.t('$vuetify.rule.required', [
+              this.$vuetify.lang.t('$vuetify.password')
+            ])
         ]
       }
     }

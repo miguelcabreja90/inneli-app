@@ -4,9 +4,8 @@
       <v-col>
         <v-card class="pa-3 page-login__card" tile>
           <v-card-title>
-            <img src="/static/m.png" alt="Inneli APP" width="55" />
-            <h1 class="primary--text display-1">
-              INNELI
+            <h1 class="primary--text display-1 text-center">
+              {{ $vuetify.lang.t('$vuetify.register')}}
             </h1>
           </v-card-title>
           <v-card-text>
@@ -63,6 +62,10 @@
             </v-form>
           </v-card-text>
           <v-card-actions>
+            <v-btn large tile color="primary" :to="{ name: 'login' }">
+              <v-icon>mdi-account</v-icon>
+              {{ $vuetify.lang.t('$vuetify.login') }}
+            </v-btn>
             <v-spacer />
             <v-btn
               large
@@ -72,7 +75,7 @@
               :loading="loading"
             >
               <v-icon>mdi-account-plus</v-icon>
-              {{ $vuetify.lang.t('$vuetify.register')}}
+              {{ $vuetify.lang.t('$vuetify.register') }}
             </v-btn>
           </v-card-actions>
         </v-card>
@@ -92,26 +95,43 @@ export default {
       formValid: false,
       formRule: {
         name: [
-          (v) => !!v || this.$vuetify.lang.t('$vuetify.rule.required', [this.$vuetify.lang.t('$vuetify.name')])
+          (v) =>
+            !!v ||
+            this.$vuetify.lang.t('$vuetify.rule.required', [
+              this.$vuetify.lang.t('$vuetify.name')
+            ])
         ],
         email: [
           (v) =>
-            !!v || this.$vuetify.lang.t('$vuetify.rule.required', [this.$vuetify.lang.t('$vuetify.email')]),
+            !!v ||
+            this.$vuetify.lang.t('$vuetify.rule.required', [
+              this.$vuetify.lang.t('$vuetify.email')
+            ]),
           (v) => /.+@.+/.test(v) || 'E-mail must be valid'
         ],
         password: [
           (v) =>
-            !!v || this.$vuetify.lang.t('$vuetify.rule.required', [this.$vuetify.lang.t('$vuetify.password')]),
+            !!v ||
+            this.$vuetify.lang.t('$vuetify.rule.required', [
+              this.$vuetify.lang.t('$vuetify.password')
+            ]),
           (v) =>
-            (v || '').length >= 8 || this.$vuetify.lang.t('$vuetify.rule.min', ['8']),
+            (v || '').length >= 8 ||
+            this.$vuetify.lang.t('$vuetify.rule.min', ['8'])
         ],
         password_confirmation: [
           (v) =>
             !!v ||
-            this.$vuetify.lang.t('$vuetify.rule.required', [this.$vuetify.lang.t('$vuetify.confirm_password')]),
+            this.$vuetify.lang.t('$vuetify.rule.required', [
+              this.$vuetify.lang.t('$vuetify.confirm_password')
+            ]),
           (v) =>
-            (!!v && v) === this.formRegister.password ||this.$vuetify.lang.t('$vuetify.rule.match', [
-              this.$vuetify.lang.t('$vuetify.password')],[this.$vuetify.lang.t('$vuetify.confirm_password')]),
+            (!!v && v) === this.formRegister.password ||
+            this.$vuetify.lang.t(
+              '$vuetify.rule.match',
+              [this.$vuetify.lang.t('$vuetify.password')],
+              [this.$vuetify.lang.t('$vuetify.confirm_password')]
+            )
         ]
       }
     }
