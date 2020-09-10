@@ -12,7 +12,7 @@ Vue.use(Vuex, VueAxios, axios)
 const vuexLocal = new VuexPersistence({
   key: 'vma',
   storage: window.localStorage,
-  modules: ['app', 'auth']
+  modules: ['app']
 })
 
 Vue.use(Vuex)
@@ -33,6 +33,9 @@ const store = new Vuex.Store({
   mutations: {
     SET_ERRORS(state, errors) {
       state.errors = errors
+    },
+    CLEAR_ERRORS(state) {
+      state.errors = []
     }
   }
 })
