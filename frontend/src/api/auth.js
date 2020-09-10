@@ -9,8 +9,8 @@ const loginRequest = ({ email, password }) => {
   return api.post('login', user)
 }
 
-const registerRequest = ({ user }) => {
-  return api.put('register/', user)
+const registerRequest = (user) => {
+  return api.post('register/', user)
 }
 
 const logoutRequest = () => {

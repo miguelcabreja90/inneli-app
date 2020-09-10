@@ -5,8 +5,12 @@ export default {
   // page login
   login: 'login',
   username: 'Usuario',
+  name: 'Nombre',
   email: 'Correo',
   password: 'Contraseña',
+  confirm: 'Confirmación',
+  register: 'Registrar',
+  confirm_password: 'Confirmar Contraseña',
   // menu
   menu: {
     home: 'Inicio',
@@ -22,7 +26,11 @@ export default {
   },
   // rules
   rule: {
-    required: 'Es requerido {0}'
+    required: '{0} es requerido',
+    min: 'La cantidad mínima es de {0} caracteres',
+    max: 'La cantidad máxima es de {0} caracteres',
+    match: 'Los parámetros {0} y la {1} no son iguales',
+    bad_email: '{0} debe ser válido'
   },
   messages: {
     refused: 'Fallido: Conexión rechazada.'

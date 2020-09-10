@@ -1,13 +1,28 @@
-import {
-  LayoutAuth,
-  LayoutDefault,
-  RouteWrapper
-} from '@/components/layouts'
+import { LayoutAuth, LayoutDefault, RouteWrapper } from '@/components/layouts'
 
 export const publicRoute = [
   {
     path: '*',
     component: () => import('@/views/error/NotFound.vue')
+  },
+  {
+    path: '/auth',
+    component: LayoutAuth,
+    meta: {
+      title: 'Register'
+    },
+    redirect: '/auth/register',
+    hidden: true,
+    children: [
+      {
+        path: 'register',
+        name: 'register',
+        meta: {
+          title: 'Register'
+        },
+        component: () => import('@/views/auth/Register.vue')
+      }
+    ]
   },
   {
     path: '/auth',
@@ -28,7 +43,6 @@ export const publicRoute = [
       }
     ]
   },
-
   {
     path: '/404',
     name: '404',
@@ -37,7 +51,6 @@ export const publicRoute = [
     },
     component: () => import('@/views/error/NotFound.vue')
   },
-
   {
     path: '/500',
     name: '500',
