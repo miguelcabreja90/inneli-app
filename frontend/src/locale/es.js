@@ -24,5 +24,8 @@ export default {
   rule: {
     required: 'Es requerido {0}'
   },
+  messages: {
+    refused: 'Fallido: Conexión rechazada.'
+  },
   ...es
 }

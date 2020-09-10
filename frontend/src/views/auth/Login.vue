@@ -70,54 +70,49 @@
 </template>
 
 <script>
-  import {mapState, mapActions, mapGetters} from 'vuex'
-
-  export default {
-    name: 'PageLogin',
-    data() {
-      return {
-        formValid: false,
-        loading: false,
-        formRule: {
-          email: [
-            (v) =>
-              !!v || this.$vuetify.lang.t('$vuetify.rule.required', ['email'])
-          ],
-          password: [
-            (v) =>
-              !!v || this.$vuetify.lang.t('$vuetify.rule.required', ['password'])
-          ]
-        }
-      }
-    },
-    computed: {
-      ...mapState('auth', ['isLoggedIn', 'fromModel', 'socialIcons']),
-      ...mapGetters(['errors'])
-    },
-    methods: {
-      ...mapActions('auth', ['sendLoginRequest']),
-      login() {
-        if (this.$refs.form.validate()) {
-          this.loading = true
-          setTimeout(() => {
-            this.sendLoginRequest(this.fromModel).then(() => {
-              this.$router.push('/dashboard')
-            })
-          }, 1000)
-        }
-      },
-      gotToRegister() {
-        this.$router.push('/register')
-      },
-      handleSocialLogin() {
+import { mapState, mapActions, mapGetters } from 'vuex'
+export default {
+  name: 'PageLogin',
+  data() {
+    return {
+      formValid: false,
+      loading: false,
+      formRule: {
+        email: [
+          (v) =>
+            !!v || this.$vuetify.lang.t('$vuetify.rule.required', ['email'])
+        ],
+        password: [
+          (v) =>
+            !!v || this.$vuetify.lang.t('$vuetify.rule.required', ['password'])
+        ]
       }
     }
+  },
+  computed: {
+    ...mapState('auth', ['isLoggedIn', 'fromModel', 'socialIcons']),
+    ...mapGetters(['errors'])
+  },
+  methods: {
+    ...mapActions('auth', ['sendLoginRequest']),
+    login() {
+      if (this.$refs.form.validate()) {
+        this.loading = true
+        setTimeout(() => {
+          this.sendLoginRequest(this.fromModel).then(() => {
+            this.$router.push('/dashboard')
+          })
+        }, 1000)
+      }
+    },
+    handleSocialLogin() {}
   }
+}
 </script>
 
 <style lang="sass" scoped>
-  .page-login
-    &__card
-    max-width: 600px
-    margin: 0 auto
+.page-login
+  &__card
+  max-width: 600px
+  margin: 0 auto
 </style>

@@ -39,13 +39,18 @@ const getters = {
 // actions
 const actions = {
   getUserData({ commit }) {
+    commit('CLEAR_ERRORS', null, { root: true })
+
     auth
       .getUserData()
       .then(({ data }) => commit(SET_USER_DATA, data))
-      .catch(() => localStorage.removeToken())
+      .catch(({ response }) => {
+        commit('SET_ERRORS', response, { root: true })
+        localStorage.removeToken()
+      })
   },
   sendLoginRequest({ commit }, login) {
-    commit('SET_ERRORS', {}, { root: true })
+    commit('CLEAR_ERRORS', null, { root: true })
     commit(LOGIN)
 
     return auth
@@ -60,12 +65,15 @@ const actions = {
       })
   },
   sendRegisterRequest({ commit }, register) {
-    commit('SET_ERRORS', {}, { root: true })
+    commit('CLEAR_ERRORS', null, { root: true })
 
     return auth
       .registerRequest(register)
       .then(({ data }) => commit(SET_USER_DATA, data.user))
       .then(({ data }) => localStorage.saveToken(data.token))
+      .catch(({ response }) => {
+        commit('SET_ERRORS', response, { root: true })
+      })
   },
   sendLogoutRequest({ commit }) {
     commit(LOGOUT)
@@ -75,8 +83,10 @@ const actions = {
       .then(() => commit(SET_USER_DATA, null))
       .then(localStorage.removeToken())
   },
-  sendVerifyResendRequest() {
-    return auth.verifyResendRequest()
+  sendVerifyResendRequest({ commit }) {
+    return auth.verifyResendRequest().catch(({ response }) => {
+      commit('SET_ERRORS', response, { root: true })
+    })
   },
   sendVerifyRequest({ dispatch }, hash) {
     return auth.verifyRequest(hash).then(() => dispatch('getUserData'))

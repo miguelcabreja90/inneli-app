@@ -26,40 +26,24 @@
     >
       <theme-settings></theme-settings>
     </v-navigation-drawer>
-    <!-- global snackbar -->
-    <v-snackbar
-      :timeout="3000"
-      bottom
-      right
-      :color="snackbar.color"
-      v-model="snackbar.show"
-    >
-      {{ snackbar.text }}
-      <v-btn dark text @click.native="snackbar.show = false" icon>
-        <v-icon>close</v-icon>
-      </v-btn>
-    </v-snackbar>
   </v-app>
 </template>
 
 <script>
 import ThemeSettings from '@/components/ThemeSettings'
+import { mapGetters } from 'vuex'
 export default {
   components: {
     ThemeSettings
   },
   data() {
     return {
-      rightDrawer: false,
-      snackbar: {
-        show: false,
-        text: '',
-        color: ''
-      }
+      rightDrawer: false
     }
   },
-
-  mounted() {},
+  computed: {
+    ...mapGetters(['errors'])
+  },
   created() {
     // add app events
   },

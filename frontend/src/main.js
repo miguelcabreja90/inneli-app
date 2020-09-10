@@ -4,18 +4,20 @@ import store from './store/'
 import './registerServiceWorker'
 import './plugins/vuetify'
 import './theme/default.sass'
-
+import Notifications from './plugins/notifications'
 import App from './App.vue'
 import vuetify from './plugins/vuetify'
 import '@mdi/font/css/materialdesignicons.css'
 
 Vue.config.productionTip = false
 
-const app = new Vue({
+Vue.prototype.$Toast = Notifications.Toast
+Vue.prototype.$Swal = Notifications.Swal
+Vue.prototype.$vuetify = vuetify
+
+new Vue({
   router,
   store,
   vuetify,
   render: (h) => h(App)
-})
-
-app.$mount('#app')
+}).$mount('#app')

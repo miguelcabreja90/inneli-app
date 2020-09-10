@@ -13,31 +13,17 @@
         transition="scale-transition"
       >
       </v-menu>
-      <v-menu
-        offset-y
-        origin="center center"
-        class="elelvation-1"
-        transition="scale-transition"
-      >
-        <template v-slot:activator="{ on }">
-          <v-btn text slot="activator" v-on="on">
-            <v-icon medium>mdi-translate</v-icon>
-            <span class="ml-2"> {{ localeText }} </span>
-          </v-btn>
-        </template>
-        <v-list>
-          <v-list-item-group v-model="$vuetify.lang.current">
-            <v-list-item
-              @click="handleChangeLocale(item)"
-              v-for="item in availableLanguages"
-              :key="item.value"
-              :value="item.value"
-            >
-              <v-list-item-title v-text="item.text" />
-            </v-list-item>
-          </v-list-item-group>
-        </v-list>
-      </v-menu>
+      <v-select
+        v-model="$vuetify.lang.current"
+        :items="availableLanguages"
+        class="mt-3"
+        item-text="text"
+        item-value="value"
+        menu-props="auto"
+        prepend-icon="mdi-translate"
+        style="width:8em"
+        @change="handleChangeLocale($event)"
+      ></v-select>
       <v-menu offset-y origin="center center" transition="scale-transition">
         <template v-slot:activator="{ on }">
           <v-btn icon large text slot="activator" v-on="on">
@@ -71,16 +57,13 @@
     <v-toolbar tag="div" dense slot="extension" color="white" light>
       <v-icon>mdi-home</v-icon>
       <v-breadcrumbs :items="breadcrumbs" class="pa-3" />
-      <v-spacer></v-spacer>
-      <v-btn icon small color="black">
-        <v-icon v-text="'mdi-arrow-left'" @click="handleGoBack" />
-      </v-btn>
     </v-toolbar>
   </v-app-bar>
 </template>
 <script>
 import Util from '@/util'
 import { mapActions } from 'vuex'
+import localStorage from '@/config/localStorage'
 export default {
   name: 'AppToolbar',
   data() {
@@ -156,14 +139,12 @@ export default {
         this.$router.push('/auth/login')
       })
     },
-    handleChangeLocale({ value }) {
+    handleChangeLocale(value) {
       this.$vuetify.lang.current = value
+      localStorage.setLanguage(value)
     },
     handleSetting() {},
-    handleProfile() {},
-    handleGoBack() {
-      this.$router.go(-1)
-    }
+    handleProfile() {}
   },
   created() {}
 }

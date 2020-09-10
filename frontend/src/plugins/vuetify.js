@@ -4,13 +4,15 @@ import Vuetify from 'vuetify/lib'
 // locale
 import es from '@/locale/es'
 import en from '@/locale/en'
+import localStorage from '@/config/localStorage'
 
 Vue.use(Vuetify)
 
 export default new Vuetify({
   lang: {
     locales: { es, en },
-    current: 'en'
+    current:
+      localStorage.getLanguage() || window.navigator.language.split('-')[0]
   },
   theme: {
     options: {
