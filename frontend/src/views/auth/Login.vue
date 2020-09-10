@@ -4,7 +4,7 @@
       <v-col>
         <v-card class="pa-3 page-login__card" tile>
           <v-card-title>
-            <img src="/static/m.png" alt="Inneli APP" width="55"/>
+            <img src="/static/m.png" alt="Inneli APP" width="55" />
             <h1 class="primary--text display-1">
               INNELI
             </h1>
@@ -53,12 +53,12 @@
               </template>
               <span>{{ item.text }}</span>
             </v-tooltip>
-            <v-spacer/>
+            <v-spacer />
             <v-btn large tile color="primary" @click="login">
               <v-icon>mdi-account</v-icon>
               {{ $vuetify.lang.t('$vuetify.login') }}
             </v-btn>
-            <v-btn large tile color="primary" :to="{ name: 'register'}">
+            <v-btn large tile color="primary" :to="{ name: 'register' }">
               <v-icon>mdi-account-plus</v-icon>
               {{ $vuetify.lang.t('Register') }}
             </v-btn>
@@ -113,6 +113,6 @@ export default {
 <style lang="sass" scoped>
 .page-login
   &__card
-  max-width: 600px
-  margin: 0 auto
+    max-width: 600px
+    margin: 0 auto
 </style>

@@ -1,8 +1,4 @@
-import {
-  LayoutAuth,
-  LayoutDefault,
-  RouteWrapper
-} from '@/components/layouts'
+import { LayoutAuth, LayoutDefault, RouteWrapper } from '@/components/layouts'
 
 export const publicRoute = [
   {

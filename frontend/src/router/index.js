@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import {publicRoute, protectedRoute} from './config'
+import { publicRoute, protectedRoute } from './config'
 import NProgress from 'nprogress'
 import localStorage from '@/config/localStorage'
 import 'nprogress/nprogress.css'
