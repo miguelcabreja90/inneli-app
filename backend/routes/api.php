@@ -16,7 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'Api', 'as' => 'api.'], function () {
 
+    //Testing routes
     Route::get('ping', 'PingController@index')->name('ping');
+    Route::get('sendemail', 'PingController@sendMsg')->name('sendemail');
+    //End Testing routes
 
     Route::post('login', 'LoginController@login')->name('login');
 
