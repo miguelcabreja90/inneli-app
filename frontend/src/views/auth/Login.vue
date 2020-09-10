@@ -54,7 +54,14 @@
               <span>{{ item.text }}</span>
             </v-tooltip>
             <v-spacer />
-            <v-btn large tile color="primary" @click="login" :loading="loading">
+            <v-btn
+              large
+              tile
+              color="primary"
+              @click="login"
+              :loading="loading"
+              :disabled="loading"
+            >
               {{ $vuetify.lang.t('$vuetify.login') }}
             </v-btn>
           </v-card-actions>
@@ -85,19 +92,22 @@ export default {
     }
   },
   computed: {
-    ...mapState('auth', ['isLoggedIn', 'fromModel', 'socialIcons']),
-    ...mapGetters(['errors'])
+    ...mapGetters(['errors']),
+    ...mapState('auth', ['isLoggedIn', 'fromModel', 'socialIcons'])
   },
   methods: {
     ...mapActions('auth', ['sendLoginRequest']),
     login() {
       if (this.$refs.form.validate()) {
         this.loading = true
-        setTimeout(() => {
-          this.sendLoginRequest(this.fromModel).then(() => {
+        this.sendLoginRequest(this.fromModel).then((r) => {
+          if (this.isLoggedIn) {
+            this.loading = false
             this.$router.push('/dashboard')
-          })
-        }, 1000)
+          } else {
+            this.loading = false
+          }
+        })
       }
     },
     handleSocialLogin() {}

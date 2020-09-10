@@ -142,6 +142,7 @@ export default {
   methods: {
     changeLocale(lang) {
       this.$vuetify.lang.current = lang
+      localStorage.setLanguage(lang)
     }
   }
 }

@@ -19,7 +19,7 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    errors: []
+    errors: {}
   },
   modules: {
     app,
@@ -31,8 +31,26 @@ const store = new Vuex.Store({
     errors: (state) => state.errors
   },
   mutations: {
-    SET_ERRORS(state, errors) {
-      state.errors = errors
+    SET_ERRORS(state, response) {
+      if (response) {
+        state.errors = {
+          status: response.status,
+          message: response.data.message
+        }
+        this._vm.$Toast.fire({
+          icon: 'error',
+          title: state.errors.message
+        })
+      } else {
+        state.errors = {
+          status: 'failed',
+          message: 'Failed: Connections refused.'
+        }
+        this._vm.$Toast.fire({
+          icon: 'error',
+          title: state.errors.message
+        })
+      }
     },
     CLEAR_ERRORS(state) {
       state.errors = []

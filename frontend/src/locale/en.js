@@ -23,6 +23,9 @@ export default {
   rule: {
     required: '{0} is required'
   },
+  messages: {
+    refused: 'Failed: Connections refused.'
+  },
 
   //error
 
