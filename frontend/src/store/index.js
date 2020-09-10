@@ -10,7 +10,7 @@ import VuexPersistence from 'vuex-persist'
 Vue.use(Vuex, VueAxios, axios)
 
 const vuexLocal = new VuexPersistence({
-  key: 'vma',
+  key: 'inneli',
   storage: window.localStorage,
   modules: ['app']
 })

@@ -57,10 +57,6 @@
     <v-toolbar tag="div" dense slot="extension" color="white" light>
       <v-icon>mdi-home</v-icon>
       <v-breadcrumbs :items="breadcrumbs" class="pa-3" />
-      <v-spacer></v-spacer>
-      <v-btn icon small color="black">
-        <v-icon v-text="'mdi-arrow-left'" @click="handleGoBack" />
-      </v-btn>
     </v-toolbar>
   </v-app-bar>
 </template>
@@ -148,10 +144,7 @@ export default {
       localStorage.setLanguage(value)
     },
     handleSetting() {},
-    handleProfile() {},
-    handleGoBack() {
-      this.$router.go(-1)
-    }
+    handleProfile() {}
   },
   created() {}
 }
