@@ -5,12 +5,20 @@ export default {
   // page login
   login: 'login',
   username: 'Usuario',
+  email: 'Correo',
   password: 'Contraseña',
   // menu
   menu: {
     home: 'Inicio',
     dashboard: 'Dashboard',
     access_denied: 'Acceso denegado'
+  },
+  //settings
+  settings: {
+    title: 'Ajuste de Tema',
+    color: 'Opciones de color',
+    lang: 'Idioma',
+    sidebar: 'Opción de barra lateral'
   },
   // rules
   rule: {

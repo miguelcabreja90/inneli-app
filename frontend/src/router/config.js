@@ -1,7 +1,6 @@
 import {
   LayoutAuth,
   LayoutDefault,
-  LayoutChat,
   RouteWrapper
 } from '@/components/layouts'
 
@@ -96,37 +95,6 @@ export const protectedRoute = [
           hiddenInMenu: true
         },
         component: () => import('@/views/error/Deny.vue')
-      }
-    ]
-  },
-
-  // chat app
-  {
-    path: '/chat',
-    name: 'Chat',
-    component: LayoutChat,
-    redirect: {
-      path: '/chat/messaging'
-    },
-    meta: {
-      title: 'Chat',
-      group: 'apps',
-      icon: 'chat_bubble'
-    },
-    children: [
-      {
-        path: '/chat/messaging/:uuid?',
-        name: 'ChatMessaging',
-        props: true,
-        component: () => import('@/views/chat/ChatMessaging.vue')
-      },
-      {
-        path: '/chat/contact/:uuid?',
-        meta: {
-          public: true
-        },
-        name: 'ChatContact',
-        component: () => import('@/views/chat/ChatContact.vue')
       }
     ]
   }

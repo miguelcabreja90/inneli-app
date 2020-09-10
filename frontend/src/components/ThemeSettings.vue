@@ -1,19 +1,23 @@
 <template>
   <div class="themeSetting">
     <v-toolbar color="primary">
-      <v-toolbar-title class="white--text">Theme Settings</v-toolbar-title>
+      <v-toolbar-title class="white--text">{{
+        $vuetify.lang.t('$vuetify.settings.title')
+      }}</v-toolbar-title>
     </v-toolbar>
     <v-container>
       <v-row column>
         <v-col>
           <v-select
             placeholder="Language"
-            label="Language"
+            :label="$vuetify.lang.t('$vuetify.settings.lang')"
             :items="availableLanguages"
             v-model="$vuetify.lang.current"
             @change="changeLocale"
           />
-          <v-subheader class="px-1 my-2">Color Option</v-subheader>
+          <v-subheader class="px-1 my-2">{{
+            $vuetify.lang.t('$vuetify.settings.color')
+          }}</v-subheader>
           <div class="color-option">
             <v-layout wrap>
               <label
@@ -45,7 +49,9 @@
             </v-layout>
           </div>
           <div class="theme-options">
-            <v-subheader class="px-1 my-2">Sidebar Option</v-subheader>
+            <v-subheader class="px-1 my-2">{{
+              $vuetify.lang.t('$vuetify.settings.sidebar')
+            }}</v-subheader>
             <v-divider></v-divider>
             <div class="my-3">
               <v-btn-toggle v-model="sideBarOption">
@@ -61,10 +67,11 @@
 </template>
 <script>
 import colors from 'vuetify/es5/util/colors'
+import localStorage from '@/config/localStorage'
 export default {
   data() {
     return {
-      themeColor: 'indigo',
+      themeColor: localStorage.getTheme() || 'blue',
       sideBarOption: 'light',
       colors: colors
     }
@@ -97,50 +104,10 @@ export default {
           }
         },
         {
-          key: 'orange',
-          value: {
-            sideNav: 'orange',
-            mainNav: 'orange',
-            sideMenu: 'white'
-          }
-        },
-        {
-          key: 'purple',
-          value: {
-            sideNav: 'purple',
-            mainNav: 'purple',
-            sideMenu: 'white'
-          }
-        },
-        {
           key: 'indigo',
           value: {
             sideNav: 'indigo',
             mainNav: 'indigo',
-            sideMenu: 'white'
-          }
-        },
-        {
-          key: 'cyan',
-          value: {
-            sideNav: 'cyan',
-            mainNav: 'cyan',
-            sideMenu: 'white'
-          }
-        },
-        {
-          key: 'pink',
-          value: {
-            sideNav: 'pink',
-            mainNav: 'pink',
-            sideMenu: 'white'
-          }
-        },
-        {
-          key: 'green',
-          value: {
-            sideNav: 'green',
-            mainNav: 'green',
             sideMenu: 'white'
           }
         }
@@ -159,8 +126,8 @@ export default {
   watch: {
     themeColor: {
       handler(val) {
-        console.log(this.$vuetify)
         this.$vuetify.theme.themes.light.primary = this.colors[val].base
+        localStorage.setTheme(val)
       },
       immediate: true
     },
