@@ -65,8 +65,7 @@ const actions = {
       })
   },
   sendRegisterRequest({ commit }, register) {
-    commit('CLEAR_ERRORS', null, { root: true })
-
+    commit('CLEAR_ERRORS', null, { root: true });
     return auth
       .registerRequest(register)
       .then(({ data }) => commit(SET_USER_DATA, data.user))

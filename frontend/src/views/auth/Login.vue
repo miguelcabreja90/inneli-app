@@ -58,7 +58,7 @@
               <v-icon>mdi-account</v-icon>
               {{ $vuetify.lang.t('$vuetify.login') }}
             </v-btn>
-            <v-btn large tile color="primary"  :loading="loading" :to="{ name: 'register'}">
+            <v-btn large tile color="primary" :to="{ name: 'register'}">
               <v-icon>mdi-account-plus</v-icon>
               {{ $vuetify.lang.t('Register') }}
             </v-btn>

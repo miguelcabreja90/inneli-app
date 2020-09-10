@@ -52,31 +52,20 @@
               <v-text-field
                 append-icon="lock"
                 autocomplete="off"
-                name="confirm_password"
+                name="password_confirmation"
                 :label="$vuetify.lang.t('Confirm Password')"
                 :placeholder="$vuetify.lang.t('Confirm Password')"
                 type="password"
-                :rules="formRule.confirm_password"
+                :rules="formRule.password_confirmation"
                 required
-                v-model="fromModel.confirm_password"
+                v-model="fromModel.password_confirmation"
               />
             </v-form>
           </v-card-text>
           <v-card-actions>
-            <v-tooltip v-for="item in socialIcons" :key="item.text" bottom>
-              <template v-slot:activator="{ on, attrs }">
-                <v-icon
-                  class="mr-3"
-                  v-text="item.icon"
-                  v-bind="attrs"
-                  v-on="on"
-                  @click="handleSocialLogin"
-                />
-              </template>
-              <span>{{ item.text }}</span>
-            </v-tooltip>
             <v-spacer/>
             <v-btn large tile color="primary" @click="registerUser" :loading="loading">
+              <v-icon>mdi-account-plus</v-icon>
               {{ $vuetify.lang.t('register') }}
             </v-btn>
           </v-card-actions>
@@ -99,7 +88,7 @@
           username: '',
           email: '',
           password: '',
-          confirm_password: ''
+          password_confirmation: ''
         },
         formRule: {
           name: [
@@ -114,7 +103,7 @@
             (v) =>
               !!v || this.$vuetify.lang.t('$vuetify.rule.required', ['password'])
           ],
-          confirm_password: [
+          password_confirmation: [
             (v) =>
               !!v || v !== this.password || this.$vuetify.lang.t('$vuetify.rule.required', ['confirm password'])
           ],
