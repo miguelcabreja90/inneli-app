@@ -1,10 +1,11 @@
 import colors from 'vuetify/es5/util/colors'
 import localStorage from '@/config/localStorage'
 
+const SET_ERRORS = 'SET_ERRORS'
+
 const state = {
   mode: 'light',
   themeColor: localStorage.getTheme(),
-  errors: [],
   windowHeight: 0,
   windowWidth: 0
 }
@@ -14,7 +15,6 @@ const getters = {
   getThemeColor: (state) => {
     return colors[state.themeColor].base
   },
-  errors: (state) => state.errors,
   windowHeight: (state) => state.windowHeight,
   windowWidth: (state) => state.windowWidth
 }
