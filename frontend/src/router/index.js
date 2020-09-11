@@ -16,19 +16,14 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   NProgress.start()
   //auth route is authenticated
-  if (
-    (localStorage.getToken() && to.fullPath !== '/auth/login') ||
-    to.fullPath !== '/auth/register'
-  ) {
-    return next()
-  } else if (
-    to.fullPath === '/auth/login' ||
-    to.fullPath === '/auth/register'
-  ) {
-    next()
-  } else {
-    return next('/auth/login')
+  if (to.matched.some((route) => route.meta.requiresAuth)) {
+    if (localStorage.getToken()) {
+      next()
+    } else {
+      next({ path: '/auth/login' })
+    }
   }
+  next()
 })
 
 router.afterEach(() => {
