@@ -78,7 +78,8 @@ export const protectedRoute = [
         meta: {
           title: 'dashboard',
           group: 'apps',
-          icon: 'mdi-view-dashboard'
+          icon: 'mdi-view-dashboard',
+          requiresAuth: true
         },
         component: () => import('@/views/Dashboard.vue')
       },
@@ -88,7 +89,8 @@ export const protectedRoute = [
         name: 'Forbidden',
         meta: {
           title: 'access_denied',
-          hiddenInMenu: true
+          hiddenInMenu: true,
+          requiresAuth: true
         },
         component: () => import('@/views/error/Deny.vue')
       }
