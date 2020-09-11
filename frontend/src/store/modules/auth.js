@@ -1,20 +1,21 @@
-import auth from '@/api/auth';
-import localStorage from '@/config/localStorage';
+import auth from '@/api/auth'
+import localStorage from '@/config/localStorage'
 
-const SET_USER_DATA = 'SET_USER_DATA';
-const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-const LOGIN_FAILED = 'LOGIN_FAILED';
-const LOGOUT = 'LOGOUT';
-const LOGIN = 'LOGIN';
+const SET_USER_DATA = 'SET_USER_DATA'
+const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
+const LOGIN_FAILED = 'LOGIN_FAILED'
+const LOGOUT = 'LOGOUT'
+const LOGIN = 'LOGIN'
 
 const state = {
   isLoggedIn: !!localStorage.getToken(),
   userData: null,
+  pending: false,
   fromModel: {
     email: '',
     password: ''
   },
-  formRegister:{
+  formRegister: {
     name: '',
     username: '',
     email: '',
@@ -35,36 +36,36 @@ const state = {
       icon: 'mdi-twitter'
     }
   ]
-};
+}
 
 // getters
 const getters = {
   user: (state) => state.userData,
   isLoggedIn: (state) => state.isLoggedIn
-};
+}
 
 // actions
 const actions = {
   getUserData({ commit }) {
-    commit('CLEAR_ERRORS', null, { root: true });
+    commit('CLEAR_ERRORS', null, { root: true })
 
     auth
       .getUserData()
       .then(({ data }) => commit(SET_USER_DATA, data))
       .catch(({ response }) => {
-        commit('SET_ERRORS', response, { root: true });
+        commit('SET_ERRORS', response, { root: true })
         localStorage.removeToken()
       })
   },
   sendLoginRequest({ commit }, login) {
-    commit('CLEAR_ERRORS', null, { root: true });
-    commit(LOGIN);
+    commit('CLEAR_ERRORS', null, { root: true })
+    commit(LOGIN)
 
     return auth
       .loginRequest(login)
       .then(({ data }) => {
-        commit(SET_USER_DATA, data.user);
-        commit(LOGIN_SUCCESS);
+        commit(SET_USER_DATA, data.user)
+        commit(LOGIN_SUCCESS)
         localStorage.saveToken(data.token)
       })
       .catch(({ response }) => {
@@ -72,17 +73,20 @@ const actions = {
       })
   },
   sendRegisterRequest({ commit }, register) {
-    commit('CLEAR_ERRORS', null, { root: true });
+    commit('CLEAR_ERRORS', null, { root: true })
     return auth
       .registerRequest(register)
-      .then(({ data }) => commit(SET_USER_DATA, data.user))
-      .then(({ data }) => localStorage.saveToken(data.token))
+      .then(({ data }) => {
+        commit(SET_USER_DATA, data.user)
+        commit(LOGIN_SUCCESS)
+        localStorage.saveToken(data.token)
+      })
       .catch(({ response }) => {
         commit('SET_ERRORS', response, { root: true })
       })
   },
   sendLogoutRequest({ commit }) {
-    commit(LOGOUT);
+    commit(LOGOUT)
     auth
       .logoutRequest()
       .then(() => commit(SET_USER_DATA, null))
@@ -96,7 +100,7 @@ const actions = {
   sendVerifyRequest({ dispatch }, hash) {
     return auth.verifyRequest(hash).then(() => dispatch('getUserData'))
   }
-};
+}
 
 // mutations
 const mutations = {
@@ -116,7 +120,7 @@ const mutations = {
   [LOGIN_FAILED](state, error) {
     console.log({ state, error })
   }
-};
+}
 
 export default {
   namespaced: true,

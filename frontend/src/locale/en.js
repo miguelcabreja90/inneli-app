@@ -15,7 +15,9 @@ export default {
   menu: {
     home: 'Home',
     dashboard: 'Dashboard',
-    access_denied: 'Access Deny'
+    access_denied: 'Access Deny',
+    verify: 'Email Verify',
+    welcome: 'Welcome'
   },
   //settings
   settings: {

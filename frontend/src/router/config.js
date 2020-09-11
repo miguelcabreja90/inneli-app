@@ -1,9 +1,10 @@
 import { LayoutAuth, LayoutDefault, RouteWrapper } from '@/components/layouts'
+import LayoutVerify from '@/components/layouts/LayoutVerify'
 
 export const publicRoute = [
   {
     path: '*',
-    component: () => import('@/views/error/NotFound.vue')
+    component: () => import('@/views/error/NotFound')
   },
   {
     path: '/auth',
@@ -20,7 +21,7 @@ export const publicRoute = [
         meta: {
           title: 'Register'
         },
-        component: () => import('@/views/auth/Register.vue')
+        component: () => import('@/views/auth/Register')
       }
     ]
   },
@@ -39,7 +40,7 @@ export const publicRoute = [
         meta: {
           title: 'Login'
         },
-        component: () => import('@/views/auth/Login.vue')
+        component: () => import('@/views/auth/Login')
       }
     ]
   },
@@ -49,7 +50,7 @@ export const publicRoute = [
     meta: {
       title: 'Not Found'
     },
-    component: () => import('@/views/error/NotFound.vue')
+    component: () => import('@/views/error/NotFound')
   },
   {
     path: '/500',
@@ -57,7 +58,7 @@ export const publicRoute = [
     meta: {
       title: 'Server Error'
     },
-    component: () => import('@/views/error/Error.vue')
+    component: () => import('@/views/error/Error')
   }
 ]
 
@@ -81,9 +82,8 @@ export const protectedRoute = [
           icon: 'mdi-view-dashboard',
           requiresAuth: true
         },
-        component: () => import('@/views/Dashboard.vue')
+        component: () => import('@/views/Dashboard')
       },
-
       {
         path: '/403',
         name: 'Forbidden',
@@ -92,7 +92,39 @@ export const protectedRoute = [
           hiddenInMenu: true,
           requiresAuth: true
         },
-        component: () => import('@/views/error/Deny.vue')
+        component: () => import('@/views/error/Deny')
+      }
+    ]
+  },
+  {
+    path: '/hi',
+    component: LayoutVerify,
+    meta: {
+      title: 'verify'
+    },
+    redirect: '/hi/welcome',
+    hidden: true,
+    children: [
+      {
+        path: 'welcome',
+        name: 'welcome',
+        meta: {
+          title: 'welcome',
+          hiddenInMenu: true,
+          requiresAuth: true
+        },
+        component: () => import('@/views/Welcome')
+      },
+      {
+        path: 'verify/:hash',
+        name: 'verify',
+        props: true,
+        meta: {
+          title: 'verify',
+          hiddenInMenu: true,
+          requiresAuth: true
+        },
+        component: () => import('@/views/auth/Verify')
       }
     ]
   }

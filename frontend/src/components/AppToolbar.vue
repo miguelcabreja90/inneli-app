@@ -1,12 +1,13 @@
 <template>
   <v-app-bar color="primary" dark app>
-    <v-app-bar-nav-icon @click="handleDrawerToggle" />
+    <v-app-bar-nav-icon v-if="showNavIcon" @click="handleDrawerToggle" />
     <v-spacer />
     <v-toolbar-items>
       <v-btn icon @click="handleFullScreen()">
         <v-icon>fullscreen</v-icon>
       </v-btn>
       <v-menu
+        v-if="showMenuLang"
         offset-y
         origin="center center"
         class="elelvation-1"
@@ -24,7 +25,12 @@
         style="width:8em"
         @change="handleChangeLocale($event)"
       ></v-select>
-      <v-menu offset-y origin="center center" transition="scale-transition">
+      <v-menu
+        v-if="showMenuUser"
+        offset-y
+        origin="center center"
+        transition="scale-transition"
+      >
         <template v-slot:activator="{ on }">
           <v-btn icon large text slot="activator" v-on="on">
             <v-avatar size="30px">
@@ -66,6 +72,20 @@ import { mapActions } from 'vuex'
 import localStorage from '@/config/localStorage'
 export default {
   name: 'AppToolbar',
+  props: {
+    showNavIcon: {
+      type: Boolean,
+      default: true
+    },
+    showMenuLang: {
+      type: Boolean,
+      default: true
+    },
+    showMenuUser: {
+      type: Boolean,
+      default: true
+    }
+  },
   data() {
     return {
       profileMenus: [
