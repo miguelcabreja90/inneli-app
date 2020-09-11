@@ -30,10 +30,9 @@ export default {
   mounted() {
     this.sendVerifyRequest(this.hash)
       .then(() => {
-        //this.$router.push('/')
+        this.$router.push('/dashboard')
       })
       .catch((error) => {
-        console.log(error.response)
         this.error = 'Error verifying email'
       })
   },

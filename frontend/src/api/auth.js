@@ -1,7 +1,7 @@
 import api from '@/config/api'
 /** Auth API */
 const getUserData = () => {
-  return api.get('/user')
+  return api.get('user')
 }
 
 const loginRequest = ({ email, password }) => {
@@ -21,8 +21,8 @@ const verifyResendRequest = () => {
   return api.get('email/resend')
 }
 
-const verifyRequest = ({ hash }) => {
-  return api.get('email/verify/', hash)
+const verifyRequest = (hash) => {
+  return api.get(`email/verify/${hash}`)
 }
 
 export default {

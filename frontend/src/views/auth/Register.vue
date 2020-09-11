@@ -109,7 +109,10 @@ export default {
               this.$vuetify.lang.t('$vuetify.email')
             ]),
           (v) =>
-            /.+@.+/.test(v) || this.$vuetify.lang.t('$vuetify.rule.bad_email')
+            /.+@.+/.test(v) ||
+            this.$vuetify.lang.t('$vuetify.rule.bad_email', [
+              this.$vuetify.lang.t('$vuetify.email')
+            ])
         ],
         password: [
           (v) =>
@@ -152,7 +155,12 @@ export default {
         this.loading = true
         setTimeout(() => {
           this.sendRegisterRequest(this.formRegister).then(() => {
-            this.$router.push('/dashboard')
+            if (this.isLoggedIn) {
+              this.loading = false
+              this.$router.push('/hi')
+            } else {
+              this.loading = false
+            }
           })
         }, 1000)
       }
