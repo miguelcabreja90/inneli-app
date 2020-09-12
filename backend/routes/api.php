@@ -35,6 +35,12 @@ Route::group(['namespace' => 'Api', 'as' => 'api.'], function () {
 
         Route::post('logout', 'LoginController@logout')->name('logout');
 
+        Route::get('users', 'UserController@index')->name('users');
+        Route::get('users/{id}', 'UserController@show')->name('users.show');
+        Route::post('users', 'UserController@create')->name('users.create');
+        Route::put('users/{id}', 'UserController@update')->name('users.update');
+        Route::delete('users/{id}', 'UserController@delete')->name('users.delete');
+
     });
 
 });
