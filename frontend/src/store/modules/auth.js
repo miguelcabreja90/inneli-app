@@ -9,7 +9,24 @@ const LOGIN = 'LOGIN'
 
 const state = {
   isLoggedIn: !!localStorage.getToken(),
-  userData: null,
+  userData: {
+    firstName: '',
+    lastName: '',
+    aboutMe: '',
+    country: '',
+    city: '',
+    address: '',
+    company: '',
+    created_at: '',
+    email: '',
+    email_verified_at: '',
+    id: '',
+    phone: '',
+    photo: '',
+    postalCode: '',
+    updated_at: '',
+    username: ''
+  },
   pending: false,
   fromModel: {
     email: '',
@@ -46,58 +63,58 @@ const getters = {
 
 // actions
 const actions = {
-  getUserData({ commit }) {
-    commit('CLEAR_ERRORS', null, { root: true })
+  getUserData({commit}) {
+    commit('CLEAR_ERRORS', null, {root: true})
 
     auth
       .getUserData()
-      .then(({ data }) => commit(SET_USER_DATA, data))
-      .catch(({ response }) => {
-        commit('SET_ERRORS', response, { root: true })
+      .then(({data}) => commit(SET_USER_DATA, data))
+      .catch(({response}) => {
+        commit('SET_ERRORS', response, {root: true})
         localStorage.removeToken()
       })
   },
-  sendLoginRequest({ commit }, login) {
-    commit('CLEAR_ERRORS', null, { root: true })
+  sendLoginRequest({commit}, login) {
+    commit('CLEAR_ERRORS', null, {root: true})
     commit(LOGIN)
 
     return auth
       .loginRequest(login)
-      .then(({ data }) => {
+      .then(({data}) => {
         commit(SET_USER_DATA, data.user)
         commit(LOGIN_SUCCESS)
         localStorage.saveToken(data.token)
       })
-      .catch(({ response }) => {
-        commit('SET_ERRORS', response, { root: true })
+      .catch(({response}) => {
+        commit('SET_ERRORS', response, {root: true})
       })
   },
-  sendRegisterRequest({ commit }, register) {
-    commit('CLEAR_ERRORS', null, { root: true })
+  sendRegisterRequest({commit}, register) {
+    commit('CLEAR_ERRORS', null, {root: true})
     return auth
       .registerRequest(register)
-      .then(({ data }) => {
+      .then(({data}) => {
         commit(SET_USER_DATA, data.user)
         commit(LOGIN_SUCCESS)
         localStorage.saveToken(data.token)
       })
-      .catch(({ response }) => {
-        commit('SET_ERRORS', response, { root: true })
+      .catch(({response}) => {
+        commit('SET_ERRORS', response, {root: true})
       })
   },
-  sendLogoutRequest({ commit }) {
+  sendLogoutRequest({commit}) {
     commit(LOGOUT)
     auth
       .logoutRequest()
       .then(() => commit(SET_USER_DATA, null))
       .then(localStorage.removeToken())
   },
-  sendVerifyResendRequest({ commit }) {
-    return auth.verifyResendRequest().catch(({ response }) => {
-      commit('SET_ERRORS', response, { root: true })
+  sendVerifyResendRequest({commit}) {
+    return auth.verifyResendRequest().catch(({response}) => {
+      commit('SET_ERRORS', response, {root: true})
     })
   },
-  sendVerifyRequest({ dispatch }, hash) {
+  sendVerifyRequest({dispatch}, hash) {
     return auth.verifyRequest(hash).then(() => dispatch('getUserData'))
   }
 }
@@ -118,7 +135,7 @@ const mutations = {
     state.isLoggedIn = false
   },
   [LOGIN_FAILED](state, error) {
-    console.log({ state, error })
+    console.log({state, error})
   }
 }
 

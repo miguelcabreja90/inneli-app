@@ -6,10 +6,18 @@ export default {
   login: 'login',
   username: 'Username',
   name: 'Name',
+  firstName: 'First Name',
+  lastName: 'Last Name',
   email: 'Email',
   password: 'Password',
   confirm: 'Confirm',
   register: 'Register',
+  noDefined:'No defined',
+  aboutMe:'About me',
+  city:'City',
+  address:'Address',
+  country:'Country',
+  activeAccount:'Hello, your account has been created, but it has not been activated yet. Please access the registered email, you have been sent a message for activation.',
   confirm_password: 'Confirm Password',
   // menu
   menu: {
