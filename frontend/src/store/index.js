@@ -4,8 +4,10 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import app from './modules/app'
 import auth from './modules/auth'
+import user from './modules/user'
 import settings from './modules/settings'
 import VuexPersistence from 'vuex-persist'
+import router from '@/router'
 
 Vue.use(Vuex, VueAxios, axios)
 
@@ -24,7 +26,8 @@ const store = new Vuex.Store({
   modules: {
     app,
     auth,
-    settings
+    settings,
+    user
   },
   plugins: [vuexLocal.plugin],
   getters: {
@@ -41,6 +44,9 @@ const store = new Vuex.Store({
           icon: 'error',
           title: state.errors.message
         })
+        if (response.data.message === 'Unauthenticated') {
+          router.push({ name: 'Forbidden' })
+        }
       } else {
         state.errors = {
           status: 'failed',

@@ -4,7 +4,11 @@
     <app-toolbar class="app--toolbar" @side-icon-click="handleDrawerVisiable" />
     <v-main>
       <!-- Page Header -->
-      <div class="page-wrapper"><router-view /></div>
+      <div class="page-wrapper">
+        <v-slide-x-transition>
+          <router-view />
+        </v-slide-x-transition>
+      </div>
       <!-- App Footer -->
       <v-footer height="auto" class="pa-3 app--footer">
         <span>INNELI &copy; {{ new Date().getFullYear() }}</span>

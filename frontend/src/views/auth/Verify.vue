@@ -1,16 +1,29 @@
 <template>
   <v-app class="exception">
-    <v-container fluid fill-height>
+    <v-main fluid fill-height>
       <v-layout align-center justify-center>
         <div class="text-md-center">
-          <div v-if="error" class="alert alert-danger" role="alert">
+          <v-alert v-if="error" type="error">
             {{ error }}
-            <div><v-btn color="primary" @click="goLogin">Go Login</v-btn></div>
-          </div>
-          <h1 v-show="!error">Please wait..</h1>
+          </v-alert>
+          <v-container v-show="!error" style="height: 400px;">
+            <v-row class="fill-height" align-content="center" justify="center">
+              <v-col class="subtitle-1 text-center" cols="12">
+                {{ this.$vuetify.lang.t('$vuetify.verify.wait') }}
+              </v-col>
+              <v-col cols="6">
+                <v-progress-linear
+                  color="deep-purple accent-4"
+                  indeterminate
+                  rounded
+                  height="6"
+                ></v-progress-linear>
+              </v-col>
+            </v-row>
+          </v-container>
         </div>
       </v-layout>
-    </v-container>
+    </v-main>
   </v-app>
 </template>
 
@@ -30,7 +43,7 @@ export default {
   mounted() {
     this.sendVerifyRequest(this.hash)
       .then(() => {
-        this.$router.push('/dashboard')
+        this.$router.push({ name: 'Profile' })
       })
       .catch((error) => {
         this.error = 'Error verifying email'

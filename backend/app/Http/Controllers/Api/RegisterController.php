@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Role;
 use App\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Foundation\Application;
@@ -87,6 +88,10 @@ class RegisterController extends Controller
 
         event(new Registered($user = $this->create($request->all())));
 
+        $user
+            ->roles()
+            ->attach(Role::where('name', 'user')->first());
+
         $this->guard()->login($user);
 
         if ($response = $this->registered($request, $user)) {
@@ -107,7 +112,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'firstName' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -122,7 +127,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'firstName' => $data['firstName'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
