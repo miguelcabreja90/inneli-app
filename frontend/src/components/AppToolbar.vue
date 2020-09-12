@@ -164,7 +164,9 @@ export default {
       localStorage.setLanguage(value)
     },
     handleSetting() {},
-    handleProfile() {}
+    handleProfile() {
+      this.$router.push({ name: 'Profile' })
+    }
   },
   created() {}
 }

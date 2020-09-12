@@ -11,13 +11,23 @@ export default {
   confirm: 'Confirm',
   register: 'Register',
   confirm_password: 'Confirm Password',
+  company: 'Company',
+  first_name: 'First Name',
+  last_name: 'Last Name',
+  address: 'Address',
+  city: 'City',
+  country: 'Country',
+  postal_code: 'Postal Code',
+  about_me: 'About Me',
+  wait: 'Please a wait...',
   // menu
   menu: {
     home: 'Home',
     dashboard: 'Dashboard',
     access_denied: 'Access Deny',
     verify: 'Email Verify',
-    welcome: 'Welcome'
+    welcome: 'Welcome',
+    user_profile: 'User Profile'
   },
   //settings
   settings: {
@@ -33,11 +43,16 @@ export default {
     match: '{0} and {1} do not match',
     bad_email: '{0}  must be valid'
   },
+  //error
   messages: {
     refused: 'Failed: Connections refused.'
   },
-
-  //error
+  //user
+  user: {
+    edit_profile: 'Edit Profile',
+    sub_profile: 'Complete your profile',
+    btn_edit: 'Update'
+  },
 
   ...en
 }
