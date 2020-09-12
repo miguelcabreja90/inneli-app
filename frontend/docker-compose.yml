@@ -1,0 +1,9 @@
+version: '3.7'
+services:
+  inneli-app-prod:
+    container_name: inneli-app-prod
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '80:80'
