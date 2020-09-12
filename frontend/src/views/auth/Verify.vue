@@ -43,7 +43,7 @@ export default {
   mounted() {
     this.sendVerifyRequest(this.hash)
       .then(() => {
-        this.$router.push('/dashboard')
+        this.$router.push({ name: 'Profile' })
       })
       .catch((error) => {
         this.error = 'Error verifying email'

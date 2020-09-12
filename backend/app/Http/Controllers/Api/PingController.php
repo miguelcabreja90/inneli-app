@@ -24,8 +24,9 @@ class PingController extends Controller
     /**
      * @return JsonResponse
      */
-    public function sendMsg(){
-        $data = ['link'=> 'http://www.inneli.com'];
+    public function sendMsg()
+    {
+        $data = ['link' => 'http://www.inneli.com'];
         Mail::send('emails.notification', $data, function ($message) {
             $message->from('no-reply@inneli.com', 'Inneli APP');
             $message->to('miguel.cabreja90@gmail.com');

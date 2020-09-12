@@ -19,12 +19,12 @@
                 append-icon="person"
                 autocomplete="off"
                 name="register"
-                :label="$vuetify.lang.t('$vuetify.name')"
-                :placeholder="$vuetify.lang.t('$vuetify.name')"
+                :label="$vuetify.lang.t('$vuetify.first_name')"
+                :placeholder="$vuetify.lang.t('$vuetify.first_name')"
                 type="text"
                 required
-                :rules="formRule.name"
-                v-model="formRegister.name"
+                :rules="formRule.firstName"
+                v-model="formRegister.firstName"
               />
               <v-text-field
                 append-icon="email"
@@ -95,7 +95,7 @@ export default {
       loading: false,
       formValid: false,
       formRule: {
-        name: [
+        firstName: [
           (v) =>
             !!v ||
             this.$vuetify.lang.t('$vuetify.rule.required', [

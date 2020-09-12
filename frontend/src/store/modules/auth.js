@@ -4,19 +4,20 @@ import localStorage from '@/config/localStorage'
 const SET_USER_DATA = 'SET_USER_DATA'
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 const LOGIN_FAILED = 'LOGIN_FAILED'
+const ENV_DATA_PROCESS = 'ENV_DATA_PROCESS'
 const LOGOUT = 'LOGOUT'
 const LOGIN = 'LOGIN'
 
 const state = {
   isLoggedIn: !!localStorage.getToken(),
-  userData: null,
+  userData: [],
   pending: false,
   fromModel: {
     email: '',
     password: ''
   },
   formRegister: {
-    name: '',
+    firstName: '',
     username: '',
     email: '',
     password: '',
@@ -46,22 +47,24 @@ const getters = {
 
 // actions
 const actions = {
-  getUserData({ commit }) {
+  async getUserData({ commit }) {
     commit('CLEAR_ERRORS', null, { root: true })
 
-    auth
+    await auth
       .getUserData()
-      .then(({ data }) => commit(SET_USER_DATA, data))
+      .then(({ data }) => {
+        commit(SET_USER_DATA, data)
+      })
       .catch(({ response }) => {
         commit('SET_ERRORS', response, { root: true })
         localStorage.removeToken()
       })
   },
-  sendLoginRequest({ commit }, login) {
+  async sendLoginRequest({ commit }, login) {
     commit('CLEAR_ERRORS', null, { root: true })
     commit(LOGIN)
 
-    return auth
+    return await auth
       .loginRequest(login)
       .then(({ data }) => {
         commit(SET_USER_DATA, data.user)
@@ -72,9 +75,9 @@ const actions = {
         commit('SET_ERRORS', response, { root: true })
       })
   },
-  sendRegisterRequest({ commit }, register) {
+  async sendRegisterRequest({ commit }, register) {
     commit('CLEAR_ERRORS', null, { root: true })
-    return auth
+    return await auth
       .registerRequest(register)
       .then(({ data }) => {
         commit(SET_USER_DATA, data.user)
@@ -85,20 +88,20 @@ const actions = {
         commit('SET_ERRORS', response, { root: true })
       })
   },
-  sendLogoutRequest({ commit }) {
+  async sendLogoutRequest({ commit }) {
     commit(LOGOUT)
-    auth
+    await auth
       .logoutRequest()
       .then(() => commit(SET_USER_DATA, null))
       .then(localStorage.removeToken())
   },
-  sendVerifyResendRequest({ commit }) {
-    return auth.verifyResendRequest().catch(({ response }) => {
+  async sendVerifyResendRequest({ commit }) {
+    return await auth.verifyResendRequest().catch(({ response }) => {
       commit('SET_ERRORS', response, { root: true })
     })
   },
-  sendVerifyRequest({ dispatch }, hash) {
-    return auth.verifyRequest(hash).then(() => dispatch('getUserData'))
+  async sendVerifyRequest({ dispatch }, hash) {
+    return await auth.verifyRequest(hash).then(() => dispatch('getUserData'))
   }
 }
 
@@ -119,6 +122,9 @@ const mutations = {
   },
   [LOGIN_FAILED](state, error) {
     console.log({ state, error })
+  },
+  [ENV_DATA_PROCESS](state, pending) {
+    state.pending = pending
   }
 }
 
