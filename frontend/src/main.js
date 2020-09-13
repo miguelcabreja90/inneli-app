@@ -13,7 +13,6 @@ Vue.config.productionTip = false
 
 Vue.prototype.$Toast = Notifications.Toast
 Vue.prototype.$Swal = Notifications.Swal
-Vue.prototype.$vuetify = vuetify
 
 new Vue({
   router,

@@ -51,7 +51,9 @@ export default {
   },
   //error
   messages: {
-    refused: 'Failed: Connections refused.'
+    refused: 'Failed: Connections refused.',
+    success_avatar: 'The image was successfully saved.',
+    success_profile: 'The data has been updated.'
   },
   //user
   user: {

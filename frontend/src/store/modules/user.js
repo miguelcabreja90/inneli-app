@@ -1,4 +1,5 @@
 import user from '@/api/user'
+
 const USER_ENABLED = true
 
 const FETCHING_USERS = 'FETCHING_USERS'
@@ -12,9 +13,13 @@ const USER_TABLE_LOADING = 'USER_TABLE_LOADING'
 const FAILED_USER = 'FAILED_USER'
 const ENV_DATA_PROCESS = 'ENV_DATA_PROCESS'
 const SET_EDIT_USER = 'SET_EDIT_USER'
+const SET_USER_AVATAR = 'SET_USER_AVATAR'
 
 const state = {
   users: [],
+  avatar: '',
+  loading: false,
+  saved: false,
   newUser: {
     firstName: '',
     lastName: '',
@@ -28,7 +33,7 @@ const state = {
     company: '',
     postalCode: '',
     aboutMe: '',
-    photo: ''
+    avatar: ''
   },
   editUser: {
     id: '',
@@ -44,7 +49,7 @@ const state = {
     company: '',
     postalCode: '',
     aboutMe: '',
-    photo: ''
+    avatar: ''
   },
   isUserTableLoading: false,
   isActionInProgress: false
@@ -81,7 +86,7 @@ const mutations = {
       company: '',
       postalCode: '',
       aboutMe: '',
-      photo: ''
+      avatar: ''
     }
   },
   [USER_EDIT](state, userId) {
@@ -106,14 +111,19 @@ const mutations = {
       company: '',
       postalCode: '',
       aboutMe: '',
-      photo: ''
+      avatar: ''
     }
+    state.saved = true
   },
   [SET_EDIT_USER](state, profile) {
     state.editUser.push(profile)
   },
   [USER_DELETED](state) {
     console.log({ state })
+  },
+  [SET_USER_AVATAR](state, avatar) {
+    state.avatar = avatar
+    state.saved = true
   }
 }
 
@@ -153,10 +163,9 @@ const actions = {
     const request = profile ? profile : state.editUser
     await user
       .sendUpdateRequest(request)
-      .then(() => {
+      .then(({ data }) => {
         commit(USER_UPDATED)
         commit(ENV_DATA_PROCESS, false)
-        //dispatch('user/getUsers', null, { root: true })
         dispatch('auth/getUserData', null, { root: true })
       })
       .catch((error) => commit('SET_ERRORS', error, { root: true }))
@@ -167,6 +176,18 @@ const actions = {
       .then(() => commit(USER_DELETED))
       .then(() => dispatch('user/getUsers', null, { root: true }))
       .catch((error) => commit(FAILED_USER, error))
+  },
+
+  async updateAvatar({ commit, dispatch }, file) {
+    const image = `data:${file.file.type};base64,${file.file.base64}`
+    const sendData = {
+      id: file.id,
+      image: image
+    }
+    await user.updateAvatar(sendData).then((response) => {
+      commit(SET_USER_AVATAR, file.file.base64)
+      dispatch('auth/getUserData', null, { root: true })
+    })
   }
 }
 

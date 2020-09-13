@@ -3,35 +3,16 @@
     <v-layout justify-center wrap>
       <v-flex xs12 md4>
         <material-card class="v-card-profile">
-          <avatar-picker v-model="avatar">
-            <div slot="activator">
-              <v-avatar
-                size="150px"
-                v-ripple
-                v-if="!avatar"
-                slot="offset"
-                class="grey lighten-3 mb-3 mx-auto d-block"
-              >
-              </v-avatar>
-              <v-avatar
-                size="150px"
-                v-ripple
-                v-else
-                class="mb-3 mx-auto d-block"
-              >
-                <img :src="avatar.imageURL" alt="avatar" />
-              </v-avatar>
-            </div>
-          </avatar-picker>
+          <base64-upload
+            class="user mx-auto d-block"
+            :imageSrc="userData.avatar"
+            :imageStyle="{ 'border-radius': '50%' }"
+            @change="onChangeImage($event)"
+          ></base64-upload>
           <v-slide-x-transition>
-            <div v-if="avatar && saved == false">
-              <v-btn
-                icon
-                class="mx-auto d-block"
-                :loading="saving"
-                @click="uploadImage"
-              >
-                <v-icon>mdi-content-save-all</v-icon>
+            <div v-if="saved === false">
+              <v-btn icon class="mx-auto d-block" :loading="saving">
+                <v-icon>mdi-content-save</v-icon>
               </v-btn>
             </div>
           </v-slide-x-transition>
@@ -138,50 +119,59 @@
 
 <script>
 import MaterialCard from '@/components/utils/MaterialCard'
-import AvatarPicker from '@/components/user/AvatarPicker'
-import { mapState, mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
+import Base64Upload from '@/components/core/Base64Upload'
 
 export default {
-  components: { AvatarPicker, MaterialCard },
+  components: { Base64Upload, MaterialCard },
   data() {
     return {
-      loading: false,
-      showAvatarPicker: false,
-      avatar: null,
-      saving: false,
-      saved: false
+      saving: false
     }
-  },
-  created() {
-    this.getUserData()
   },
   computed: {
-    ...mapState('auth', ['userData', 'pending'])
+    ...mapState('auth', ['userData', 'pending']),
+    ...mapState('user', ['saved', 'users'])
   },
-  watch: {
-    avatar: {
-      handler: function() {
-        this.saved = false
-      },
-      deep: true
-    }
+  beforeCreate() {
+    this.$nextTick(function() {
+      this.getUserData()
+    })
   },
   methods: {
     ...mapActions('auth', ['getUserData']),
-    ...mapActions('user', ['updateUser']),
-    uploadImage() {
-      this.saving = true
-      setTimeout(() => this.savedAvatar(), 1000)
-    },
-    savedAvatar() {
-      this.saving = false
-      this.saved = true
-    },
+    ...mapActions('user', ['updateUser', 'updateAvatar']),
     async updateProfile() {
-      await this.updateUser(this.userData).then((data) => {
-        console.log(data)
+      await this.updateUser(this.userData).then(() => {
+        if (this.saved) {
+          const msg = this.$vuetify.lang.t('$vuetify.messages.success_profile')
+          this.$Toast.fire({
+            icon: 'success',
+            title: msg
+          })
+        }
+      })
+    },
+    async onChangeImage(file) {
+      this.saving = true
+      const id = this.userData.id
+      await this.updateAvatar({ id, file }).then(() => {
+        if (this.saved) {
+          const msg = this.$vuetify.lang.t('$vuetify.messages.success_avatar')
+          this.$Toast.fire({
+            icon: 'success',
+            title: msg
+          })
+        }
       })
     }
   }
 }
 </script>
+<style scoped>
+.user {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+</style>
