@@ -3,48 +3,56 @@
     <v-layout justify-center wrap>
       <v-flex xs12 md4 style="margin-top: 50px">
         <material-card class="v-card-profile">
-          <avatar-picker v-model="avatar">
-            <div slot="activator">
-              <v-avatar
-                size="150px"
-                v-ripple
-                v-if="!avatar"
-                slot="offset"
-                class="grey lighten-3 mb-3 mx-auto d-block"
-              >
-              </v-avatar>
-              <v-avatar
-                size="150px"
-                v-ripple
-                v-else
-                class="mb-3 mx-auto d-block"
-              >
-                <img :src="avatar.imageURL" alt="avatar" />
-              </v-avatar>
-            </div>
-          </avatar-picker>
+          <base64-upload
+            class="user mx-auto d-block"
+            :imageSrc="userData.avatar"
+            :imageStyle="{ 'border-radius': '50%' }"
+            @change="onChangeImage($event)"
+          ></base64-upload>
           <v-slide-x-transition>
-            <div v-if="avatar && saved == false">
-              <v-btn
-                icon
-                class="mx-auto d-block"
-                :loading="saving"
-                @click="uploadImage"
-              >
-                <v-icon>mdi-content-save-all</v-icon>
+            <div v-if="saved === false">
+              <v-btn icon class="mx-auto d-block" :loading="saving">
+                <v-icon>mdi-content-save</v-icon>
               </v-btn>
             </div>
           </v-slide-x-transition>
-          <v-card-text class="text-xs-center">
-            <h4
-              class="card-title font-weight-light"
-              v-text="userData.firstName"
-            ></h4>
-            <p
-              class="card-description font-weight-light"
-              v-text="userData.about_me"
-            ></p>
-          </v-card-text>
+          <v-list two-line class="pa-0">
+            <v-list-item href="#">
+              <v-list-item-action>
+                <v-icon color="indigo">mdi-account</v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title v-text="getFullName"></v-list-item-title>
+                <v-list-item-subtitle
+                  v-text="$vuetify.lang.t('$vuetify.firstName')"
+                ></v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+            <v-divider inset></v-divider>
+            <v-list-item href="#">
+              <v-list-item-action>
+                <v-icon color="indigo">mdi-mail</v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title v-text="userData.email"></v-list-item-title>
+                <v-list-item-subtitle
+                  v-text="$vuetify.lang.t('$vuetify.email')"
+                ></v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+            <v-divider inset></v-divider>
+            <v-list-item href="#">
+              <v-list-item-action>
+                <v-icon color="indigo">mdi-phone</v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title v-text="userData.phone"></v-list-item-title>
+                <v-list-item-subtitle
+                  v-text="$vuetify.lang.t('$vuetify.phone')"
+                ></v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
         </material-card>
       </v-flex>
       <v-flex xs12 md8>
@@ -58,7 +66,6 @@
               <v-layout wrap>
                 <v-flex xs12 md4>
                   <v-text-field
-                    solo-inverted
                     v-model="userData.company"
                     :label="$vuetify.lang.t('$vuetify.company')"
                     :rules="formRule.company"
@@ -66,7 +73,6 @@
                 </v-flex>
                 <v-flex xs12 md4>
                   <v-text-field
-                    solo-inverted
                     v-model="userData.username"
                     :label="$vuetify.lang.t('$vuetify.username')"
                     :rules="formRule.username"
@@ -74,7 +80,6 @@
                 </v-flex>
                 <v-flex xs12 md4>
                   <v-text-field
-                    solo-inverted
                     v-model="userData.email"
                     :label="$vuetify.lang.t('$vuetify.email')"
                     :rules="formRule.email"
@@ -82,7 +87,6 @@
                 </v-flex>
                 <v-flex xs12 md4>
                   <v-text-field
-                    solo-inverted
                     v-model="userData.firstName"
                     :label="$vuetify.lang.t('$vuetify.first_name')"
                     :rules="formRule.firstName"
@@ -90,7 +94,6 @@
                 </v-flex>
                 <v-flex xs12 md4>
                   <v-text-field
-                    solo-inverted
                     v-model="userData.lastName"
                     :label="$vuetify.lang.t('$vuetify.last_name')"
                     :rules="formRule.lastName"
@@ -98,25 +101,19 @@
                 </v-flex>
                 <v-flex xs12 md4>
                   <v-text-field
-                    solo-inverted
                     required
-                    counter="8"
-                    type="number"
-                    class="hiddenSpinner"
                     v-model="userData.phone"
                     :label="$vuetify.lang.t('$vuetify.phone')"
                   />
                 </v-flex>
                 <v-flex xs12 md12>
                   <v-text-field
-                    solo-inverted
                     v-model="userData.address"
                     :label="$vuetify.lang.t('$vuetify.address')"
                   />
                 </v-flex>
                 <v-flex xs12 md4>
                   <v-select
-                    solo-inverted
                     :rules="formRule.country"
                     v-model="userData.country"
                     :items="country"
@@ -130,7 +127,6 @@
                 </v-flex>
                 <v-flex xs12 md4>
                   <v-select
-                    solo-inverted
                     :rules="formRule.city"
                     v-model="userData.city"
                     :disabled="disabledCity"
@@ -144,7 +140,6 @@
                 </v-flex>
                 <v-flex xs12 md4>
                   <v-text-field
-                    solo-inverted
                     counter="5"
                     class="hiddenSpinner"
                     v-model="userData.postalCode"
@@ -154,7 +149,6 @@
                 </v-flex>
                 <v-flex xs12>
                   <v-textarea
-                    solo-inverted
                     counter="250"
                     v-model="userData.aboutMe"
                     :label="$vuetify.lang.t('$vuetify.about_me')"
@@ -162,8 +156,6 @@
                 </v-flex>
                 <v-flex xs12 text-xs-right>
                   <v-btn
-                    large
-                    tile
                     class="mx-0 font-weight-light"
                     color="primary"
                     @click="updateProfile"
@@ -185,22 +177,19 @@
 
 <script>
 import MaterialCard from '@/components/utils/MaterialCard'
-import AvatarPicker from '@/components/user/AvatarPicker'
-import { mapState, mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
+import Base64Upload from '@/components/core/Base64Upload'
 
 export default {
-  name: 'Profile',
-  components: { AvatarPicker, MaterialCard },
+  components: { Base64Upload, MaterialCard },
   data() {
     return {
       color: 'primary',
       disabledCity: true,
+      formValid: false,
       loading: false,
-      showAvatarPicker: false,
-      avatar: null,
       cityCountry: [],
       saving: false,
-      saved: false,
       formRule: {
         company: [
           (v) =>
@@ -253,29 +242,51 @@ export default {
     }
   },
   created() {
-    this.getUserData(), this.validateData()
+    this.validateData()
   },
   computed: {
     ...mapState('auth', ['userData', 'pending']),
-    ...mapState('user', ['user', 'pending']),
-    ...mapState('statics', ['country', 'city'])
-  },
-  mounted() {
-    this.validateData()
-  },
-  watch: {
-    avatar: {
-      handler: function() {
-        this.saved = false
-      },
-      deep: true
+    ...mapState('user', ['saved', 'users']),
+    ...mapState('statics', ['country', 'city']),
+    getFullName() {
+      return `${this.userData.firstName} ${this.userData.lastName}`
     }
+  },
+  beforeCreate() {
+    this.$nextTick(function() {
+      this.getUserData()
+    })
   },
   methods: {
     ...mapActions('auth', ['getUserData']),
-    ...mapActions('user', ['updateUser']),
+    ...mapActions('user', ['updateUser', 'updateAvatar']),
+    async updateProfile() {
+      this.loading = true
+      await this.updateUser(this.userData).then(() => {
+        if (this.saved) {
+          this.loading = false
+          const msg = this.$vuetify.lang.t('$vuetify.messages.success_profile')
+          this.$Toast.fire({
+            icon: 'success',
+            title: msg
+          })
+        }
+      })
+    },
+    async onChangeImage(file) {
+      this.saving = true
+      const id = this.userData.id
+      await this.updateAvatar({ id, file }).then(() => {
+        if (this.saved) {
+          const msg = this.$vuetify.lang.t('$vuetify.messages.success_avatar')
+          this.$Toast.fire({
+            icon: 'success',
+            title: msg
+          })
+        }
+      })
+    },
     changeCountry() {
-      console.log(this.userData.country)
       this.disabledCity = false
       this.cityCountry = this.city.filter(
         (c) =>
@@ -285,34 +296,18 @@ export default {
       )
     },
     validateData() {
-      console.log(this.userData)
       if (this.userData.username === '') this.color = 'warning'
       else this.color = 'primary'
-    },
-    uploadImage() {
-      this.saving = true
-      setTimeout(() => this.savedAvatar(), 1000)
-    },
-    savedAvatar() {
-      this.saving = false
-      this.saved = true
-    },
-    updateProfile() {
-      if (this.$refs.form.validate()) {
-        this.loading = true
-        setTimeout(() => {
-          this.updateUser(this.userData).then((data) => {
-            this.loading = false
-            this.$router.push('/dashboard')
-          })
-        }, 1000)
-      }
     }
   }
 }
 </script>
-
-<style>
+<style scoped>
+.user {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
 .hiddenSpinner input[type='number'] {
   -moz-appearance: textfield;
 }
