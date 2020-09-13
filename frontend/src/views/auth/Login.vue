@@ -28,15 +28,16 @@
                 v-model="fromModel.email"
               />
               <v-text-field
-                append-icon="lock"
                 autocomplete="off"
+                :type="hidePassword ? 'password' : 'text'"
+                :append-icon="hidePassword ? 'mdi-eye' : 'mdi-eye-off'"
                 name="password"
                 :label="$vuetify.lang.t('$vuetify.password')"
                 :placeholder="$vuetify.lang.t('$vuetify.password')"
-                type="password"
                 :rules="formRule.password"
                 required
                 v-model="fromModel.password"
+                @click:append="hidePassword = !hidePassword"
               />
             </v-form>
           </v-card-text>
@@ -84,6 +85,7 @@ export default {
     return {
       formValid: false,
       loading: false,
+      hidePassword: true,
       formRule: {
         email: [
           (v) =>
