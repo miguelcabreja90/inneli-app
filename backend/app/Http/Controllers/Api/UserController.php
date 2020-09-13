@@ -88,6 +88,27 @@ class UserController extends Controller
         );
     }
 
+    public function updateAvatar(Request $request, $id)
+    {
+        Auth::user()->authorizeRoles(['user', 'admin']);
+
+        if (!empty($request)) {
+            $app = (new User())->find($id);
+            $app->find($id);
+            $app->avatar = $request->get('image');
+            $app->save();
+            return ResponseHelper::sendResponse(
+                $app,
+                'User avatar has updated successfully.'
+            );
+        } else {
+            return ResponseHelper::sendError(
+                401,
+                'User avatar has not updated.'
+            );
+        }
+    }
+
     /**
      * Remove the specified resource from storage.
      *

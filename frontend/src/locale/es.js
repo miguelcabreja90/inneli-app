@@ -60,7 +60,9 @@ export default {
     btn_edit: 'Actualizar'
   },
   messages: {
-    refused: 'Fallido: Conexión rechazada.'
+    refused: 'Fallido: Conexión rechazada.',
+    success_avatar: 'La imagen se salvado satisfactoriamente.',
+    success_profile: 'Los datos han sido actualizados.'
   },
   ...es
 }

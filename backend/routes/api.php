@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,6 +39,7 @@ Route::group(['namespace' => 'Api', 'as' => 'api.'], function () {
         Route::post('users', 'UserController@create')->name('users.create');
         Route::put('users/{id}', 'UserController@update')->name('users.update');
         Route::delete('users/{id}', 'UserController@delete')->name('users.delete');
+        Route::post('users/avatar/{id}', 'UserController@updateAvatar')->name('users.updateAvatar');
 
     });
 

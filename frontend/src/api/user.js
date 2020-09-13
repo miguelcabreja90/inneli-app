@@ -6,5 +6,8 @@ export default {
   },
   sendUpdateRequest(user) {
     return api.put('users/' + user.id, user)
+  },
+  updateAvatar(avatar) {
+    return api.post('users/avatar/' + avatar.id, avatar)
   }
 }
