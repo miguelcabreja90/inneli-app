@@ -25,6 +25,7 @@ export default {
   country: 'Country',
   postal_code: 'Postal Code',
   about_me: 'About Me',
+  phone:'Phone',
   wait: 'Please a wait...',
   // menu
   menu: {
@@ -46,8 +47,10 @@ export default {
     required: '{0} is required',
     min: 'Just a minimum of {0} characters is allowed',
     max: 'Just a maximum of {0} characters is allowed',
+    length: 'This field need {0} characters',
     match: '{0} and {1} do not match',
-    bad_email: '{0}  must be valid'
+    bad_email: '{0}  must be valid',
+    required_element:'This element is required'
   },
   //error
   messages: {
