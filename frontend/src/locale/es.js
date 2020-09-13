@@ -17,14 +17,15 @@ export default {
   activeAccount:
     'Hola, su cuenta se ha creada, pero aún no ha sido activada. Por favor, acceda al correo registrado, se le ha enviado un mensaje para la activación.',
   confirm_password: 'Confirmar Contraseña',
-  company: 'Compañia',
+  company: 'Compañía',
   first_name: 'Nombre(s)',
   last_name: 'Apellidos',
   address: 'Dirección',
   city: 'Ciudad',
-  country: 'Pais',
+  country: 'País',
   postal_code: 'Código Postal',
-  about_me: 'Acerca de Mi',
+  about_me: 'Acerca de mi',
+  phone:'Teléfono',
   wait: 'Espere por favor...',
   // menu
   menu: {
@@ -47,8 +48,10 @@ export default {
     required: '{0} es requerido',
     min: 'La cantidad mínima es de {0} caracteres',
     max: 'La cantidad máxima es de {0} caracteres',
+    length: 'Este campo necesita {0} caracteres',
     match: 'Los parámetros {0} y la {1} no son iguales',
-    bad_email: '{0} debe ser válido'
+    bad_email: '{0} debe ser válido',
+    required_element:'Este campo es requerido'
   },
   //user
   user: {

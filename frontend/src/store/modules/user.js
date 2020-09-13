@@ -150,6 +150,7 @@ const actions = {
       .catch((error) => commit(FAILED_USER, error))
   },
   async updateUser({ commit, dispatch }, profile) {
+    console.log(profile)
     const request = profile ? profile : state.editUser
     await user
       .sendUpdateRequest(request)
