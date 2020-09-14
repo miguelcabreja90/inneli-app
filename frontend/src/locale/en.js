@@ -4,6 +4,8 @@ export default {
   label: 'English',
   //page login
   login: 'login',
+  forgot: 'Forgot Password?',
+  forgot_btn: 'Send Reset Link',
   username: 'Username',
   name: 'Name',
   firstName: 'First Name',
@@ -59,7 +61,8 @@ export default {
   messages: {
     refused: 'Failed: Connections refused.',
     success_avatar: 'The image was successfully saved.',
-    success_profile: 'The data has been updated.'
+    success_profile: 'The data has been updated.',
+    check_mail: 'An email has been sent with the details to change password.'
   },
   //user
   user: {

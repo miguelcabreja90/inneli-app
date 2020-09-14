@@ -45,6 +45,25 @@ export const publicRoute = [
     ]
   },
   {
+    path: '/auth',
+    component: LayoutAuth,
+    meta: {
+      title: 'Forgot'
+    },
+    redirect: '/auth/forgot',
+    hidden: true,
+    children: [
+      {
+        path: 'forgot',
+        name: 'forgot',
+        meta: {
+          title: 'Forgot Password'
+        },
+        component: () => import('@/views/auth/Forgot')
+      }
+    ]
+  },
+  {
     path: '/404',
     name: '404',
     meta: {

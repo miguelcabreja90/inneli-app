@@ -4,6 +4,8 @@ export default {
   label: 'Español',
   // page login
   login: 'login',
+  forgot: 'Olvidó su contraseña?',
+  forgot_btn: 'Enviar link de cambio',
   username: 'Usuario',
   name: 'Nombre',
   email: 'Correo',
@@ -65,7 +67,9 @@ export default {
   messages: {
     refused: 'Fallido: Conexión rechazada.',
     success_avatar: 'La imagen se salvado satisfactoriamente.',
-    success_profile: 'Los datos han sido actualizados.'
+    success_profile: 'Los datos han sido actualizados.',
+    check_mail:
+      'Se ha enviado un correo electrónico con los detalles para cambiar contraseña.'
   },
   ...es
 }

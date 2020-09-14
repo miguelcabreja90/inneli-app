@@ -25,11 +25,16 @@ const verifyRequest = (hash) => {
   return api.get(`email/verify/${hash}`)
 }
 
+const verifyMailForgot = (email) => {
+  return api.post('password/reset', { email: email })
+}
+
 export default {
   getUserData,
   loginRequest,
   logoutRequest,
   registerRequest,
   verifyRequest,
-  verifyResendRequest
+  verifyResendRequest,
+  verifyMailForgot
 }

@@ -7,11 +7,13 @@ const LOGIN_FAILED = 'LOGIN_FAILED'
 const ENV_DATA_PROCESS = 'ENV_DATA_PROCESS'
 const LOGOUT = 'LOGOUT'
 const LOGIN = 'LOGIN'
+const FORGOT_PASSWORD = 'FORGOT_PASSWORD'
 
 const state = {
   isLoggedIn: !!localStorage.getToken(),
   userData: [],
   pending: false,
+  successForgot: false,
   fromModel: {
     email: '',
     password: ''
@@ -102,6 +104,21 @@ const actions = {
   },
   async sendVerifyRequest({ dispatch }, hash) {
     return await auth.verifyRequest(hash).then(() => dispatch('getUserData'))
+  },
+  async sendEmailForgot({ commit }, email) {
+    commit('CLEAR_ERRORS', null, { root: true })
+    return await auth
+      .verifyMailForgot(email)
+      .then((response) => {
+        if (response.status === 200 && response.data.success) {
+          commit(FORGOT_PASSWORD, true)
+        } else {
+          commit(FORGOT_PASSWORD, false)
+        }
+      })
+      .catch((response) => {
+        commit('SET_ERRORS', response, { root: true })
+      })
   }
 }
 
@@ -119,6 +136,9 @@ const mutations = {
   },
   [LOGOUT](state) {
     state.isLoggedIn = false
+  },
+  [FORGOT_PASSWORD](state, status) {
+    state.successForgot = status
   },
   [LOGIN_FAILED](state, error) {
     console.log({ state, error })
