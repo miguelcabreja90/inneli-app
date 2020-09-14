@@ -78,6 +78,21 @@ export const publicRoute = [
       title: 'Server Error'
     },
     component: () => import('@/views/error/Error')
+  },
+  {
+    path: '/reset/verify/:hash',
+    component: LayoutAuth,
+    hidden: true,
+    children: [
+      {
+        path: '/reset/verify/:hash',
+        name: 'reset_password',
+        meta: {
+          title: 'Reset Password'
+        },
+        component: () => import('@/views/auth/ResetPassword')
+      }
+    ]
   }
 ]
 

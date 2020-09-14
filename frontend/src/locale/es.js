@@ -4,6 +4,7 @@ export default {
   label: 'Español',
   // page login
   login: 'login',
+  reset_password: 'Cambiar contraseña',
   forgot: 'Olvidó su contraseña?',
   forgot_btn: 'Enviar link de cambio',
   username: 'Usuario',
@@ -69,7 +70,8 @@ export default {
     success_avatar: 'La imagen se salvado satisfactoriamente.',
     success_profile: 'Los datos han sido actualizados.',
     check_mail:
-      'Se ha enviado un correo electrónico con los detalles para cambiar contraseña.'
+      'Se ha enviado un correo electrónico con los detalles para cambiar contraseña.',
+    password_success: 'La contraseña se actualizo correctamente.'
   },
   ...es
 }

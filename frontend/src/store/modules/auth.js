@@ -8,12 +8,14 @@ const ENV_DATA_PROCESS = 'ENV_DATA_PROCESS'
 const LOGOUT = 'LOGOUT'
 const LOGIN = 'LOGIN'
 const FORGOT_PASSWORD = 'FORGOT_PASSWORD'
+const SET_RESET = 'SET_RESET'
 
 const state = {
   isLoggedIn: !!localStorage.getToken(),
   userData: [],
   pending: false,
   successForgot: false,
+  successReset: false,
   fromModel: {
     email: '',
     password: ''
@@ -21,6 +23,11 @@ const state = {
   formRegister: {
     firstName: '',
     username: '',
+    email: '',
+    password: '',
+    password_confirmation: ''
+  },
+  formReset: {
     email: '',
     password: '',
     password_confirmation: ''
@@ -119,6 +126,21 @@ const actions = {
       .catch((response) => {
         commit('SET_ERRORS', response, { root: true })
       })
+  },
+  async sendResetPassword({ commit }, newData) {
+    commit('CLEAR_ERRORS', null, { root: true })
+    return await auth
+      .resetPassword(newData.token, newData)
+      .then(({ response }) => {
+        if (response.status === 200 && response.data.success) {
+          commit(SET_RESET, true)
+        } else {
+          commit(SET_RESET, false)
+        }
+      })
+      .catch((response) => {
+        commit('SET_ERRORS', response, { root: true })
+      })
   }
 }
 
@@ -145,6 +167,15 @@ const mutations = {
   },
   [ENV_DATA_PROCESS](state, pending) {
     state.pending = pending
+  },
+  [SET_RESET](state, reset) {
+    state.formReset = {
+      username: '',
+      email: '',
+      password: '',
+      password_confirmation: ''
+    }
+    state.successReset = reset
   }
 }
 
