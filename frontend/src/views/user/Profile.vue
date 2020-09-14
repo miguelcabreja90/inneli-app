@@ -127,7 +127,7 @@
                     required
                     clearable
                   >
-                    <template slot="item" scope="data">
+                    <template slot="item" slot-scope="data">
                       <template v-if="typeof data.item !== 'object'">
                         <v-list-item-content
                           v-text="data.item"

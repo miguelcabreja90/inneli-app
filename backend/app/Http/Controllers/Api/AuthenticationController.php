@@ -31,7 +31,7 @@ class AuthenticationController extends Controller
     public function user()
     {
         return auth()->user();
-        //return User::findOrFail(auth()->id());
+        //return User::findOrFail(auth()->id())
     }
 
     /**
