@@ -25,7 +25,7 @@ export default {
   country: 'País',
   postal_code: 'Código Postal',
   about_me: 'Acerca de mi',
-  phone:'Teléfono',
+  phone: 'Teléfono',
   wait: 'Espere por favor...',
   // menu
   menu: {
@@ -34,7 +34,10 @@ export default {
     access_denied: 'Acceso denegado',
     verify: 'Verificar Correo',
     welcome: 'Bienvenido',
-    user_profile: 'Perfil de Usuario'
+    user_profile: 'Perfil de Usuario',
+    profile: 'Perfil',
+    settings: 'Ajustes',
+    logout: 'Salir'
   },
   //settings
   settings: {
@@ -51,7 +54,7 @@ export default {
     length: 'Este campo necesita {0} caracteres',
     match: 'Los parámetros {0} y la {1} no son iguales',
     bad_email: '{0} debe ser válido',
-    required_element:'Este campo es requerido'
+    required_element: 'Este campo es requerido'
   },
   //user
   user: {

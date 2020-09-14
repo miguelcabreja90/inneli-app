@@ -9,7 +9,7 @@
           <v-container v-show="!error" style="height: 400px;">
             <v-row class="fill-height" align-content="center" justify="center">
               <v-col class="subtitle-1 text-center" cols="12">
-                {{ this.$vuetify.lang.t('$vuetify.verify.wait') }}
+                {{ this.$vuetify.lang.t('$vuetify.wait') }}
               </v-col>
               <v-col cols="6">
                 <v-progress-linear

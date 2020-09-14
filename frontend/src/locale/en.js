@@ -25,7 +25,7 @@ export default {
   country: 'Country',
   postal_code: 'Postal Code',
   about_me: 'About Me',
-  phone:'Phone',
+  phone: 'Phone',
   wait: 'Please a wait...',
   // menu
   menu: {
@@ -34,7 +34,10 @@ export default {
     access_denied: 'Access Deny',
     verify: 'Email Verify',
     welcome: 'Welcome',
-    user_profile: 'User Profile'
+    user_profile: 'User Profile',
+    profile: 'Profile',
+    settings: 'Setting',
+    logout: 'Logout'
   },
   //settings
   settings: {
@@ -50,7 +53,7 @@ export default {
     length: 'This field need {0} characters',
     match: '{0} and {1} do not match',
     bad_email: '{0}  must be valid',
-    required_element:'This element is required'
+    required_element: 'This element is required'
   },
   //error
   messages: {

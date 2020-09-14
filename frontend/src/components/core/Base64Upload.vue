@@ -1,6 +1,6 @@
 <template>
   <div class="base64-upload">
-    <img :src="imageSrc" :style="imageStyle" />
+    <v-img :src="imageSrc" :style="imageStyle" />
     <input type="file" accept="image/*" @change="onChange" />
   </div>
 </template>

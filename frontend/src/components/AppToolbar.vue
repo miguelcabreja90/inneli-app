@@ -34,7 +34,7 @@
         <template v-slot:activator="{ on }">
           <v-btn icon large text slot="activator" v-on="on">
             <v-avatar size="30px">
-              <img src="/static/avatar/man_4.jpg" alt="Michael Wang" />
+              <v-icon>mdi-account-circle</v-icon>
             </v-avatar>
           </v-btn>
         </template>
@@ -68,8 +68,9 @@
 </template>
 <script>
 import Util from '@/util'
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import localStorage from '@/config/localStorage'
+
 export default {
   name: 'AppToolbar',
   props: {
@@ -87,30 +88,10 @@ export default {
     }
   },
   data() {
-    return {
-      profileMenus: [
-        {
-          icon: 'account_circle',
-          href: '#',
-          title: 'Profile',
-          click: this.handleProfile
-        },
-        {
-          icon: 'settings',
-          href: '#',
-          title: 'Settings',
-          click: this.handleSetting
-        },
-        {
-          icon: 'fullscreen_exit',
-          href: '#',
-          title: 'Logout',
-          click: this.handleLogout
-        }
-      ]
-    }
+    return {}
   },
   computed: {
+    ...mapGetters('auth', ['isLoggedIn']),
     toolbarColor() {
       return this.$vuetify.options.extra.mainNav
     },
@@ -144,10 +125,32 @@ export default {
           disabled: false
         }
       })
+    },
+    profileMenus() {
+      return [
+        {
+          icon: 'account_circle',
+          href: '#',
+          title: this.$vuetify.lang.t('$vuetify.menu.profile'),
+          click: this.handleProfile
+        },
+        {
+          icon: 'settings',
+          href: '#',
+          title: this.$vuetify.lang.t('$vuetify.menu.settings'),
+          click: this.handleSetting
+        },
+        {
+          icon: 'mdi-logout',
+          href: '#',
+          title: this.$vuetify.lang.t('$vuetify.menu.logout'),
+          click: this.handleLogout
+        }
+      ]
     }
   },
   methods: {
-    ...mapActions('auth', ['sendLogoutRequest']),
+    ...mapActions('auth', ['sendLogoutRequest', 'getUserData']),
     handleDrawerToggle() {
       this.$emit('side-icon-click')
     },
@@ -168,7 +171,9 @@ export default {
       this.$router.push({ name: 'Profile' })
     }
   },
-  created() {}
+  created() {
+    this.getUserData()
+  }
 }
 </script>
 
