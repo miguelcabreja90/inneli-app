@@ -98,21 +98,32 @@ export const protectedRoute = [
         path: '/user/profile',
         name: 'Profile',
         meta: {
-          title: 'user_profile',
+          title: 'profile',
           hiddenInMenu: true,
           requiresAuth: true
         },
         component: () => import('@/views/user/Profile')
       },
       {
-        path: '/user',
-        name: 'ListUser',
+        path: '/setting',
+        component: RouteWrapper,
+        redirect: '/setting/user',
         meta: {
-          title: 'user_list',
-          hiddenInMenu: true,
-          requiresAuth: true
+          title: 'setting',
+          icon: 'settings',
+          group: 'setting'
         },
-        component: () => import('@/views/user/ListUser')
+        children: [
+          {
+            path: '/setting/user.list',
+            name: 'user_list',
+            meta: {
+              title: 'user_list',
+              icon: 'mdi-database-plus'
+            },
+            component: () => import('@/views//user/ListUser')
+          }
+        ]
       }
     ]
   },

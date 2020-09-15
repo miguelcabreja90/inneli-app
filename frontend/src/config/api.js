@@ -17,15 +17,16 @@ const get = (resource) => {
     }
   })
 }
-const remove = (resource, params) => {
-  return axios.delete(baseUrl + resource, params, {
+const put = (resource, params) => {
+  return axios.put(baseUrl + resource, params, {
     headers: {
       Authorization: storage.getToken()
     }
   })
 }
-const put = (resource, params) => {
-  return axios.put(baseUrl + resource, params, {
+
+const remove = (resource) => {
+  return axios.delete(baseUrl + resource, {
     headers: {
       Authorization: storage.getToken()
     }

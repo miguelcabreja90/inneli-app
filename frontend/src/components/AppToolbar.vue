@@ -39,58 +39,23 @@
           </v-btn>
         </template>
         <v-list class="pa-0">
-          <v-list-item v-for="(item, index) in profileMenus" :to="!item.href ? { name: item.name } : null"
-                       :href="item.href" @click="item.click" ripple="ripple" :disabled="item.disabled"
-                       :target="item.target" rel="noopener" :key="index">
-            <template v-if="item.children.length==0">
-              <v-list-item-action v-if="item.icon">
-                <v-icon>{{ item.icon }}</v-icon>
-              </v-list-item-action>
-              <v-list-item-content>
-                <v-list-item-title>{{ item.title }}</v-list-item-title>
-                <template v-if="item.children.length !==0">
-                  <v-menu offset-x origin="center center" transition="scale-transition">
-                    <template v-slot:activator="{ on }"><v-icon  v-on="on">mdi-backburger</v-icon>
-                    </template>
-                    <v-list class="pa-0">
-                      <v-list-item v-for="(item, index) in profileMenus" :to="!item.href ? { name: item.name } : null"
-                                   :href="item.href" @click="item.click" ripple="ripple" :disabled="item.disabled"
-                                   :target="item.target" rel="noopener" :key="index">
-                        <v-list-item-action v-if="item.icon">
-                          <v-icon>{{ item.icon }}</v-icon>
-                        </v-list-item-action>
-                        <v-list-item-content>
-                          <v-list-item-title>{{ item.title }}</v-list-item-title>
-                        </v-list-item-content>
-                      </v-list-item>
-                    </v-list>
-                  </v-menu>
-                </template>
-              </v-list-item-content>
-            </template>
-            <template v-else>
-              <v-menu offset-x origin="center center" transition="scale-transition">
-                <template v-slot:activator="{ on }"><v-icon  v-on="on">mdi-menu-left</v-icon></template>
-                <v-list class="pa-0">
-                  <v-list-item v-for="(item, index) in item.children" :to="!item.href ? { name: item.name } : null"
-                               :href="item.href" @click="item.click" ripple="ripple" :disabled="item.disabled"
-                               :target="item.target" rel="noopener" :key="index">
-                    <v-list-item-action v-if="item.icon">
-                      <v-icon>{{ item.icon }}</v-icon>
-                    </v-list-item-action>
-                    <v-list-item-content>
-                      <v-list-item-title>{{ item.title }}</v-list-item-title>
-                    </v-list-item-content>
-                  </v-list-item>
-                </v-list>
-              </v-menu>
-              <v-list-item-action v-if="item.icon">
-                <v-icon>{{ item.icon }}</v-icon>
-              </v-list-item-action>
-              <v-list-item-content>
-                <v-list-item-title>{{ item.title }}</v-list-item-title>
-              </v-list-item-content>
-            </template>
+          <v-list-item
+            v-for="(item, index) in profileMenus"
+            :to="!item.href ? { name: item.name } : null"
+            :href="item.href"
+            @click="item.click"
+            ripple="ripple"
+            :disabled="item.disabled"
+            :target="item.target"
+            rel="noopener"
+            :key="index"
+          >
+            <v-list-item-action v-if="item.icon">
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item-content>
           </v-list-item>
         </v-list>
       </v-menu>
@@ -105,7 +70,6 @@
 import Util from '@/util'
 import { mapActions, mapGetters } from 'vuex'
 import localStorage from '@/config/localStorage'
-
 export default {
   name: 'AppToolbar',
   props: {
@@ -166,30 +130,14 @@ export default {
         {
           icon: 'account_circle',
           href: '#',
-          title: this.$vuetify.lang.t('$vuetify.menu.user_profile'),
-          click: this.handleProfile,
-          children: []
-        },
-        {
-          icon: 'settings',
-          href: '#',
-          title: this.$vuetify.lang.t('$vuetify.menu.setting'),
-          click: this.handleSetting,
-          children: [
-            {
-              icon: 'mdi-account-multiple',
-              href: '#',
-              title: this.$vuetify.lang.t('$vuetify.menu.user_list'),
-              click: this.handlerUser
-            }
-          ]
+          title: this.$vuetify.lang.t('$vuetify.menu.profile'),
+          click: this.handleProfile
         },
         {
           icon: 'mdi-logout',
           href: '#',
           title: this.$vuetify.lang.t('$vuetify.menu.logout'),
-          click: this.handleLogout,
-          children: []
+          click: this.handleLogout
         }
       ]
     }
@@ -213,10 +161,7 @@ export default {
     },
     handleSetting() {},
     handleProfile() {
-      this.$router.push({name: 'Profile'})
-    },
-    handlerUser(){
-      this.$router.push({name:'ListUser'})
+      this.$router.push({ name: 'Profile' })
     }
   },
   created() {

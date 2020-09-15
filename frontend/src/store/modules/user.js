@@ -55,7 +55,7 @@ const state = {
   },
   isUserTableLoading: false,
   isActionInProgress: false,
-  isTableLoading: false,
+  isTableLoading: false
 }
 
 const mutations = {
@@ -92,6 +92,7 @@ const mutations = {
       aboutMe: '',
       avatar: ''
     }
+    state.saved = true
   },
   [USER_EDIT](state, userId) {
     state.editUser = state.users.filter((node) => node.id === userId)[0]
@@ -120,18 +121,15 @@ const mutations = {
     state.editUser.push(profile)
   },
   [USER_DELETED](state) {
-    console.log({ state })
+    state.saved = true
   },
   [SET_USER_AVATAR](state, avatar) {
     state.avatar = avatar
     state.saved = true
   },
-  [FAILED_USER] (state, error) {
-    this._vm.$Toast.fire({
-      icon: 'error',
-      title: error
-    }).then(r => {})
-  },
+  [FAILED_USER](state) {
+    state.saved = false
+  }
 }
 
 const getters = {}
@@ -156,22 +154,26 @@ const actions = {
       .then(() => commit(USER_TABLE_LOADING, false))
       .catch((error) => commit(FAILED_USER, error))
   },
-  async createUser({ commit, dispatch }) {
+  async createUser({ commit, dispatch },newUser) {
     commit(ENV_DATA_PROCESS, true)
+    commit('CLEAR_ERRORS', null, { root: true })
 
     await user
-      .sendUpdateRequest(state.newUser)
-      .then(() => commit(USER_CREATED))
-      .then(() => commit(ENV_DATA_PROCESS, false))
-      .then(() => dispatch('user/getUsers', null, { root: true }))
-      .catch((error) => commit(FAILED_USER, error))
+      .sendCreateRequest(newUser)
+      .then(() => {
+        commit(USER_CREATED)
+        commit(ENV_DATA_PROCESS, false)
+        dispatch('user/getUsers', null, { root: true })
+      })
+      .catch((error) => commit('SET_ERRORS', error, { root: true }))
   },
   async updateUser({ commit, dispatch }, profile) {
+    commit('CLEAR_ERRORS', null, { root: true })
     const request = profile ? profile : state.editUser
-    console.log(request)
+
     await user
       .sendUpdateRequest(request)
-      .then(({ data }) => {
+      .then(() => {
         commit(USER_UPDATED)
         commit(ENV_DATA_PROCESS, false)
         dispatch('auth/getUserData', null, { root: true })
@@ -179,12 +181,15 @@ const actions = {
       .catch((error) => commit('SET_ERRORS', error, { root: true }))
   },
   async deleteUser({ commit, dispatch }, userId) {
-    console.log(userId)
+    commit('CLEAR_ERRORS', null, { root: true })
+
     await user
       .sendDeleteRequest(userId)
-      .then(() => commit(USER_DELETED))
-      .then(() => dispatch('user/getUsers', null, { root: true }))
-      .catch((error) => commit(FAILED_USER, error))
+      .then(() => {
+        commit(USER_DELETED)
+        dispatch('user/getUsers', null, { root: true })
+      })
+      .catch((error) => commit('SET_ERRORS', error, { root: true }))
   },
 
   async updateAvatar({ commit, dispatch }, file) {
@@ -193,7 +198,7 @@ const actions = {
       id: file.id,
       image: image
     }
-    await user.updateAvatar(sendData).then((response) => {
+    await user.updateAvatar(sendData).then(() => {
       commit(SET_USER_AVATAR, file.file.base64)
       dispatch('auth/getUserData', null, { root: true })
     })

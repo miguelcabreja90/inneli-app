@@ -35,8 +35,8 @@ export default {
     access_denied: 'Acceso denegado',
     verify: 'Verificar Correo',
     welcome: 'Bienvenido',
-    user_profile: 'Perfil de Usuario',
-    logout: 'Cerrar sección',
+    profile: 'Perfil',
+    logout: 'Salir',
     user_list: 'Listado de Usuarios'
   },
   //settings

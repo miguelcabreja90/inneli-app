@@ -2,7 +2,11 @@
   <v-dialog v-model="toogleNewModal" max-width="600px">
     <v-card>
       <v-card-title>
-        <span class="headline">{{$vuetify.lang.t('$vuetify.titles.new', [$vuetify.lang.t('$vuetify.user.user')])}}</span>
+        <span class="headline">{{
+          $vuetify.lang.t('$vuetify.titles.new', [
+            $vuetify.lang.t('$vuetify.user.user')
+          ])
+        }}</span>
       </v-card-title>
       <v-card-text>
         <v-form ref="form" class="my-10" lazy-validation v-model="formValid">
@@ -12,43 +16,74 @@
                 v-model="newUser.firstName"
                 :counter="10"
                 :label="$vuetify.lang.t('$vuetify.firstName')"
-                required :rules="formRule.firstName"
+                required
+                :rules="formRule.firstName"
               ></v-text-field>
             </v-col>
             <v-col cols="12" md="4">
               <v-text-field
                 :counter="10"
+                v-model="newUser.lastName"
                 :label="$vuetify.lang.t('$vuetify.lastName')"
                 required
               ></v-text-field>
             </v-col>
             <v-col cols="12" md="4">
-              <v-text-field v-model="newUser.company" :counter="25"
-                            :label="$vuetify.lang.t('$vuetify.company')" :rules="formRule.company"
+              <v-text-field
+                v-model="newUser.company"
+                :counter="25"
+                :label="$vuetify.lang.t('$vuetify.company')"
+                :rules="formRule.company"
               ></v-text-field>
             </v-col>
             <v-col cols="12" md="4">
-              <v-text-field autocomplete="off" v-model="newUser.email" :rules="formRule.email"
-                            :label="$vuetify.lang.t('$vuetify.email')" required>
+              <v-text-field
+                autocomplete="off"
+                v-model="newUser.email"
+                :rules="formRule.email"
+                :label="$vuetify.lang.t('$vuetify.email')"
+                required
+              >
               </v-text-field>
             </v-col>
             <v-col cols="12" md="4">
-              <v-text-field autocomplete="off"
-                            v-model="newUser.username"
-                            :counter="8" :label="$vuetify.lang.t('$vuetify.username')"
-                            required
+              <v-text-field
+                autocomplete="off"
+                v-model="newUser.username"
+                :counter="8"
+                :label="$vuetify.lang.t('$vuetify.username')"
+                required
               ></v-text-field>
             </v-col>
             <v-col cols="12" md="4">
               <v-select
+                v-bind:items="arrayCountry"
+                :rules="formRule.country"
                 v-model="newUser.country"
                 item-text="name"
                 item-value="id"
-                color="pink"
-                :items="arrayCountry"
                 :label="$vuetify.lang.t('$vuetify.country')"
                 required
-              ></v-select>
+                clearable
+              >
+                <template slot="item" slot-scope="data">
+                  <template v-if="typeof data.item !== 'object'">
+                    <v-list-item-content
+                      v-text="data.item"
+                    ></v-list-item-content>
+                  </template>
+                  <template v-else>
+                    <v-list-item-avatar>
+                      {{ data.item.emoji }}
+                    </v-list-item-avatar>
+                    <v-list-item-content>
+                      <v-list-item-title
+                        v-html="data.item.name"
+                      ></v-list-item-title>
+                    </v-list-item-content>
+                  </template>
+                </template>
+              </v-select>
             </v-col>
           </v-row>
           <v-row>
@@ -57,9 +92,9 @@
                 autocomplete="off"
                 name="password"
                 :label="$vuetify.lang.t('$vuetify.password')"
-                :placeholder="$vuetify.lang.t('$vuetify.password')"
                 type="password"
-                required :rules="formRule.password"
+                required
+                :rules="formRule.password"
                 v-model="newUser.password"
               />
             </v-col>
@@ -68,7 +103,6 @@
                 autocomplete="off"
                 name="password_confirmation"
                 :label="$vuetify.lang.t('$vuetify.confirm_password')"
-                :placeholder="$vuetify.lang.t('$vuetify.confirm_password')"
                 type="password"
                 :rules="formRule.password_confirmation"
                 required
@@ -76,22 +110,29 @@
               />
             </v-col>
             <v-col cols="12" md="4">
-              <v-text-field class="hiddenSpinner" autocomplete="off" name="phone"
-                            :label="$vuetify.lang.t('$vuetify.phone')"
-                            :placeholder="$vuetify.lang.t('$vuetify.phone')" type="number" required
-                            v-model="newUser.phone"/>
+              <v-text-field
+                class="hiddenSpinner"
+                autocomplete="off"
+                name="phone"
+                :label="$vuetify.lang.t('$vuetify.phone')"
+                type="number"
+                required
+                v-model="newUser.phone"
+              />
             </v-col>
           </v-row>
           <v-row>
             <v-col cols="12" md="12">
               <v-text-field
-                v-model="newUser.address" :label="$vuetify.lang.t('$vuetify.address')"
+                v-model="newUser.address"
+                :label="$vuetify.lang.t('$vuetify.address')"
                 required
               ></v-text-field>
             </v-col>
             <v-col cols="12" md="12">
               <v-text-field
-                v-model="newUser.aboutMe" :label="$vuetify.lang.t('$vuetify.about_me')"
+                v-model="newUser.aboutMe"
+                :label="$vuetify.lang.t('$vuetify.about_me')"
                 required
               ></v-text-field>
             </v-col>
@@ -104,7 +145,12 @@
           <v-icon>mdi-close</v-icon>
           {{ $vuetify.lang.t('$vuetify.actions.cancel') }}
         </v-btn>
-        <v-btn color="primary" class="mb-2" @click="createNewUser" :disabled="!formValid">
+        <v-btn
+          color="primary"
+          class="mb-2"
+          @click="createNewUser"
+          :disabled="!formValid"
+        >
           <v-icon>mdi-check</v-icon>
           {{ $vuetify.lang.t('$vuetify.actions.save') }}
         </v-btn>
@@ -114,10 +160,10 @@
 </template>
 
 <script>
-import {mapActions, mapState} from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 export default {
-  name: "NewUser",
+  name: 'NewUser',
   data() {
     return {
       formValid: false,
@@ -125,7 +171,8 @@ export default {
       formRule: {
         firstName: [
           (v) =>
-            !!v || this.$vuetify.lang.t('$vuetify.rule.required', [
+            !!v ||
+            this.$vuetify.lang.t('$vuetify.rule.required', [
               this.$vuetify.lang.t('$vuetify.name')
             ])
         ],
@@ -166,7 +213,9 @@ export default {
             ]),
           (v) =>
             (!!v && v) === this.newUser.password ||
-            this.$vuetify.lang.t('$vuetify.rule.match', [this.$vuetify.lang.t('$vuetify.password')],
+            this.$vuetify.lang.t(
+              '$vuetify.rule.match',
+              [this.$vuetify.lang.t('$vuetify.password')],
               [this.$vuetify.lang.t('$vuetify.confirm_password')]
             )
         ]
@@ -178,22 +227,24 @@ export default {
     async createNewUser() {
       if (this.$refs.form.validate()) {
         this.loading = true
-        await this.createUser().then(() => {
+        await this.createUser(this.newUser).then(() => {
           if (this.saved) {
             this.loading = false
-            const msg = this.$vuetify.lang.t('$vuetify.messages.success_profile')
+            const msg = this.$vuetify.lang.t(
+              '$vuetify.messages.success_profile'
+            )
             this.$Toast.fire({
               icon: 'success',
               title: msg
             })
           }
         })
-      }
-    },
+      } 
+    }
   },
   computed: {
     ...mapState('statics', ['arrayCountry']),
-    ...mapState('user', ['saved','newUser'])
+    ...mapState('user', ['saved', 'newUser'])
   },
   mounted() {
     this.formValid = false

@@ -28,7 +28,8 @@ class UserController extends Controller
     {
         $users = User::latest()->with('roles')->get();
 
-        return ResponseHelper::sendResponse($users,
+        return ResponseHelper::sendResponse(
+            $users,
             'Users retrieved successfully.'
         );
     }
@@ -41,7 +42,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        Auth::user()->authorizeRoles('admin');
+        //Auth::user()->authorizeRoles('admin');
 
         $this->validator($request->all())->validate();
 
@@ -51,7 +52,8 @@ class UserController extends Controller
             ->roles()
             ->attach(Role::where('name', 'user')->first());
 
-        return ResponseHelper::sendResponse($created,
+        return ResponseHelper::sendResponse(
+            $created,
             'User has created successfully.'
         );
     }
@@ -76,7 +78,7 @@ class UserController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        Auth::user()->authorizeRoles(['user', 'admin']);
+        //Auth::user()->authorizeRoles(['user', 'admin']);
 
         $this->validator($request->all())->validate();
 
@@ -90,7 +92,7 @@ class UserController extends Controller
 
     public function updateAvatar(Request $request, $id)
     {
-        Auth::user()->authorizeRoles(['user', 'admin']);
+        //Auth::user()->authorizeRoles(['user', 'admin']);
 
         if (!empty($request)) {
             $app = (new User())->find($id);
@@ -117,7 +119,7 @@ class UserController extends Controller
      */
     public function destroy(int $id)
     {
-        Auth::user()->authorizeRoles('admin');
+       //Auth::user()->authorizeRoles('admin');
 
         $delete = User::findOrFail($id)->delete();
         return ResponseHelper::sendResponse(
