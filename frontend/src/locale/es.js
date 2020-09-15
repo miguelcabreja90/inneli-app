@@ -67,25 +67,25 @@ export default {
     refused: 'Fallido: Conexión rechazada.',
     success_avatar: 'La imagen se salvado satisfactoriamente.',
     success_profile: 'Los datos han sido actualizados.',
-    warning_delete:"No se podrá revertir esta acción!"
+    warning_delete: 'No se podrá revertir esta acción!'
   },
   //options
   actions: {
     actions: 'Acciones',
-    accept:'Aceptar',
+    accept: 'Aceptar',
     search: 'Buscar',
     new: 'Nuevo',
     edit: 'Editar',
     delete: 'Eliminar',
     list: 'Listar',
-    save:'Guardar',
-    cancel:'Cancelar'
+    save: 'Guardar',
+    cancel: 'Cancelar'
   },
   titles: {
     list: 'Lista de {0}',
     new: 'Nuevo {0}',
-    edit:'Editar {0}',
-    delete:'Eliminar {0}'
+    edit: 'Editar {0}',
+    delete: 'Eliminar {0}'
   },
   ...es
 }
