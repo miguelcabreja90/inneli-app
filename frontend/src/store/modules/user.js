@@ -1,7 +1,5 @@
 import user from '@/api/user'
 
-const USER_ENABLED = true
-
 const FETCHING_USERS = 'FETCHING_USERS'
 const SWITCH_USER_NEW_MODAL = 'SWITCH_USER_NEW_MODAL'
 const SWITCH_USER_EDIT_MODAL = 'SWITCH_USER_EDIT_MODAL'
@@ -154,7 +152,7 @@ const actions = {
       .then(() => commit(USER_TABLE_LOADING, false))
       .catch((error) => commit(FAILED_USER, error))
   },
-  async createUser({ commit, dispatch },newUser) {
+  async createUser({ commit, dispatch }, newUser) {
     commit(ENV_DATA_PROCESS, true)
     commit('CLEAR_ERRORS', null, { root: true })
 
