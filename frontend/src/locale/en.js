@@ -14,6 +14,8 @@ export default {
   register: 'Register',
   noDefined: 'No defined',
   aboutMe: 'About me',
+  noId:'No. Id',
+  sex:'Sex',
   activeAccount:
     'Hello, your account has been created, but it has not been activated yet. Please access the registered email, you have been sent a message for activation.',
   confirm_password: 'Confirm Password',
@@ -29,12 +31,15 @@ export default {
   wait: 'Please a wait...',
   // menu
   menu: {
+    setting:'Setting',
     home: 'Home',
     dashboard: 'Dashboard',
     access_denied: 'Access Deny',
     verify: 'Email Verify',
     welcome: 'Welcome',
-    user_profile: 'User Profile'
+    user_profile: 'User Profile',
+    logout:'Logout',
+    user_list:'User List'
   },
   //settings
   settings: {
@@ -43,6 +48,7 @@ export default {
     lang: 'Language',
     sidebar: 'Sidebar Option'
   },
+  //rules
   rule: {
     required: '{0} is required',
     min: 'Just a minimum of {0} characters is allowed',
@@ -56,14 +62,33 @@ export default {
   messages: {
     refused: 'Failed: Connections refused.',
     success_avatar: 'The image was successfully saved.',
-    success_profile: 'The data has been updated.'
+    success_profile: 'The data has been updated.',
+    warning_delete:"You won't be able to revert this!"
+
   },
   //user
   user: {
+    user:'User',
     edit_profile: 'Edit Profile',
     sub_profile: 'Complete your profile',
     btn_edit: 'Update'
+  },  //options
+  actions:{
+    actions:'Actions',
+    accept:'Accept',
+    search:'Search',
+    new:'New',
+    edit:'Edit',
+    delete:'Delete',
+    list:'List',
+    save:'Save',
+    cancel:'Cancel'
   },
-
+  titles:{
+    list:'{0} List',
+    new:'New {0}',
+    edit:'Edit {0}',
+    delete:'Delete {0}'
+  },
   ...en
 }

@@ -155,13 +155,8 @@
                   />
                 </v-flex>
                 <v-flex xs12 text-xs-right>
-                  <v-btn
-                    class="mx-0 font-weight-light"
-                    color="primary"
-                    @click="updateProfile"
-                    :loading="loading"
-                    :disabled="!formValid"
-                  >
+                  <v-btn class="mx-0 font-weight-light" color="primary" @click="updateProfile" :loading="loading"
+                    :disabled="!formValid">
                     <v-icon>mdi-account-edit</v-icon>
                     {{ $vuetify.lang.t('$vuetify.user.btn_edit') }}
                   </v-btn>

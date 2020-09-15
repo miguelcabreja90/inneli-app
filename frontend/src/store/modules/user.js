@@ -16,6 +16,8 @@ const SET_EDIT_USER = 'SET_EDIT_USER'
 const SET_USER_AVATAR = 'SET_USER_AVATAR'
 
 const state = {
+  showNewModal: false,
+  showEditModal: false,
   users: [],
   avatar: '',
   loading: false,
@@ -52,7 +54,8 @@ const state = {
     avatar: ''
   },
   isUserTableLoading: false,
-  isActionInProgress: false
+  isActionInProgress: false,
+  isTableLoading: false,
 }
 
 const mutations = {
@@ -66,6 +69,7 @@ const mutations = {
     state.isUserTableLoading = isLoading
   },
   [FETCHING_USERS](state, users) {
+    console.log(users)
     state.users = users
   },
   [ENV_DATA_PROCESS](state, isActionInProgress) {
@@ -90,10 +94,7 @@ const mutations = {
     }
   },
   [USER_EDIT](state, userId) {
-    state.editUser = Object.assign(
-      {},
-      state.users.filter((node) => node.node.id === userId).shift().node
-    )
+    state.editUser = state.users.filter((node) => node.id === userId)[0]
   },
   [USER_UPDATED](state) {
     state.showEditModal = false
@@ -124,7 +125,13 @@ const mutations = {
   [SET_USER_AVATAR](state, avatar) {
     state.avatar = avatar
     state.saved = true
-  }
+  },
+  [FAILED_USER] (state, error) {
+    this._vm.$Toast.fire({
+      icon: 'error',
+      title: error
+    }).then(r => {})
+  },
 }
 
 const getters = {}
@@ -145,7 +152,7 @@ const actions = {
     // noinspection JSUnresolvedVariable
     await user
       .fetchUsers()
-      .then(({ data }) => commit(FETCHING_USERS, data.users.edges))
+      .then(({ data }) => commit(FETCHING_USERS, data.data))
       .then(() => commit(USER_TABLE_LOADING, false))
       .catch((error) => commit(FAILED_USER, error))
   },
@@ -160,8 +167,8 @@ const actions = {
       .catch((error) => commit(FAILED_USER, error))
   },
   async updateUser({ commit, dispatch }, profile) {
-    console.log(profile)
     const request = profile ? profile : state.editUser
+    console.log(request)
     await user
       .sendUpdateRequest(request)
       .then(({ data }) => {
@@ -172,6 +179,7 @@ const actions = {
       .catch((error) => commit('SET_ERRORS', error, { root: true }))
   },
   async deleteUser({ commit, dispatch }, userId) {
+    console.log(userId)
     await user
       .deleteUser(userId)
       .then(() => commit(USER_DELETED))

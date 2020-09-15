@@ -103,6 +103,16 @@ export const protectedRoute = [
           requiresAuth: true
         },
         component: () => import('@/views/user/Profile')
+      },
+      {
+        path: '/user',
+        name: 'ListUser',
+        meta: {
+          title: 'user_list',
+          hiddenInMenu: true,
+          requiresAuth: true
+        },
+        component: () => import('@/views/user/ListUser')
       }
     ]
   },

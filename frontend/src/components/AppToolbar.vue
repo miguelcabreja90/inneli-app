@@ -1,10 +1,11 @@
 <template>
   <v-app-bar color="primary" dark app>
-    <v-app-bar-nav-icon v-if="showNavIcon" @click="handleDrawerToggle" />
-    <v-spacer />
+    <v-app-bar-nav-icon v-if="showNavIcon" @click="handleDrawerToggle"/>
+    <v-spacer/>
     <v-toolbar-items>
       <v-btn icon @click="handleFullScreen()">
         <v-icon>fullscreen</v-icon>
+        2
       </v-btn>
       <v-menu
         v-if="showMenuLang"
@@ -25,51 +26,82 @@
         style="width:8em"
         @change="handleChangeLocale($event)"
       ></v-select>
-      <v-menu
-        v-if="showMenuUser"
-        offset-y
-        origin="center center"
-        transition="scale-transition"
-      >
+      <v-menu v-if="showMenuUser" offset-y origin="center center" transition="scale-transition">
         <template v-slot:activator="{ on }">
           <v-btn icon large text slot="activator" v-on="on">
             <v-avatar size="30px">
-              <img src="/static/avatar/man_4.jpg" alt="Michael Wang" />
+              <img src="/static/avatar/man_4.jpg" alt="Michael Wang"/>
             </v-avatar>
           </v-btn>
         </template>
         <v-list class="pa-0">
-          <v-list-item
-            v-for="(item, index) in profileMenus"
-            :to="!item.href ? { name: item.name } : null"
-            :href="item.href"
-            @click="item.click"
-            ripple="ripple"
-            :disabled="item.disabled"
-            :target="item.target"
-            rel="noopener"
-            :key="index"
-          >
-            <v-list-item-action v-if="item.icon">
-              <v-icon>{{ item.icon }}</v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
-            </v-list-item-content>
+          <v-list-item v-for="(item, index) in profileMenus" :to="!item.href ? { name: item.name } : null"
+                       :href="item.href" @click="item.click" ripple="ripple" :disabled="item.disabled"
+                       :target="item.target" rel="noopener" :key="index">
+            <template v-if="item.children.length==0">
+              <v-list-item-action v-if="item.icon">
+                <v-icon>{{ item.icon }}</v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
+                <template v-if="item.children.length !==0">
+                  <v-menu offset-x origin="center center" transition="scale-transition">
+                    <template v-slot:activator="{ on }"><v-icon  v-on="on">mdi-backburger</v-icon>
+                    </template>
+                    <v-list class="pa-0">
+                      <v-list-item v-for="(item, index) in profileMenus" :to="!item.href ? { name: item.name } : null"
+                                   :href="item.href" @click="item.click" ripple="ripple" :disabled="item.disabled"
+                                   :target="item.target" rel="noopener" :key="index">
+                        <v-list-item-action v-if="item.icon">
+                          <v-icon>{{ item.icon }}</v-icon>
+                        </v-list-item-action>
+                        <v-list-item-content>
+                          <v-list-item-title>{{ item.title }}</v-list-item-title>
+                        </v-list-item-content>
+                      </v-list-item>
+                    </v-list>
+                  </v-menu>
+                </template>
+              </v-list-item-content>
+            </template>
+            <template v-else>
+              <v-menu offset-x origin="center center" transition="scale-transition">
+                <template v-slot:activator="{ on }"><v-icon  v-on="on">mdi-menu-left</v-icon></template>
+                <v-list class="pa-0">
+                  <v-list-item v-for="(item, index) in item.children" :to="!item.href ? { name: item.name } : null"
+                               :href="item.href" @click="item.click" ripple="ripple" :disabled="item.disabled"
+                               :target="item.target" rel="noopener" :key="index">
+                    <v-list-item-action v-if="item.icon">
+                      <v-icon>{{ item.icon }}</v-icon>
+                    </v-list-item-action>
+                    <v-list-item-content>
+                      <v-list-item-title>{{ item.title }}</v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                </v-list>
+              </v-menu>
+              <v-list-item-action v-if="item.icon">
+                <v-icon>{{ item.icon }}</v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
+              </v-list-item-content>
+            </template>
           </v-list-item>
         </v-list>
       </v-menu>
     </v-toolbar-items>
     <v-toolbar tag="div" dense slot="extension" color="white" light>
       <v-icon>mdi-home</v-icon>
-      <v-breadcrumbs :items="breadcrumbs" class="pa-3" />
+      <v-breadcrumbs :items="breadcrumbs" class="pa-3"/>
     </v-toolbar>
   </v-app-bar>
 </template>
 <script>
 import Util from '@/util'
-import { mapActions } from 'vuex'
+import {mapActions} from 'vuex'
 import localStorage from '@/config/localStorage'
+
 export default {
   name: 'AppToolbar',
   props: {
@@ -92,20 +124,30 @@ export default {
         {
           icon: 'account_circle',
           href: '#',
-          title: 'Profile',
-          click: this.handleProfile
+          title: this.$vuetify.lang.t('$vuetify.menu.user_profile'),
+          click: this.handleProfile,
+          children: []
         },
         {
           icon: 'settings',
           href: '#',
-          title: 'Settings',
-          click: this.handleSetting
+          title: this.$vuetify.lang.t('$vuetify.menu.setting'),
+          click: this.handleSetting,
+          children: [
+            {
+              icon: 'account',
+              href: '#',
+              title: this.$vuetify.lang.t('$vuetify.username'),
+              click: this.handlerUser
+            }
+          ]
         },
         {
           icon: 'fullscreen_exit',
           href: '#',
-          title: 'Logout',
-          click: this.handleLogout
+          title: this.$vuetify.lang.t('$vuetify.menu.logout'),
+          click: this.handleLogout,
+          children: []
         }
       ]
     }
@@ -115,7 +157,7 @@ export default {
       return this.$vuetify.options.extra.mainNav
     },
     availableLanguages() {
-      const { locales } = this.$vuetify.lang
+      const {locales} = this.$vuetify.lang
       return Object.keys(locales).map((lang) => {
         return {
           text: locales[lang].label,
@@ -130,7 +172,7 @@ export default {
       return find.text
     },
     breadcrumbs() {
-      const { matched } = this.$route
+      const {matched} = this.$route
       return matched.map((route, index) => {
         const to =
           index === matched.length - 1
@@ -163,12 +205,17 @@ export default {
       this.$vuetify.lang.current = value
       localStorage.setLanguage(value)
     },
-    handleSetting() {},
+    handleSetting() {
+    },
     handleProfile() {
-      this.$router.push({ name: 'Profile' })
+      this.$router.push({name: 'Profile'})
+    },
+    handlerUser(){
+      this.$router.push({name:'ListUser'})
     }
   },
-  created() {}
+  created() {
+  }
 }
 </script>
 

@@ -14,8 +14,9 @@ export default {
   register: 'Registrar',
   noDefined: 'No definido',
   aboutMe: 'Acerca de mi',
-  activeAccount:
-    'Hola, su cuenta se ha creada, pero aún no ha sido activada. Por favor, acceda al correo registrado, se le ha enviado un mensaje para la activación.',
+  noId:'No. Id',
+  sex:'Sexo',
+  activeAccount: 'Hola, su cuenta se ha creada, pero aún no ha sido activada. Por favor, acceda al correo registrado, se le ha enviado un mensaje para la activación.',
   confirm_password: 'Confirmar Contraseña',
   company: 'Compañía',
   first_name: 'Nombre(s)',
@@ -25,16 +26,19 @@ export default {
   country: 'País',
   postal_code: 'Código Postal',
   about_me: 'Acerca de mi',
-  phone:'Teléfono',
+  phone: 'Teléfono',
   wait: 'Espere por favor...',
   // menu
   menu: {
+    setting: 'Configuración',
     home: 'Inicio',
     dashboard: 'Dashboard',
     access_denied: 'Acceso denegado',
     verify: 'Verificar Correo',
     welcome: 'Bienvenido',
-    user_profile: 'Perfil de Usuario'
+    user_profile: 'Perfil de Usuario',
+    logout: 'Cerrar sección',
+    user_list: 'Listado de Usuarios'
   },
   //settings
   settings: {
@@ -51,10 +55,11 @@ export default {
     length: 'Este campo necesita {0} caracteres',
     match: 'Los parámetros {0} y la {1} no son iguales',
     bad_email: '{0} debe ser válido',
-    required_element:'Este campo es requerido'
+    required_element: 'Este campo es requerido'
   },
   //user
   user: {
+    user: 'Usuario',
     edit_profile: 'Editar Perfil',
     sub_profile: 'Complete su perfil',
     btn_edit: 'Actualizar'
@@ -62,7 +67,26 @@ export default {
   messages: {
     refused: 'Fallido: Conexión rechazada.',
     success_avatar: 'La imagen se salvado satisfactoriamente.',
-    success_profile: 'Los datos han sido actualizados.'
+    success_profile: 'Los datos han sido actualizados.',
+    warning_delete:"No se podrá revertir esta acción!"
+  },
+  //options
+  actions: {
+    actions: 'Acciones',
+    accept:'Aceptar',
+    search: 'Buscar',
+    new: 'Nuevo',
+    edit: 'Editar',
+    delete: 'Eliminar',
+    list: 'Listar',
+    save:'Guardar',
+    cancel:'Cancelar'
+  },
+  titles: {
+    list: 'Lista de {0}',
+    new: 'Nuevo {0}',
+    edit:'Editar {0}',
+    delete:'Eliminar {0}'
   },
   ...es
 }
