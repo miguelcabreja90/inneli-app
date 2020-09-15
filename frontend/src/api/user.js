@@ -4,11 +4,12 @@ export default {
   fetchUsers() {
     return api.get('user')
   },
-  sendCreateRequest(user) {
-    return api.post('user', user)
+  sendCreateRequest(user){
+
+    return api.post('users', user)
   },
   sendUpdateRequest(user) {
-    return api.put('user' + user.id, user)
+    return api.put('user/' + user.id, user)
   },
   sendDeleteRequest(userId) {
     return api.remove('user/' + userId)
