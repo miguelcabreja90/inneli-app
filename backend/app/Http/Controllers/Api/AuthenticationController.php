@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 /**
@@ -33,6 +31,7 @@ class AuthenticationController extends Controller
     public function user()
     {
         return auth()->user();
+        //return User::findOrFail(auth()->id())
     }
 
     /**

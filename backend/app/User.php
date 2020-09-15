@@ -121,7 +121,6 @@ class User extends Authenticatable implements MustVerifyEmail
             switch ($value) {
                 case 'password':
                     if (!empty($request->get($value))) {
-                        //$user->password = bcrypt($request->get($value));
                         $user->password = Hash::make($request->get($value));
                     }
                     break;

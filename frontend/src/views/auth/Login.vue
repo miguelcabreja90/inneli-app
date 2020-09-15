@@ -56,8 +56,6 @@
             </v-tooltip>
             <v-spacer />
             <v-btn
-              large
-              tile
               color="primary"
               @click="login"
               :loading="loading"
@@ -66,7 +64,7 @@
               <v-icon>mdi-account</v-icon>
               {{ $vuetify.lang.t('$vuetify.login') }}
             </v-btn>
-            <v-btn large tile color="secondary" :to="{ name: 'register' }">
+            <v-btn color="secondary" :to="{ name: 'register' }">
               <v-icon>mdi-account-plus</v-icon>
               {{ $vuetify.lang.t('$vuetify.register') }}
             </v-btn>
@@ -121,16 +119,14 @@ export default {
     login() {
       if (this.$refs.form.validate()) {
         this.loading = true
-        setTimeout(() => {
-          this.sendLoginRequest(this.fromModel).then(() => {
-            if (this.isLoggedIn) {
-              this.loading = false
-              this.$router.push('/dashboard')
-            } else {
-              this.loading = false
-            }
-          })
-        }, 1000)
+        this.sendLoginRequest(this.fromModel).then(() => {
+          if (this.isLoggedIn) {
+            this.loading = false
+            this.$router.push('/dashboard')
+          } else {
+            this.loading = false
+          }
+        })
       }
     },
     handleSocialLogin() {}

@@ -3,19 +3,23 @@
     <v-layout justify-center wrap>
       <v-flex xs12 md4 style="margin-top: 50px">
         <material-card class="v-card-profile">
-          <base64-upload
-            class="user mx-auto d-block"
-            :imageSrc="userData.avatar"
-            :imageStyle="{ 'border-radius': '50%' }"
-            @change="onChangeImage($event)"
-          ></base64-upload>
-          <v-slide-x-transition>
-            <div v-if="saved === false">
-              <v-btn icon class="mx-auto d-block" :loading="saving">
-                <v-icon>mdi-content-save</v-icon>
-              </v-btn>
-            </div>
-          </v-slide-x-transition>
+          <v-row align="end" class="fill-height">
+            <v-col align-self="start" class="pa-0" cols="12">
+              <base64-upload
+                class="user mx-auto d-block"
+                :imageSrc="getAvatar"
+                :imageStyle="{ 'border-radius': '50%' }"
+                @change="onChangeImage($event)"
+              ></base64-upload>
+              <v-slide-x-transition>
+                <div v-if="saving === true && saved === false">
+                  <v-btn icon class="mx-auto d-block" :loading="saving">
+                    <v-icon>mdi-content-save</v-icon>
+                  </v-btn>
+                </div>
+              </v-slide-x-transition>
+            </v-col>
+          </v-row>
           <v-list two-line class="pa-0">
             <v-list-item href="#">
               <v-list-item-action>
@@ -112,33 +116,37 @@
                     :label="$vuetify.lang.t('$vuetify.address')"
                   />
                 </v-flex>
-                <v-flex xs12 md4>
+                <v-flex xs12 md6>
                   <v-select
+                    v-bind:items="arrayCountry"
                     :rules="formRule.country"
                     v-model="userData.country"
-                    :items="country"
-                    item-text="country"
-                    item-value="country"
-                    color="pink"
-                    @change="changeCountry"
+                    item-text="name"
+                    item-value="id"
                     :label="$vuetify.lang.t('$vuetify.country')"
                     required
-                  ></v-select>
+                    clearable
+                  >
+                    <template slot="item" slot-scope="data">
+                      <template v-if="typeof data.item !== 'object'">
+                        <v-list-item-content
+                          v-text="data.item"
+                        ></v-list-item-content>
+                      </template>
+                      <template v-else>
+                        <v-list-item-avatar>
+                          {{ data.item.emoji }}
+                        </v-list-item-avatar>
+                        <v-list-item-content>
+                          <v-list-item-title
+                            v-html="data.item.name"
+                          ></v-list-item-title>
+                        </v-list-item-content>
+                      </template>
+                    </template>
+                  </v-select>
                 </v-flex>
-                <v-flex xs12 md4>
-                  <v-select
-                    :rules="formRule.city"
-                    v-model="userData.city"
-                    :disabled="disabledCity"
-                    :items="cityCountry"
-                    item-text="city"
-                    item-value="id"
-                    color="pink"
-                    :label="$vuetify.lang.t('$vuetify.city')"
-                    required
-                  ></v-select>
-                </v-flex>
-                <v-flex xs12 md4>
+                <v-flex xs12 md6>
                   <v-text-field
                     counter="5"
                     class="hiddenSpinner"
@@ -155,8 +163,12 @@
                   />
                 </v-flex>
                 <v-flex xs12 text-xs-right>
-                  <v-btn class="mx-0 font-weight-light" color="primary" @click="updateProfile" :loading="loading"
-                    :disabled="!formValid">
+                  <v-btn
+                    color="primary"
+                    @click="updateProfile"
+                    :loading="loading"
+                    :disabled="!formValid"
+                  >
                     <v-icon>mdi-account-edit</v-icon>
                     {{ $vuetify.lang.t('$vuetify.user.btn_edit') }}
                   </v-btn>
@@ -180,10 +192,8 @@ export default {
   data() {
     return {
       color: 'primary',
-      disabledCity: true,
       formValid: false,
       loading: false,
-      cityCountry: [],
       saving: false,
       formRule: {
         company: [
@@ -242,9 +252,12 @@ export default {
   computed: {
     ...mapState('auth', ['userData', 'pending']),
     ...mapState('user', ['saved', 'users']),
-    ...mapState('statics', ['country', 'city']),
+    ...mapState('statics', ['arrayCountry']),
     getFullName() {
-      return `${this.userData.firstName} ${this.userData.lastName}`
+      return `${this.userData.firstName} ${this.userData.lastName || ''}`
+    },
+    getAvatar() {
+      return `${this.userData.avatar || '/static/avatar/avatar-undefined.jpg'}`
     }
   },
   beforeCreate() {
@@ -280,15 +293,6 @@ export default {
           })
         }
       })
-    },
-    changeCountry() {
-      this.disabledCity = false
-      this.cityCountry = this.city.filter(
-        (c) =>
-          c.country_id ==
-          this.country.filter((co) => co.country === this.userData.country)[0]
-            .id
-      )
     },
     validateData() {
       if (this.userData.username === '') this.color = 'warning'

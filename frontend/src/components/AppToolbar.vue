@@ -1,11 +1,10 @@
 <template>
   <v-app-bar color="primary" dark app>
-    <v-app-bar-nav-icon v-if="showNavIcon" @click="handleDrawerToggle"/>
-    <v-spacer/>
+    <v-app-bar-nav-icon v-if="showNavIcon" @click="handleDrawerToggle" />
+    <v-spacer />
     <v-toolbar-items>
       <v-btn icon @click="handleFullScreen()">
         <v-icon>fullscreen</v-icon>
-        2
       </v-btn>
       <v-menu
         v-if="showMenuLang"
@@ -26,11 +25,16 @@
         style="width:8em"
         @change="handleChangeLocale($event)"
       ></v-select>
-      <v-menu v-if="showMenuUser" offset-y origin="center center" transition="scale-transition">
+      <v-menu
+        v-if="showMenuUser"
+        offset-y
+        origin="center center"
+        transition="scale-transition"
+      >
         <template v-slot:activator="{ on }">
           <v-btn icon large text slot="activator" v-on="on">
             <v-avatar size="30px">
-              <img src="/static/avatar/man_4.jpg" alt="Michael Wang"/>
+              <v-icon>mdi-account-circle</v-icon>
             </v-avatar>
           </v-btn>
         </template>
@@ -93,13 +97,13 @@
     </v-toolbar-items>
     <v-toolbar tag="div" dense slot="extension" color="white" light>
       <v-icon>mdi-home</v-icon>
-      <v-breadcrumbs :items="breadcrumbs" class="pa-3"/>
+      <v-breadcrumbs :items="breadcrumbs" class="pa-3" />
     </v-toolbar>
   </v-app-bar>
 </template>
 <script>
 import Util from '@/util'
-import {mapActions} from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import localStorage from '@/config/localStorage'
 
 export default {
@@ -119,45 +123,15 @@ export default {
     }
   },
   data() {
-    return {
-      profileMenus: [
-        {
-          icon: 'account_circle',
-          href: '#',
-          title: this.$vuetify.lang.t('$vuetify.menu.user_profile'),
-          click: this.handleProfile,
-          children: []
-        },
-        {
-          icon: 'settings',
-          href: '#',
-          title: this.$vuetify.lang.t('$vuetify.menu.setting'),
-          click: this.handleSetting,
-          children: [
-            {
-              icon: 'account',
-              href: '#',
-              title: this.$vuetify.lang.t('$vuetify.username'),
-              click: this.handlerUser
-            }
-          ]
-        },
-        {
-          icon: 'fullscreen_exit',
-          href: '#',
-          title: this.$vuetify.lang.t('$vuetify.menu.logout'),
-          click: this.handleLogout,
-          children: []
-        }
-      ]
-    }
+    return {}
   },
   computed: {
+    ...mapGetters('auth', ['isLoggedIn']),
     toolbarColor() {
       return this.$vuetify.options.extra.mainNav
     },
     availableLanguages() {
-      const {locales} = this.$vuetify.lang
+      const { locales } = this.$vuetify.lang
       return Object.keys(locales).map((lang) => {
         return {
           text: locales[lang].label,
@@ -172,7 +146,7 @@ export default {
       return find.text
     },
     breadcrumbs() {
-      const {matched} = this.$route
+      const { matched } = this.$route
       return matched.map((route, index) => {
         const to =
           index === matched.length - 1
@@ -186,10 +160,42 @@ export default {
           disabled: false
         }
       })
+    },
+    profileMenus() {
+      return [
+        {
+          icon: 'account_circle',
+          href: '#',
+          title: this.$vuetify.lang.t('$vuetify.menu.user_profile'),
+          click: this.handleProfile,
+          children: []
+        },
+        {
+          icon: 'settings',
+          href: '#',
+          title: this.$vuetify.lang.t('$vuetify.menu.setting'),
+          click: this.handleSetting,
+          children: [
+            {
+              icon: 'mdi-account-multiple',
+              href: '#',
+              title: this.$vuetify.lang.t('$vuetify.menu.user_list'),
+              click: this.handlerUser
+            }
+          ]
+        },
+        {
+          icon: 'mdi-logout',
+          href: '#',
+          title: this.$vuetify.lang.t('$vuetify.menu.logout'),
+          click: this.handleLogout,
+          children: []
+        }
+      ]
     }
   },
   methods: {
-    ...mapActions('auth', ['sendLogoutRequest']),
+    ...mapActions('auth', ['sendLogoutRequest', 'getUserData']),
     handleDrawerToggle() {
       this.$emit('side-icon-click')
     },
@@ -205,8 +211,7 @@ export default {
       this.$vuetify.lang.current = value
       localStorage.setLanguage(value)
     },
-    handleSetting() {
-    },
+    handleSetting() {},
     handleProfile() {
       this.$router.push({name: 'Profile'})
     },
@@ -215,6 +220,7 @@ export default {
     }
   },
   created() {
+    this.getUserData()
   }
 }
 </script>

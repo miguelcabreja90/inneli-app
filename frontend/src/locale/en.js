@@ -14,8 +14,6 @@ export default {
   register: 'Register',
   noDefined: 'No defined',
   aboutMe: 'About me',
-  noId:'No. Id',
-  sex:'Sex',
   activeAccount:
     'Hello, your account has been created, but it has not been activated yet. Please access the registered email, you have been sent a message for activation.',
   confirm_password: 'Confirm Password',
@@ -27,7 +25,7 @@ export default {
   country: 'Country',
   postal_code: 'Postal Code',
   about_me: 'About Me',
-  phone:'Phone',
+  phone: 'Phone',
   wait: 'Please a wait...',
   // menu
   menu: {
@@ -48,7 +46,6 @@ export default {
     lang: 'Language',
     sidebar: 'Sidebar Option'
   },
-  //rules
   rule: {
     required: '{0} is required',
     min: 'Just a minimum of {0} characters is allowed',
@@ -56,7 +53,7 @@ export default {
     length: 'This field need {0} characters',
     match: '{0} and {1} do not match',
     bad_email: '{0}  must be valid',
-    required_element:'This element is required'
+    required_element: 'This element is required'
   },
   //error
   messages: {

@@ -160,7 +160,7 @@ const actions = {
     commit(ENV_DATA_PROCESS, true)
 
     await user
-      .createUser(state.newUser)
+      .sendUpdateRequest(state.newUser)
       .then(() => commit(USER_CREATED))
       .then(() => commit(ENV_DATA_PROCESS, false))
       .then(() => dispatch('user/getUsers', null, { root: true }))
@@ -181,7 +181,7 @@ const actions = {
   async deleteUser({ commit, dispatch }, userId) {
     console.log(userId)
     await user
-      .deleteUser(userId)
+      .sendDeleteRequest(userId)
       .then(() => commit(USER_DELETED))
       .then(() => dispatch('user/getUsers', null, { root: true }))
       .catch((error) => commit(FAILED_USER, error))

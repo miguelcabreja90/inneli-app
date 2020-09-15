@@ -75,13 +75,13 @@ const actions = {
         commit('SET_ERRORS', response, { root: true })
       })
   },
-  async sendRegisterRequest({ commit }, register) {
+  async sendRegisterRequest({ commit, dispatch }, register) {
     commit('CLEAR_ERRORS', null, { root: true })
     return await auth
       .registerRequest(register)
       .then(({ data }) => {
-        commit(SET_USER_DATA, data.user)
         commit(LOGIN_SUCCESS)
+        dispatch('getUserData')
         localStorage.saveToken(data.token)
       })
       .catch(({ response }) => {

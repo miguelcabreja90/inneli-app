@@ -42,10 +42,10 @@
             <v-col cols="12" md="4">
               <v-select
                 v-model="newUser.country"
-                item-text="country"
-                item-value="country"
+                item-text="name"
+                item-value="id"
                 color="pink"
-                :items="country"
+                :items="arrayCountry"
                 :label="$vuetify.lang.t('$vuetify.country')"
                 required
               ></v-select>
@@ -192,7 +192,7 @@ export default {
     },
   },
   computed: {
-    ...mapState('statics', ['country']),
+    ...mapState('statics', ['arrayCountry']),
     ...mapState('user', ['saved','newUser'])
   },
   mounted() {

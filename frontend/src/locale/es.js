@@ -14,9 +14,8 @@ export default {
   register: 'Registrar',
   noDefined: 'No definido',
   aboutMe: 'Acerca de mi',
-  noId:'No. Id',
-  sex:'Sexo',
-  activeAccount: 'Hola, su cuenta se ha creada, pero aún no ha sido activada. Por favor, acceda al correo registrado, se le ha enviado un mensaje para la activación.',
+  activeAccount:
+    'Hola, su cuenta se ha creada, pero aún no ha sido activada. Por favor, acceda al correo registrado, se le ha enviado un mensaje para la activación.',
   confirm_password: 'Confirmar Contraseña',
   company: 'Compañía',
   first_name: 'Nombre(s)',
