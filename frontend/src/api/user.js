@@ -4,8 +4,7 @@ export default {
   fetchUsers() {
     return api.get('user')
   },
-  sendCreateRequest(user){
-
+  sendCreateRequest(user) {
     return api.post('users', user)
   },
   sendUpdateRequest(user) {
