@@ -120,7 +120,7 @@ export default {
           showCancelButton: true,
           cancelButtonText: this.$vuetify.lang.t('$vuetify.actions.cancel'),
           confirmButtonText: this.$vuetify.lang.t('$vuetify.actions.delete'),
-          confirmButtonColor:'red'
+          confirmButtonColor: 'red'
         })
         .then((result) => {
           if (result.value) this.deleteUser(userId)
