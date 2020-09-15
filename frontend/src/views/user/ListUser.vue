@@ -12,7 +12,7 @@
           }}
         </v-card-title>
         <v-data-table
-          :headers="userTableColumns"
+          :headers="getUserTableColumns"
           :items="users"
           :loading="isTableLoading"
           sort-by="firstName"
@@ -57,8 +57,25 @@ import EditUser from '@views/user/EditUser'
 export default {
   data() {
     return {
-      search: '',
-      userTableColumns: [
+      search: ''
+    }
+  },
+  created() {
+    this.getUsers()
+  },
+  components: {
+    NewUser,
+    EditUser
+  },
+  computed: {
+    ...mapState('user', [
+      'showNewModal',
+      'showEditModal',
+      'users',
+      'isTableLoading'
+    ]),
+    getUserTableColumns() {
+      return [
         {
           text: this.$vuetify.lang.t('$vuetify.firstName'),
           value: 'firstName'
@@ -86,21 +103,6 @@ export default {
         }
       ]
     }
-  },
-  created() {
-    this.getUsers()
-  },
-  components: {
-    NewUser,
-    EditUser
-  },
-  computed: {
-    ...mapState('user', [
-      'showNewModal',
-      'showEditModal',
-      'users',
-      'isTableLoading'
-    ])
   },
   methods: {
     ...mapActions('user', [
