@@ -24,6 +24,9 @@ Route::group(['namespace' => 'Api', 'as' => 'api.'], function () {
 
     Route::post('register', 'RegisterController@register')->name('register');
 
+    Route::post('password/reset', 'ForgotPasswordController@sendPasswordResetLink')->name('password.reset');
+    Route::post('password/reset/{hash}', 'ResetPasswordController@doReset')->name('password.reset.verify');
+
     Route::group(['middleware' => ['auth:api']], function () {
 
         Route::get('email/verify/{hash}', 'VerificationController@verify')->name('verification.verify');

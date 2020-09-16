@@ -39,6 +39,9 @@
                 v-model="fromModel.password"
                 @click:append="hidePassword = !hidePassword"
               />
+              <v-btn text small color="primary" :to="{ name: 'forgot' }">{{
+                $vuetify.lang.t('$vuetify.forgot')
+              }}</v-btn>
             </v-form>
           </v-card-text>
           <v-card-actions>
