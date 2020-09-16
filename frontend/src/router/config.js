@@ -105,6 +105,144 @@ export const protectedRoute = [
         component: () => import('@/views/user/Profile')
       },
       {
+        path: '/resume',
+        component: RouteWrapper,
+        redirect: '/resume/',
+        meta: {
+          title: 'resume',
+          icon: 'mdi-chart-bar',
+          group: 'resume'
+        },
+        children: [
+          {
+            path: '/resume/sell_product.list',
+            name: 'sell_product',
+            meta: {
+              title: 'sell_product',
+              icon: 'mdi-database-plus'
+            },
+            component: () => import('@/views//user/ListUser')
+          },
+          {
+            path: '/resume/sell_category.list',
+            name: 'sell_category',
+            meta: {
+              title: 'sell_category',
+              icon: 'mdi-database-plus'
+            },
+            component: () => import('@/views//user/ListUser')
+          },
+          {
+            path: '/resume/sell_employment.list',
+            name: 'sell_employment',
+            meta: {
+              title: 'sell_employment',
+              icon: 'mdi-database-plus'
+            },
+            component: () => import('@/views//user/ListUser')
+          },
+          {
+            path: '/resume/sell_types_payment.list',
+            name: 'sell_types_payment',
+            meta: {
+              title: 'sell_types_payment',
+              icon: 'mdi-database-plus'
+            },
+            component: () => import('@/views//user/ListUser')
+          },
+        ]
+      },
+      {
+        path: '/articles',
+        component: RouteWrapper,
+        redirect: '/articles/',
+        meta: {
+          title: 'articles',
+          icon: 'mdi-shopping',
+          group: 'articles'
+        },
+        children: [
+          {
+            path: '/articles/product.list',
+            name: 'product_list',
+            meta: {
+              title: 'product_list',
+              icon: 'mdi-database-plus'
+            },
+            component: () => import('@/views//user/ListUser')
+          },
+          {
+            path: '/articles/category.list',
+            name: 'category_list',
+            meta: {
+              title: 'category_list',
+              icon: 'mdi-database-plus'
+            },
+            component: () => import('@/views//user/ListUser')
+          },
+          {
+            path: '/articles/modifiers.list',
+            name: 'modifiers_list',
+            meta: {
+              title: 'modifiers_list',
+              icon: 'mdi-database-plus'
+            },
+            component: () => import('@/views//user/ListUser')
+          },
+          {
+            path: '/articles/discounts.list',
+            name: 'discounts_list',
+            meta: {
+              title: 'discounts_list',
+              icon: 'mdi-database-plus'
+            },
+            component: () => import('@/views//user/ListUser')
+          },
+        ]
+      },
+      {
+        path: '/employments',
+        component: RouteWrapper,
+        redirect: '/employments/user',
+        meta: {
+          title: 'employment',
+          icon: 'mdi-account-star',
+          group: 'setting'
+        },
+        children: [
+          {
+            path: '/setting/employment.list',
+            name: 'employment_list',
+            meta: {
+              title: 'employment_list',
+              icon: 'mdi-database-plus'
+            },
+            component: () => import('@/views//user/ListUser')
+          },
+        ]
+      },
+      {
+        path: '/clients',
+        component: RouteWrapper,
+        redirect: '/setting/user',
+        meta: {
+          title: 'client',
+          icon: 'mdi-account-multiple',
+          group: 'setting'
+        },
+        children: [
+          {
+            path: '/setting/client.list',
+            name: 'clients_list',
+            meta: {
+              title: 'client_list',
+              icon: 'mdi-database-plus'
+            },
+            component: () => import('@/views//user/ListUser')
+          },
+        ]
+      },
+      {
         path: '/setting',
         component: RouteWrapper,
         redirect: '/setting/user',
@@ -119,12 +257,12 @@ export const protectedRoute = [
             name: 'user_list',
             meta: {
               title: 'user_list',
-              icon: 'mdi-database-plus'
+              icon: 'mdi-account'
             },
             component: () => import('@/views//user/ListUser')
-          }
+          },
         ]
-      }
+      },
     ]
   },
   {

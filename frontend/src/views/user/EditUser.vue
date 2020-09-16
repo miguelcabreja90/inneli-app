@@ -37,7 +37,7 @@
                 :rules="formRule.company"
               ></v-text-field>
             </v-col>
-            <v-col cols="12" md="4">
+            <v-col cols="12" md="6">
               <v-text-field
                 v-model="editUser.email"
                 :rules="formRule.email"
@@ -46,7 +46,7 @@
                 required
               ></v-text-field>
             </v-col>
-            <v-col cols="12" md="4">
+            <v-col cols="12" md="6">
               <v-text-field
                 v-model="editUser.username"
                 autocomplete="off"
@@ -55,7 +55,7 @@
                 required
               ></v-text-field>
             </v-col>
-            <v-col cols="12" md="4">
+            <v-col cols="12" md="6">
               <v-select
                 v-model="editUser.country"
                 item-text="name"
@@ -66,17 +66,9 @@
                 required
               ></v-select>
             </v-col>
-            <v-col cols="12" md="4">
-              <v-text-field
-                class="hiddenSpinner"
-                autocomplete="off"
-                name="phone"
-                :label="$vuetify.lang.t('$vuetify.phone')"
-                :placeholder="$vuetify.lang.t('$vuetify.phone')"
-                type="number"
-                required
-                v-model="editUser.phone"
-              />
+            <v-col cols="12" md="6">
+              <v-text-field v-model="editUser.phone" autocomplete="off" :label="$vuetify.lang.t('$vuetify.phone')"
+                required @keypress="numbers"></v-text-field>
             </v-col>
           </v-row>
           <v-row>
@@ -97,7 +89,6 @@
           </v-row>
         </v-form>
       </v-card-text>
-
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn color="error" class="mb-2" @click="toogleEditModal(false)">
@@ -158,6 +149,18 @@ export default {
   },
   methods: {
     ...mapActions('user', ['updateUser', 'toogleEditModal']),
+    onCountry(digit) {
+      this.editUser.country = this.arrayCountry.filter(c=>{c.code === digit})[0]
+      console.log(this.editUser.country)
+    },
+    numbers(event){
+      let regex = new RegExp("^[0-9]+$");
+      let key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+      if (!regex.test(key)) {
+        event.preventDefault();
+        return false;
+      }
+    },
     async updateUserHandler() {
       if (this.$refs.form.validate()) {
         this.loading = true
@@ -179,6 +182,9 @@ export default {
   computed: {
     ...mapState('user', ['saved', 'editUser']),
     ...mapState('statics', ['arrayCountry'])
+  },
+  mounted() {
+
   }
 }
 </script>

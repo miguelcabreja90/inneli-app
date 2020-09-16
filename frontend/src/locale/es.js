@@ -37,7 +37,21 @@ export default {
     welcome: 'Bienvenido',
     profile: 'Perfil',
     logout: 'Salir',
-    user_list: 'Listado de Usuarios'
+    user_list: 'Listado de Usuarios',
+    employment:'Empleados',
+    employment_list: 'Listado de Empleados',
+    client:'Cliente',
+    client_list: 'Listado de Clientes',
+    articles: 'Artículos',
+    category_list: 'Listado de Categorías',
+    product_list: 'Listado de Productos',
+    modifiers_list: 'Listado de Modifiadores',
+    discounts_list:' Listado de Descuentos',
+    resume: 'Resumen',
+    sell_product: 'Venta por Productos',
+    sell_category: 'Venta por Categorías',
+    sell_employment: 'Venta por Empleado',
+    sell_types_payment: 'Venta por tipos de pago',
   },
   //settings
   settings: {
@@ -79,12 +93,14 @@ export default {
     delete: 'Eliminar',
     list: 'Listar',
     save: 'Guardar',
-    cancel: 'Cancelar'
+    cancel: 'Cancelar',
+    close: 'Cerrar'
   },
   titles: {
     list: 'Lista de {0}',
     new: 'Nuevo {0}',
     edit: 'Editar {0}',
+    show: 'Mostrar {0}',
     delete: 'Eliminar {0}'
   },
   ...es

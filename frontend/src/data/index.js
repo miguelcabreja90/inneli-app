@@ -11,7 +11,7 @@ const countries = {
   AD: {
     name: 'Andorra',
     native: 'Andorra',
-    phone: '376',
+    code: '376',
     continent: 'EU',
     capital: 'Andorra la Vella',
     currency: 'EUR',
@@ -22,7 +22,7 @@ const countries = {
   AE: {
     name: 'United Arab Emirates',
     native: 'دولة الإمارات العربية المتحدة',
-    phone: '971',
+    code: '971',
     continent: 'AS',
     capital: 'Abu Dhabi',
     currency: 'AED',
@@ -33,7 +33,7 @@ const countries = {
   AF: {
     name: 'Afghanistan',
     native: 'افغانستان',
-    phone: '93',
+    code: '93',
     continent: 'AS',
     capital: 'Kabul',
     currency: 'AFN',
@@ -44,7 +44,7 @@ const countries = {
   AG: {
     name: 'Antigua and Barbuda',
     native: 'Antigua and Barbuda',
-    phone: '1268',
+    code: '1268',
     continent: 'NA',
     capital: `Saint John's`,
     currency: 'XCD',
@@ -55,7 +55,7 @@ const countries = {
   AI: {
     name: 'Anguilla',
     native: 'Anguilla',
-    phone: '1264',
+    code: '1264',
     continent: 'NA',
     capital: 'The Valley',
     currency: 'XCD',
@@ -66,7 +66,7 @@ const countries = {
   AL: {
     name: 'Albania',
     native: 'Shqipëria',
-    phone: '355',
+    code: '355',
     continent: 'EU',
     capital: 'Tirana',
     currency: 'ALL',
@@ -77,7 +77,7 @@ const countries = {
   AM: {
     name: 'Armenia',
     native: 'Հայաստան',
-    phone: '374',
+    code: '374',
     continent: 'AS',
     capital: 'Yerevan',
     currency: 'AMD',
@@ -88,7 +88,7 @@ const countries = {
   AO: {
     name: 'Angola',
     native: 'Angola',
-    phone: '244',
+    code: '244',
     continent: 'AF',
     capital: 'Luanda',
     currency: 'AOA',
@@ -99,7 +99,7 @@ const countries = {
   AQ: {
     name: 'Antarctica',
     native: 'Antarctica',
-    phone: '672',
+    code: '672',
     continent: 'AN',
     capital: '',
     currency: '',
@@ -110,7 +110,7 @@ const countries = {
   AR: {
     name: 'Argentina',
     native: 'Argentina',
-    phone: '54',
+    code: '54',
     continent: 'SA',
     capital: 'Buenos Aires',
     currency: 'ARS',
@@ -121,7 +121,7 @@ const countries = {
   AS: {
     name: 'American Samoa',
     native: 'American Samoa',
-    phone: '1684',
+    code: '1684',
     continent: 'OC',
     capital: 'Pago Pago',
     currency: 'USD',
@@ -132,7 +132,7 @@ const countries = {
   AT: {
     name: 'Austria',
     native: 'Österreich',
-    phone: '43',
+    code: '43',
     continent: 'EU',
     capital: 'Vienna',
     currency: 'EUR',
@@ -143,7 +143,7 @@ const countries = {
   AU: {
     name: 'Australia',
     native: 'Australia',
-    phone: '61',
+    code: '61',
     continent: 'OC',
     capital: 'Canberra',
     currency: 'AUD',
@@ -154,7 +154,7 @@ const countries = {
   AW: {
     name: 'Aruba',
     native: 'Aruba',
-    phone: '297',
+    code: '297',
     continent: 'NA',
     capital: 'Oranjestad',
     currency: 'AWG',
@@ -165,7 +165,7 @@ const countries = {
   AX: {
     name: 'Åland',
     native: 'Åland',
-    phone: '358',
+    code: '358',
     continent: 'EU',
     capital: 'Mariehamn',
     currency: 'EUR',
@@ -176,7 +176,7 @@ const countries = {
   AZ: {
     name: 'Azerbaijan',
     native: 'Azərbaycan',
-    phone: '994',
+    code: '994',
     continent: 'AS',
     capital: 'Baku',
     currency: 'AZN',
@@ -187,7 +187,7 @@ const countries = {
   BA: {
     name: 'Bosnia and Herzegovina',
     native: 'Bosna i Hercegovina',
-    phone: '387',
+    code: '387',
     continent: 'EU',
     capital: 'Sarajevo',
     currency: 'BAM',
@@ -198,7 +198,7 @@ const countries = {
   BB: {
     name: 'Barbados',
     native: 'Barbados',
-    phone: '1246',
+    code: '1246',
     continent: 'NA',
     capital: 'Bridgetown',
     currency: 'BBD',
@@ -209,7 +209,7 @@ const countries = {
   BD: {
     name: 'Bangladesh',
     native: 'Bangladesh',
-    phone: '880',
+    code: '880',
     continent: 'AS',
     capital: 'Dhaka',
     currency: 'BDT',
@@ -220,7 +220,7 @@ const countries = {
   BE: {
     name: 'Belgium',
     native: 'België',
-    phone: '32',
+    code: '32',
     continent: 'EU',
     capital: 'Brussels',
     currency: 'EUR',
@@ -231,7 +231,7 @@ const countries = {
   BF: {
     name: 'Burkina Faso',
     native: 'Burkina Faso',
-    phone: '226',
+    code: '226',
     continent: 'AF',
     capital: 'Ouagadougou',
     currency: 'XOF',
@@ -242,7 +242,7 @@ const countries = {
   BG: {
     name: 'Bulgaria',
     native: 'България',
-    phone: '359',
+    code: '359',
     continent: 'EU',
     capital: 'Sofia',
     currency: 'BGN',
@@ -253,7 +253,7 @@ const countries = {
   BH: {
     name: 'Bahrain',
     native: '‏البحرين',
-    phone: '973',
+    code: '973',
     continent: 'AS',
     capital: 'Manama',
     currency: 'BHD',
@@ -264,7 +264,7 @@ const countries = {
   BI: {
     name: 'Burundi',
     native: 'Burundi',
-    phone: '257',
+    code: '257',
     continent: 'AF',
     capital: 'Bujumbura',
     currency: 'BIF',
@@ -275,7 +275,7 @@ const countries = {
   BJ: {
     name: 'Benin',
     native: 'Bénin',
-    phone: '229',
+    code: '229',
     continent: 'AF',
     capital: 'Porto-Novo',
     currency: 'XOF',
@@ -286,7 +286,7 @@ const countries = {
   BL: {
     name: 'Saint Barthélemy',
     native: 'Saint-Barthélemy',
-    phone: '590',
+    code: '590',
     continent: 'NA',
     capital: 'Gustavia',
     currency: 'EUR',
@@ -297,7 +297,7 @@ const countries = {
   BM: {
     name: 'Bermuda',
     native: 'Bermuda',
-    phone: '1441',
+    code: '1441',
     continent: 'NA',
     capital: 'Hamilton',
     currency: 'BMD',
@@ -308,7 +308,7 @@ const countries = {
   BN: {
     name: 'Brunei',
     native: 'Negara Brunei Darussalam',
-    phone: '673',
+    code: '673',
     continent: 'AS',
     capital: 'Bandar Seri Begawan',
     currency: 'BND',
@@ -319,7 +319,7 @@ const countries = {
   BO: {
     name: 'Bolivia',
     native: 'Bolivia',
-    phone: '591',
+    code: '591',
     continent: 'SA',
     capital: 'Sucre',
     currency: 'BOB,BOV',
@@ -330,7 +330,7 @@ const countries = {
   BQ: {
     name: 'Bonaire',
     native: 'Bonaire',
-    phone: '5997',
+    code: '5997',
     continent: 'NA',
     capital: 'Kralendijk',
     currency: 'USD',
@@ -341,7 +341,7 @@ const countries = {
   BR: {
     name: 'Brazil',
     native: 'Brasil',
-    phone: '55',
+    code: '55',
     continent: 'SA',
     capital: 'Brasília',
     currency: 'BRL',
@@ -352,7 +352,7 @@ const countries = {
   BS: {
     name: 'Bahamas',
     native: 'Bahamas',
-    phone: '1242',
+    code: '1242',
     continent: 'NA',
     capital: 'Nassau',
     currency: 'BSD',
@@ -363,7 +363,7 @@ const countries = {
   BT: {
     name: 'Bhutan',
     native: 'ʼbrug-yul',
-    phone: '975',
+    code: '975',
     continent: 'AS',
     capital: 'Thimphu',
     currency: 'BTN,INR',
@@ -374,7 +374,7 @@ const countries = {
   BV: {
     name: 'Bouvet Island',
     native: 'Bouvetøya',
-    phone: '47',
+    code: '47',
     continent: 'AN',
     capital: '',
     currency: 'NOK',
@@ -385,7 +385,7 @@ const countries = {
   BW: {
     name: 'Botswana',
     native: 'Botswana',
-    phone: '267',
+    code: '267',
     continent: 'AF',
     capital: 'Gaborone',
     currency: 'BWP',
@@ -396,7 +396,7 @@ const countries = {
   BY: {
     name: 'Belarus',
     native: 'Белару́сь',
-    phone: '375',
+    code: '375',
     continent: 'EU',
     capital: 'Minsk',
     currency: 'BYN',
@@ -407,7 +407,7 @@ const countries = {
   BZ: {
     name: 'Belize',
     native: 'Belize',
-    phone: '501',
+    code: '501',
     continent: 'NA',
     capital: 'Belmopan',
     currency: 'BZD',
@@ -418,7 +418,7 @@ const countries = {
   CA: {
     name: 'Canada',
     native: 'Canada',
-    phone: '1',
+    code: '1',
     continent: 'NA',
     capital: 'Ottawa',
     currency: 'CAD',
@@ -429,7 +429,7 @@ const countries = {
   CC: {
     name: 'Cocos [Keeling] Islands',
     native: 'Cocos (Keeling) Islands',
-    phone: '61',
+    code: '61',
     continent: 'AS',
     capital: 'West Island',
     currency: 'AUD',
@@ -440,7 +440,7 @@ const countries = {
   CD: {
     name: 'Democratic Republic of the Congo',
     native: 'République démocratique du Congo',
-    phone: '243',
+    code: '243',
     continent: 'AF',
     capital: 'Kinshasa',
     currency: 'CDF',
@@ -451,7 +451,7 @@ const countries = {
   CF: {
     name: 'Central African Republic',
     native: 'Ködörösêse tî Bêafrîka',
-    phone: '236',
+    code: '236',
     continent: 'AF',
     capital: 'Bangui',
     currency: 'XAF',
@@ -462,7 +462,7 @@ const countries = {
   CG: {
     name: 'Republic of the Congo',
     native: 'République du Congo',
-    phone: '242',
+    code: '242',
     continent: 'AF',
     capital: 'Brazzaville',
     currency: 'XAF',
@@ -473,7 +473,7 @@ const countries = {
   CH: {
     name: 'Switzerland',
     native: 'Schweiz',
-    phone: '41',
+    code: '41',
     continent: 'EU',
     capital: 'Bern',
     currency: 'CHE,CHF,CHW',
@@ -484,7 +484,7 @@ const countries = {
   CI: {
     name: 'Ivory Coast',
     native: "Côte d'Ivoire",
-    phone: '225',
+    code: '225',
     continent: 'AF',
     capital: 'Yamoussoukro',
     currency: 'XOF',
@@ -495,7 +495,7 @@ const countries = {
   CK: {
     name: 'Cook Islands',
     native: 'Cook Islands',
-    phone: '682',
+    code: '682',
     continent: 'OC',
     capital: 'Avarua',
     currency: 'NZD',
@@ -506,7 +506,7 @@ const countries = {
   CL: {
     name: 'Chile',
     native: 'Chile',
-    phone: '56',
+    code: '56',
     continent: 'SA',
     capital: 'Santiago',
     currency: 'CLF,CLP',
@@ -517,7 +517,7 @@ const countries = {
   CM: {
     name: 'Cameroon',
     native: 'Cameroon',
-    phone: '237',
+    code: '237',
     continent: 'AF',
     capital: 'Yaoundé',
     currency: 'XAF',
@@ -528,7 +528,7 @@ const countries = {
   CN: {
     name: 'China',
     native: '中国',
-    phone: '86',
+    code: '86',
     continent: 'AS',
     capital: 'Beijing',
     currency: 'CNY',
@@ -539,7 +539,7 @@ const countries = {
   CO: {
     name: 'Colombia',
     native: 'Colombia',
-    phone: '57',
+    code: '57',
     continent: 'SA',
     capital: 'Bogotá',
     currency: 'COP',
@@ -550,7 +550,7 @@ const countries = {
   CR: {
     name: 'Costa Rica',
     native: 'Costa Rica',
-    phone: '506',
+    code: '506',
     continent: 'NA',
     capital: 'San José',
     currency: 'CRC',
@@ -561,7 +561,7 @@ const countries = {
   CU: {
     name: 'Cuba',
     native: 'Cuba',
-    phone: '53',
+    code: '53',
     continent: 'NA',
     capital: 'Havana',
     currency: 'CUC,CUP',
@@ -572,7 +572,7 @@ const countries = {
   CV: {
     name: 'Cape Verde',
     native: 'Cabo Verde',
-    phone: '238',
+    code: '238',
     continent: 'AF',
     capital: 'Praia',
     currency: 'CVE',
@@ -583,7 +583,7 @@ const countries = {
   CW: {
     name: 'Curacao',
     native: 'Curaçao',
-    phone: '5999',
+    code: '5999',
     continent: 'NA',
     capital: 'Willemstad',
     currency: 'ANG',
@@ -594,7 +594,7 @@ const countries = {
   CX: {
     name: 'Christmas Island',
     native: 'Christmas Island',
-    phone: '61',
+    code: '61',
     continent: 'AS',
     capital: 'Flying Fish Cove',
     currency: 'AUD',
@@ -605,7 +605,7 @@ const countries = {
   CY: {
     name: 'Cyprus',
     native: 'Κύπρος',
-    phone: '357',
+    code: '357',
     continent: 'EU',
     capital: 'Nicosia',
     currency: 'EUR',
@@ -616,7 +616,7 @@ const countries = {
   CZ: {
     name: 'Czech Republic',
     native: 'Česká republika',
-    phone: '420',
+    code: '420',
     continent: 'EU',
     capital: 'Prague',
     currency: 'CZK',
@@ -627,7 +627,7 @@ const countries = {
   DE: {
     name: 'Germany',
     native: 'Deutschland',
-    phone: '49',
+    code: '49',
     continent: 'EU',
     capital: 'Berlin',
     currency: 'EUR',
@@ -638,7 +638,7 @@ const countries = {
   DJ: {
     name: 'Djibouti',
     native: 'Djibouti',
-    phone: '253',
+    code: '253',
     continent: 'AF',
     capital: 'Djibouti',
     currency: 'DJF',
@@ -649,7 +649,7 @@ const countries = {
   DK: {
     name: 'Denmark',
     native: 'Danmark',
-    phone: '45',
+    code: '45',
     continent: 'EU',
     capital: 'Copenhagen',
     currency: 'DKK',
@@ -660,7 +660,7 @@ const countries = {
   DM: {
     name: 'Dominica',
     native: 'Dominica',
-    phone: '1767',
+    code: '1767',
     continent: 'NA',
     capital: 'Roseau',
     currency: 'XCD',
@@ -671,7 +671,7 @@ const countries = {
   DO: {
     name: 'Dominican Republic',
     native: 'República Dominicana',
-    phone: '1809,1829,1849',
+    code: '1809,1829,1849',
     continent: 'NA',
     capital: 'Santo Domingo',
     currency: 'DOP',
@@ -682,7 +682,7 @@ const countries = {
   DZ: {
     name: 'Algeria',
     native: 'الجزائر',
-    phone: '213',
+    code: '213',
     continent: 'AF',
     capital: 'Algiers',
     currency: 'DZD',
@@ -693,7 +693,7 @@ const countries = {
   EC: {
     name: 'Ecuador',
     native: 'Ecuador',
-    phone: '593',
+    code: '593',
     continent: 'SA',
     capital: 'Quito',
     currency: 'USD',
@@ -704,7 +704,7 @@ const countries = {
   EE: {
     name: 'Estonia',
     native: 'Eesti',
-    phone: '372',
+    code: '372',
     continent: 'EU',
     capital: 'Tallinn',
     currency: 'EUR',
@@ -715,7 +715,7 @@ const countries = {
   EG: {
     name: 'Egypt',
     native: 'مصر‎',
-    phone: '20',
+    code: '20',
     continent: 'AF',
     capital: 'Cairo',
     currency: 'EGP',
@@ -726,7 +726,7 @@ const countries = {
   EH: {
     name: 'Western Sahara',
     native: 'الصحراء الغربية',
-    phone: '212',
+    code: '212',
     continent: 'AF',
     capital: 'El Aaiún',
     currency: 'MAD,DZD,MRU',
@@ -737,7 +737,7 @@ const countries = {
   ER: {
     name: 'Eritrea',
     native: 'ኤርትራ',
-    phone: '291',
+    code: '291',
     continent: 'AF',
     capital: 'Asmara',
     currency: 'ERN',
@@ -748,7 +748,7 @@ const countries = {
   ES: {
     name: 'Spain',
     native: 'España',
-    phone: '34',
+    code: '34',
     continent: 'EU',
     capital: 'Madrid',
     currency: 'EUR',
@@ -759,7 +759,7 @@ const countries = {
   ET: {
     name: 'Ethiopia',
     native: 'ኢትዮጵያ',
-    phone: '251',
+    code: '251',
     continent: 'AF',
     capital: 'Addis Ababa',
     currency: 'ETB',
@@ -770,7 +770,7 @@ const countries = {
   FI: {
     name: 'Finland',
     native: 'Suomi',
-    phone: '358',
+    code: '358',
     continent: 'EU',
     capital: 'Helsinki',
     currency: 'EUR',
@@ -781,7 +781,7 @@ const countries = {
   FJ: {
     name: 'Fiji',
     native: 'Fiji',
-    phone: '679',
+    code: '679',
     continent: 'OC',
     capital: 'Suva',
     currency: 'FJD',
@@ -792,7 +792,7 @@ const countries = {
   FK: {
     name: 'Falkland Islands',
     native: 'Falkland Islands',
-    phone: '500',
+    code: '500',
     continent: 'SA',
     capital: 'Stanley',
     currency: 'FKP',
@@ -803,7 +803,7 @@ const countries = {
   FM: {
     name: 'Micronesia',
     native: 'Micronesia',
-    phone: '691',
+    code: '691',
     continent: 'OC',
     capital: 'Palikir',
     currency: 'USD',
@@ -814,7 +814,7 @@ const countries = {
   FO: {
     name: 'Faroe Islands',
     native: 'Føroyar',
-    phone: '298',
+    code: '298',
     continent: 'EU',
     capital: 'Tórshavn',
     currency: 'DKK',
@@ -825,7 +825,7 @@ const countries = {
   FR: {
     name: 'France',
     native: 'France',
-    phone: '33',
+    code: '33',
     continent: 'EU',
     capital: 'Paris',
     currency: 'EUR',
@@ -836,7 +836,7 @@ const countries = {
   GA: {
     name: 'Gabon',
     native: 'Gabon',
-    phone: '241',
+    code: '241',
     continent: 'AF',
     capital: 'Libreville',
     currency: 'XAF',
@@ -847,7 +847,7 @@ const countries = {
   GB: {
     name: 'United Kingdom',
     native: 'United Kingdom',
-    phone: '44',
+    code: '44',
     continent: 'EU',
     capital: 'London',
     currency: 'GBP',
@@ -858,7 +858,7 @@ const countries = {
   GD: {
     name: 'Grenada',
     native: 'Grenada',
-    phone: '1473',
+    code: '1473',
     continent: 'NA',
     capital: `St. George's`,
     currency: 'XCD',
@@ -869,7 +869,7 @@ const countries = {
   GE: {
     name: 'Georgia',
     native: 'საქართველო',
-    phone: '995',
+    code: '995',
     continent: 'AS',
     capital: 'Tbilisi',
     currency: 'GEL',
@@ -880,7 +880,7 @@ const countries = {
   GF: {
     name: 'French Guiana',
     native: 'Guyane française',
-    phone: '594',
+    code: '594',
     continent: 'SA',
     capital: 'Cayenne',
     currency: 'EUR',
@@ -891,7 +891,7 @@ const countries = {
   GG: {
     name: 'Guernsey',
     native: 'Guernsey',
-    phone: '44',
+    code: '44',
     continent: 'EU',
     capital: 'St. Peter Port',
     currency: 'GBP',
@@ -902,7 +902,7 @@ const countries = {
   GH: {
     name: 'Ghana',
     native: 'Ghana',
-    phone: '233',
+    code: '233',
     continent: 'AF',
     capital: 'Accra',
     currency: 'GHS',
@@ -913,7 +913,7 @@ const countries = {
   GI: {
     name: 'Gibraltar',
     native: 'Gibraltar',
-    phone: '350',
+    code: '350',
     continent: 'EU',
     capital: 'Gibraltar',
     currency: 'GIP',
@@ -924,7 +924,7 @@ const countries = {
   GL: {
     name: 'Greenland',
     native: 'Kalaallit Nunaat',
-    phone: '299',
+    code: '299',
     continent: 'NA',
     capital: 'Nuuk',
     currency: 'DKK',
@@ -935,7 +935,7 @@ const countries = {
   GM: {
     name: 'Gambia',
     native: 'Gambia',
-    phone: '220',
+    code: '220',
     continent: 'AF',
     capital: 'Banjul',
     currency: 'GMD',
@@ -946,7 +946,7 @@ const countries = {
   GN: {
     name: 'Guinea',
     native: 'Guinée',
-    phone: '224',
+    code: '224',
     continent: 'AF',
     capital: 'Conakry',
     currency: 'GNF',
@@ -957,7 +957,7 @@ const countries = {
   GP: {
     name: 'Guadeloupe',
     native: 'Guadeloupe',
-    phone: '590',
+    code: '590',
     continent: 'NA',
     capital: 'Basse-Terre',
     currency: 'EUR',
@@ -968,7 +968,7 @@ const countries = {
   GQ: {
     name: 'Equatorial Guinea',
     native: 'Guinea Ecuatorial',
-    phone: '240',
+    code: '240',
     continent: 'AF',
     capital: 'Malabo',
     currency: 'XAF',
@@ -979,7 +979,7 @@ const countries = {
   GR: {
     name: 'Greece',
     native: 'Ελλάδα',
-    phone: '30',
+    code: '30',
     continent: 'EU',
     capital: 'Athens',
     currency: 'EUR',
@@ -990,7 +990,7 @@ const countries = {
   GS: {
     name: 'South Georgia and the South Sandwich Islands',
     native: 'South Georgia',
-    phone: '500',
+    code: '500',
     continent: 'AN',
     capital: 'King Edward Point',
     currency: 'GBP',
@@ -1001,7 +1001,7 @@ const countries = {
   GT: {
     name: 'Guatemala',
     native: 'Guatemala',
-    phone: '502',
+    code: '502',
     continent: 'NA',
     capital: 'Guatemala City',
     currency: 'GTQ',
@@ -1012,7 +1012,7 @@ const countries = {
   GU: {
     name: 'Guam',
     native: 'Guam',
-    phone: '1671',
+    code: '1671',
     continent: 'OC',
     capital: 'Hagåtña',
     currency: 'USD',
@@ -1023,7 +1023,7 @@ const countries = {
   GW: {
     name: 'Guinea-Bissau',
     native: 'Guiné-Bissau',
-    phone: '245',
+    code: '245',
     continent: 'AF',
     capital: 'Bissau',
     currency: 'XOF',
@@ -1034,7 +1034,7 @@ const countries = {
   GY: {
     name: 'Guyana',
     native: 'Guyana',
-    phone: '592',
+    code: '592',
     continent: 'SA',
     capital: 'Georgetown',
     currency: 'GYD',
@@ -1045,7 +1045,7 @@ const countries = {
   HK: {
     name: 'Hong Kong',
     native: '香港',
-    phone: '852',
+    code: '852',
     continent: 'AS',
     capital: 'City of Victoria',
     currency: 'HKD',
@@ -1056,7 +1056,7 @@ const countries = {
   HM: {
     name: 'Heard Island and McDonald Islands',
     native: 'Heard Island and McDonald Islands',
-    phone: '61',
+    code: '61',
     continent: 'AN',
     capital: '',
     currency: 'AUD',
@@ -1067,7 +1067,7 @@ const countries = {
   HN: {
     name: 'Honduras',
     native: 'Honduras',
-    phone: '504',
+    code: '504',
     continent: 'NA',
     capital: 'Tegucigalpa',
     currency: 'HNL',
@@ -1078,7 +1078,7 @@ const countries = {
   HR: {
     name: 'Croatia',
     native: 'Hrvatska',
-    phone: '385',
+    code: '385',
     continent: 'EU',
     capital: 'Zagreb',
     currency: 'HRK',
@@ -1089,7 +1089,7 @@ const countries = {
   HT: {
     name: 'Haiti',
     native: 'Haïti',
-    phone: '509',
+    code: '509',
     continent: 'NA',
     capital: 'Port-au-Prince',
     currency: 'HTG,USD',
@@ -1100,7 +1100,7 @@ const countries = {
   HU: {
     name: 'Hungary',
     native: 'Magyarország',
-    phone: '36',
+    code: '36',
     continent: 'EU',
     capital: 'Budapest',
     currency: 'HUF',
@@ -1111,7 +1111,7 @@ const countries = {
   ID: {
     name: 'Indonesia',
     native: 'Indonesia',
-    phone: '62',
+    code: '62',
     continent: 'AS',
     capital: 'Jakarta',
     currency: 'IDR',
@@ -1122,7 +1122,7 @@ const countries = {
   IE: {
     name: 'Ireland',
     native: 'Éire',
-    phone: '353',
+    code: '353',
     continent: 'EU',
     capital: 'Dublin',
     currency: 'EUR',
@@ -1133,7 +1133,7 @@ const countries = {
   IL: {
     name: 'Israel',
     native: 'יִשְׂרָאֵל',
-    phone: '972',
+    code: '972',
     continent: 'AS',
     capital: 'Jerusalem',
     currency: 'ILS',
@@ -1144,7 +1144,7 @@ const countries = {
   IM: {
     name: 'Isle of Man',
     native: 'Isle of Man',
-    phone: '44',
+    code: '44',
     continent: 'EU',
     capital: 'Douglas',
     currency: 'GBP',
@@ -1155,7 +1155,7 @@ const countries = {
   IN: {
     name: 'India',
     native: 'भारत',
-    phone: '91',
+    code: '91',
     continent: 'AS',
     capital: 'New Delhi',
     currency: 'INR',
@@ -1166,7 +1166,7 @@ const countries = {
   IO: {
     name: 'British Indian Ocean Territory',
     native: 'British Indian Ocean Territory',
-    phone: '246',
+    code: '246',
     continent: 'AS',
     capital: 'Diego Garcia',
     currency: 'USD',
@@ -1177,7 +1177,7 @@ const countries = {
   IQ: {
     name: 'Iraq',
     native: 'العراق',
-    phone: '964',
+    code: '964',
     continent: 'AS',
     capital: 'Baghdad',
     currency: 'IQD',
@@ -1188,7 +1188,7 @@ const countries = {
   IR: {
     name: 'Iran',
     native: 'ایران',
-    phone: '98',
+    code: '98',
     continent: 'AS',
     capital: 'Tehran',
     currency: 'IRR',
@@ -1199,7 +1199,7 @@ const countries = {
   IS: {
     name: 'Iceland',
     native: 'Ísland',
-    phone: '354',
+    code: '354',
     continent: 'EU',
     capital: 'Reykjavik',
     currency: 'ISK',
@@ -1210,7 +1210,7 @@ const countries = {
   IT: {
     name: 'Italy',
     native: 'Italia',
-    phone: '39',
+    code: '39',
     continent: 'EU',
     capital: 'Rome',
     currency: 'EUR',
@@ -1221,7 +1221,7 @@ const countries = {
   JE: {
     name: 'Jersey',
     native: 'Jersey',
-    phone: '44',
+    code: '44',
     continent: 'EU',
     capital: 'Saint Helier',
     currency: 'GBP',
@@ -1232,7 +1232,7 @@ const countries = {
   JM: {
     name: 'Jamaica',
     native: 'Jamaica',
-    phone: '1876',
+    code: '1876',
     continent: 'NA',
     capital: 'Kingston',
     currency: 'JMD',
@@ -1243,7 +1243,7 @@ const countries = {
   JO: {
     name: 'Jordan',
     native: 'الأردن',
-    phone: '962',
+    code: '962',
     continent: 'AS',
     capital: 'Amman',
     currency: 'JOD',
@@ -1254,7 +1254,7 @@ const countries = {
   JP: {
     name: 'Japan',
     native: '日本',
-    phone: '81',
+    code: '81',
     continent: 'AS',
     capital: 'Tokyo',
     currency: 'JPY',
@@ -1265,7 +1265,7 @@ const countries = {
   KE: {
     name: 'Kenya',
     native: 'Kenya',
-    phone: '254',
+    code: '254',
     continent: 'AF',
     capital: 'Nairobi',
     currency: 'KES',
@@ -1276,7 +1276,7 @@ const countries = {
   KG: {
     name: 'Kyrgyzstan',
     native: 'Кыргызстан',
-    phone: '996',
+    code: '996',
     continent: 'AS',
     capital: 'Bishkek',
     currency: 'KGS',
@@ -1287,7 +1287,7 @@ const countries = {
   KH: {
     name: 'Cambodia',
     native: 'Kâmpŭchéa',
-    phone: '855',
+    code: '855',
     continent: 'AS',
     capital: 'Phnom Penh',
     currency: 'KHR',
@@ -1298,7 +1298,7 @@ const countries = {
   KI: {
     name: 'Kiribati',
     native: 'Kiribati',
-    phone: '686',
+    code: '686',
     continent: 'OC',
     capital: 'South Tarawa',
     currency: 'AUD',
@@ -1309,7 +1309,7 @@ const countries = {
   KM: {
     name: 'Comoros',
     native: 'Komori',
-    phone: '269',
+    code: '269',
     continent: 'AF',
     capital: 'Moroni',
     currency: 'KMF',
@@ -1320,7 +1320,7 @@ const countries = {
   KN: {
     name: 'Saint Kitts and Nevis',
     native: 'Saint Kitts and Nevis',
-    phone: '1869',
+    code: '1869',
     continent: 'NA',
     capital: 'Basseterre',
     currency: 'XCD',
@@ -1331,7 +1331,7 @@ const countries = {
   KP: {
     name: 'North Korea',
     native: '북한',
-    phone: '850',
+    code: '850',
     continent: 'AS',
     capital: 'Pyongyang',
     currency: 'KPW',
@@ -1342,7 +1342,7 @@ const countries = {
   KR: {
     name: 'South Korea',
     native: '대한민국',
-    phone: '82',
+    code: '82',
     continent: 'AS',
     capital: 'Seoul',
     currency: 'KRW',
@@ -1353,7 +1353,7 @@ const countries = {
   KW: {
     name: 'Kuwait',
     native: 'الكويت',
-    phone: '965',
+    code: '965',
     continent: 'AS',
     capital: 'Kuwait City',
     currency: 'KWD',
@@ -1364,7 +1364,7 @@ const countries = {
   KY: {
     name: 'Cayman Islands',
     native: 'Cayman Islands',
-    phone: '1345',
+    code: '1345',
     continent: 'NA',
     capital: 'George Town',
     currency: 'KYD',
@@ -1375,7 +1375,7 @@ const countries = {
   KZ: {
     name: 'Kazakhstan',
     native: 'Қазақстан',
-    phone: '76,77',
+    code: '76,77',
     continent: 'AS',
     capital: 'Astana',
     currency: 'KZT',
@@ -1386,7 +1386,7 @@ const countries = {
   LA: {
     name: 'Laos',
     native: 'ສປປລາວ',
-    phone: '856',
+    code: '856',
     continent: 'AS',
     capital: 'Vientiane',
     currency: 'LAK',
@@ -1397,7 +1397,7 @@ const countries = {
   LB: {
     name: 'Lebanon',
     native: 'لبنان',
-    phone: '961',
+    code: '961',
     continent: 'AS',
     capital: 'Beirut',
     currency: 'LBP',
@@ -1408,7 +1408,7 @@ const countries = {
   LC: {
     name: 'Saint Lucia',
     native: 'Saint Lucia',
-    phone: '1758',
+    code: '1758',
     continent: 'NA',
     capital: 'Castries',
     currency: 'XCD',
@@ -1419,7 +1419,7 @@ const countries = {
   LI: {
     name: 'Liechtenstein',
     native: 'Liechtenstein',
-    phone: '423',
+    code: '423',
     continent: 'EU',
     capital: 'Vaduz',
     currency: 'CHF',
@@ -1430,7 +1430,7 @@ const countries = {
   LK: {
     name: 'Sri Lanka',
     native: 'śrī laṃkāva',
-    phone: '94',
+    code: '94',
     continent: 'AS',
     capital: 'Colombo',
     currency: 'LKR',
@@ -1441,7 +1441,7 @@ const countries = {
   LR: {
     name: 'Liberia',
     native: 'Liberia',
-    phone: '231',
+    code: '231',
     continent: 'AF',
     capital: 'Monrovia',
     currency: 'LRD',
@@ -1452,7 +1452,7 @@ const countries = {
   LS: {
     name: 'Lesotho',
     native: 'Lesotho',
-    phone: '266',
+    code: '266',
     continent: 'AF',
     capital: 'Maseru',
     currency: 'LSL,ZAR',
@@ -1463,7 +1463,7 @@ const countries = {
   LT: {
     name: 'Lithuania',
     native: 'Lietuva',
-    phone: '370',
+    code: '370',
     continent: 'EU',
     capital: 'Vilnius',
     currency: 'EUR',
@@ -1474,7 +1474,7 @@ const countries = {
   LU: {
     name: 'Luxembourg',
     native: 'Luxembourg',
-    phone: '352',
+    code: '352',
     continent: 'EU',
     capital: 'Luxembourg',
     currency: 'EUR',
@@ -1485,7 +1485,7 @@ const countries = {
   LV: {
     name: 'Latvia',
     native: 'Latvija',
-    phone: '371',
+    code: '371',
     continent: 'EU',
     capital: 'Riga',
     currency: 'EUR',
@@ -1496,7 +1496,7 @@ const countries = {
   LY: {
     name: 'Libya',
     native: '‏ليبيا',
-    phone: '218',
+    code: '218',
     continent: 'AF',
     capital: 'Tripoli',
     currency: 'LYD',
@@ -1507,7 +1507,7 @@ const countries = {
   MA: {
     name: 'Morocco',
     native: 'المغرب',
-    phone: '212',
+    code: '212',
     continent: 'AF',
     capital: 'Rabat',
     currency: 'MAD',
@@ -1518,7 +1518,7 @@ const countries = {
   MC: {
     name: 'Monaco',
     native: 'Monaco',
-    phone: '377',
+    code: '377',
     continent: 'EU',
     capital: 'Monaco',
     currency: 'EUR',
@@ -1529,7 +1529,7 @@ const countries = {
   MD: {
     name: 'Moldova',
     native: 'Moldova',
-    phone: '373',
+    code: '373',
     continent: 'EU',
     capital: 'Chișinău',
     currency: 'MDL',
@@ -1540,7 +1540,7 @@ const countries = {
   ME: {
     name: 'Montenegro',
     native: 'Црна Гора',
-    phone: '382',
+    code: '382',
     continent: 'EU',
     capital: 'Podgorica',
     currency: 'EUR',
@@ -1551,7 +1551,7 @@ const countries = {
   MF: {
     name: 'Saint Martin',
     native: 'Saint-Martin',
-    phone: '590',
+    code: '590',
     continent: 'NA',
     capital: 'Marigot',
     currency: 'EUR',
@@ -1562,7 +1562,7 @@ const countries = {
   MG: {
     name: 'Madagascar',
     native: 'Madagasikara',
-    phone: '261',
+    code: '261',
     continent: 'AF',
     capital: 'Antananarivo',
     currency: 'MGA',
@@ -1573,7 +1573,7 @@ const countries = {
   MH: {
     name: 'Marshall Islands',
     native: 'M̧ajeļ',
-    phone: '692',
+    code: '692',
     continent: 'OC',
     capital: 'Majuro',
     currency: 'USD',
@@ -1584,7 +1584,7 @@ const countries = {
   MK: {
     name: 'North Macedonia',
     native: 'Северна Македонија',
-    phone: '389',
+    code: '389',
     continent: 'EU',
     capital: 'Skopje',
     currency: 'MKD',
@@ -1595,7 +1595,7 @@ const countries = {
   ML: {
     name: 'Mali',
     native: 'Mali',
-    phone: '223',
+    code: '223',
     continent: 'AF',
     capital: 'Bamako',
     currency: 'XOF',
@@ -1606,7 +1606,7 @@ const countries = {
   MM: {
     name: 'Myanmar [Burma]',
     native: 'မြန်မာ',
-    phone: '95',
+    code: '95',
     continent: 'AS',
     capital: 'Naypyidaw',
     currency: 'MMK',
@@ -1617,7 +1617,7 @@ const countries = {
   MN: {
     name: 'Mongolia',
     native: 'Монгол улс',
-    phone: '976',
+    code: '976',
     continent: 'AS',
     capital: 'Ulan Bator',
     currency: 'MNT',
@@ -1628,7 +1628,7 @@ const countries = {
   MO: {
     name: 'Macao',
     native: '澳門',
-    phone: '853',
+    code: '853',
     continent: 'AS',
     capital: '',
     currency: 'MOP',
@@ -1639,7 +1639,7 @@ const countries = {
   MP: {
     name: 'Northern Mariana Islands',
     native: 'Northern Mariana Islands',
-    phone: '1670',
+    code: '1670',
     continent: 'OC',
     capital: 'Saipan',
     currency: 'USD',
@@ -1650,7 +1650,7 @@ const countries = {
   MQ: {
     name: 'Martinique',
     native: 'Martinique',
-    phone: '596',
+    code: '596',
     continent: 'NA',
     capital: 'Fort-de-France',
     currency: 'EUR',
@@ -1661,7 +1661,7 @@ const countries = {
   MR: {
     name: 'Mauritania',
     native: 'موريتانيا',
-    phone: '222',
+    code: '222',
     continent: 'AF',
     capital: 'Nouakchott',
     currency: 'MRU',
@@ -1672,7 +1672,7 @@ const countries = {
   MS: {
     name: 'Montserrat',
     native: 'Montserrat',
-    phone: '1664',
+    code: '1664',
     continent: 'NA',
     capital: 'Plymouth',
     currency: 'XCD',
@@ -1683,7 +1683,7 @@ const countries = {
   MT: {
     name: 'Malta',
     native: 'Malta',
-    phone: '356',
+    code: '356',
     continent: 'EU',
     capital: 'Valletta',
     currency: 'EUR',
@@ -1694,7 +1694,7 @@ const countries = {
   MU: {
     name: 'Mauritius',
     native: 'Maurice',
-    phone: '230',
+    code: '230',
     continent: 'AF',
     capital: 'Port Louis',
     currency: 'MUR',
@@ -1705,7 +1705,7 @@ const countries = {
   MV: {
     name: 'Maldives',
     native: 'Maldives',
-    phone: '960',
+    code: '960',
     continent: 'AS',
     capital: 'Malé',
     currency: 'MVR',
@@ -1716,7 +1716,7 @@ const countries = {
   MW: {
     name: 'Malawi',
     native: 'Malawi',
-    phone: '265',
+    code: '265',
     continent: 'AF',
     capital: 'Lilongwe',
     currency: 'MWK',
@@ -1727,7 +1727,7 @@ const countries = {
   MX: {
     name: 'Mexico',
     native: 'México',
-    phone: '52',
+    code: '52',
     continent: 'NA',
     capital: 'Mexico City',
     currency: 'MXN',
@@ -1738,7 +1738,7 @@ const countries = {
   MY: {
     name: 'Malaysia',
     native: 'Malaysia',
-    phone: '60',
+    code: '60',
     continent: 'AS',
     capital: 'Kuala Lumpur',
     currency: 'MYR',
@@ -1749,7 +1749,7 @@ const countries = {
   MZ: {
     name: 'Mozambique',
     native: 'Moçambique',
-    phone: '258',
+    code: '258',
     continent: 'AF',
     capital: 'Maputo',
     currency: 'MZN',
@@ -1760,7 +1760,7 @@ const countries = {
   NA: {
     name: 'Namibia',
     native: 'Namibia',
-    phone: '264',
+    code: '264',
     continent: 'AF',
     capital: 'Windhoek',
     currency: 'NAD,ZAR',
@@ -1771,7 +1771,7 @@ const countries = {
   NC: {
     name: 'New Caledonia',
     native: 'Nouvelle-Calédonie',
-    phone: '687',
+    code: '687',
     continent: 'OC',
     capital: 'Nouméa',
     currency: 'XPF',
@@ -1782,7 +1782,7 @@ const countries = {
   NE: {
     name: 'Niger',
     native: 'Niger',
-    phone: '227',
+    code: '227',
     continent: 'AF',
     capital: 'Niamey',
     currency: 'XOF',
@@ -1793,7 +1793,7 @@ const countries = {
   NF: {
     name: 'Norfolk Island',
     native: 'Norfolk Island',
-    phone: '672',
+    code: '672',
     continent: 'OC',
     capital: 'Kingston',
     currency: 'AUD',
@@ -1804,7 +1804,7 @@ const countries = {
   NG: {
     name: 'Nigeria',
     native: 'Nigeria',
-    phone: '234',
+    code: '234',
     continent: 'AF',
     capital: 'Abuja',
     currency: 'NGN',
@@ -1815,7 +1815,7 @@ const countries = {
   NI: {
     name: 'Nicaragua',
     native: 'Nicaragua',
-    phone: '505',
+    code: '505',
     continent: 'NA',
     capital: 'Managua',
     currency: 'NIO',
@@ -1826,7 +1826,7 @@ const countries = {
   NL: {
     name: 'Netherlands',
     native: 'Nederland',
-    phone: '31',
+    code: '31',
     continent: 'EU',
     capital: 'Amsterdam',
     currency: 'EUR',
@@ -1837,7 +1837,7 @@ const countries = {
   NO: {
     name: 'Norway',
     native: 'Norge',
-    phone: '47',
+    code: '47',
     continent: 'EU',
     capital: 'Oslo',
     currency: 'NOK',
@@ -1848,7 +1848,7 @@ const countries = {
   NP: {
     name: 'Nepal',
     native: 'नपल',
-    phone: '977',
+    code: '977',
     continent: 'AS',
     capital: 'Kathmandu',
     currency: 'NPR',
@@ -1859,7 +1859,7 @@ const countries = {
   NR: {
     name: 'Nauru',
     native: 'Nauru',
-    phone: '674',
+    code: '674',
     continent: 'OC',
     capital: 'Yaren',
     currency: 'AUD',
@@ -1870,7 +1870,7 @@ const countries = {
   NU: {
     name: 'Niue',
     native: 'Niuē',
-    phone: '683',
+    code: '683',
     continent: 'OC',
     capital: 'Alofi',
     currency: 'NZD',
@@ -1881,7 +1881,7 @@ const countries = {
   NZ: {
     name: 'New Zealand',
     native: 'New Zealand',
-    phone: '64',
+    code: '64',
     continent: 'OC',
     capital: 'Wellington',
     currency: 'NZD',
@@ -1892,7 +1892,7 @@ const countries = {
   OM: {
     name: 'Oman',
     native: 'عمان',
-    phone: '968',
+    code: '968',
     continent: 'AS',
     capital: 'Muscat',
     currency: 'OMR',
@@ -1903,7 +1903,7 @@ const countries = {
   PA: {
     name: 'Panama',
     native: 'Panamá',
-    phone: '507',
+    code: '507',
     continent: 'NA',
     capital: 'Panama City',
     currency: 'PAB,USD',
@@ -1914,7 +1914,7 @@ const countries = {
   PE: {
     name: 'Peru',
     native: 'Perú',
-    phone: '51',
+    code: '51',
     continent: 'SA',
     capital: 'Lima',
     currency: 'PEN',
@@ -1925,7 +1925,7 @@ const countries = {
   PF: {
     name: 'French Polynesia',
     native: 'Polynésie française',
-    phone: '689',
+    code: '689',
     continent: 'OC',
     capital: 'Papeetē',
     currency: 'XPF',
@@ -1936,7 +1936,7 @@ const countries = {
   PG: {
     name: 'Papua New Guinea',
     native: 'Papua Niugini',
-    phone: '675',
+    code: '675',
     continent: 'OC',
     capital: 'Port Moresby',
     currency: 'PGK',
@@ -1947,7 +1947,7 @@ const countries = {
   PH: {
     name: 'Philippines',
     native: 'Pilipinas',
-    phone: '63',
+    code: '63',
     continent: 'AS',
     capital: 'Manila',
     currency: 'PHP',
@@ -1958,7 +1958,7 @@ const countries = {
   PK: {
     name: 'Pakistan',
     native: 'Pakistan',
-    phone: '92',
+    code: '92',
     continent: 'AS',
     capital: 'Islamabad',
     currency: 'PKR',
@@ -1969,7 +1969,7 @@ const countries = {
   PL: {
     name: 'Poland',
     native: 'Polska',
-    phone: '48',
+    code: '48',
     continent: 'EU',
     capital: 'Warsaw',
     currency: 'PLN',
@@ -1980,7 +1980,7 @@ const countries = {
   PM: {
     name: 'Saint Pierre and Miquelon',
     native: 'Saint-Pierre-et-Miquelon',
-    phone: '508',
+    code: '508',
     continent: 'NA',
     capital: 'Saint-Pierre',
     currency: 'EUR',
@@ -1991,7 +1991,7 @@ const countries = {
   PN: {
     name: 'Pitcairn Islands',
     native: 'Pitcairn Islands',
-    phone: '64',
+    code: '64',
     continent: 'OC',
     capital: 'Adamstown',
     currency: 'NZD',
@@ -2002,7 +2002,7 @@ const countries = {
   PR: {
     name: 'Puerto Rico',
     native: 'Puerto Rico',
-    phone: '1787,1939',
+    code: '1787,1939',
     continent: 'NA',
     capital: 'San Juan',
     currency: 'USD',
@@ -2013,7 +2013,7 @@ const countries = {
   PS: {
     name: 'Palestine',
     native: 'فلسطين',
-    phone: '970',
+    code: '970',
     continent: 'AS',
     capital: 'Ramallah',
     currency: 'ILS',
@@ -2024,7 +2024,7 @@ const countries = {
   PT: {
     name: 'Portugal',
     native: 'Portugal',
-    phone: '351',
+    code: '351',
     continent: 'EU',
     capital: 'Lisbon',
     currency: 'EUR',
@@ -2035,7 +2035,7 @@ const countries = {
   PW: {
     name: 'Palau',
     native: 'Palau',
-    phone: '680',
+    code: '680',
     continent: 'OC',
     capital: 'Ngerulmud',
     currency: 'USD',
@@ -2046,7 +2046,7 @@ const countries = {
   PY: {
     name: 'Paraguay',
     native: 'Paraguay',
-    phone: '595',
+    code: '595',
     continent: 'SA',
     capital: 'Asunción',
     currency: 'PYG',
@@ -2057,7 +2057,7 @@ const countries = {
   QA: {
     name: 'Qatar',
     native: 'قطر',
-    phone: '974',
+    code: '974',
     continent: 'AS',
     capital: 'Doha',
     currency: 'QAR',
@@ -2068,7 +2068,7 @@ const countries = {
   RE: {
     name: 'Réunion',
     native: 'La Réunion',
-    phone: '262',
+    code: '262',
     continent: 'AF',
     capital: 'Saint-Denis',
     currency: 'EUR',
@@ -2079,7 +2079,7 @@ const countries = {
   RO: {
     name: 'Romania',
     native: 'România',
-    phone: '40',
+    code: '40',
     continent: 'EU',
     capital: 'Bucharest',
     currency: 'RON',
@@ -2090,7 +2090,7 @@ const countries = {
   RS: {
     name: 'Serbia',
     native: 'Србија',
-    phone: '381',
+    code: '381',
     continent: 'EU',
     capital: 'Belgrade',
     currency: 'RSD',
@@ -2101,7 +2101,7 @@ const countries = {
   RU: {
     name: 'Russia',
     native: 'Россия',
-    phone: '7',
+    code: '7',
     continent: 'EU',
     capital: 'Moscow',
     currency: 'RUB',
@@ -2112,7 +2112,7 @@ const countries = {
   RW: {
     name: 'Rwanda',
     native: 'Rwanda',
-    phone: '250',
+    code: '250',
     continent: 'AF',
     capital: 'Kigali',
     currency: 'RWF',
@@ -2123,7 +2123,7 @@ const countries = {
   SA: {
     name: 'Saudi Arabia',
     native: 'العربية السعودية',
-    phone: '966',
+    code: '966',
     continent: 'AS',
     capital: 'Riyadh',
     currency: 'SAR',
@@ -2134,7 +2134,7 @@ const countries = {
   SB: {
     name: 'Solomon Islands',
     native: 'Solomon Islands',
-    phone: '677',
+    code: '677',
     continent: 'OC',
     capital: 'Honiara',
     currency: 'SBD',
@@ -2145,7 +2145,7 @@ const countries = {
   SC: {
     name: 'Seychelles',
     native: 'Seychelles',
-    phone: '248',
+    code: '248',
     continent: 'AF',
     capital: 'Victoria',
     currency: 'SCR',
@@ -2156,7 +2156,7 @@ const countries = {
   SD: {
     name: 'Sudan',
     native: 'السودان',
-    phone: '249',
+    code: '249',
     continent: 'AF',
     capital: 'Khartoum',
     currency: 'SDG',
@@ -2167,7 +2167,7 @@ const countries = {
   SE: {
     name: 'Sweden',
     native: 'Sverige',
-    phone: '46',
+    code: '46',
     continent: 'EU',
     capital: 'Stockholm',
     currency: 'SEK',
@@ -2178,7 +2178,7 @@ const countries = {
   SG: {
     name: 'Singapore',
     native: 'Singapore',
-    phone: '65',
+    code: '65',
     continent: 'AS',
     capital: 'Singapore',
     currency: 'SGD',
@@ -2189,7 +2189,7 @@ const countries = {
   SH: {
     name: 'Saint Helena',
     native: 'Saint Helena',
-    phone: '290',
+    code: '290',
     continent: 'AF',
     capital: 'Jamestown',
     currency: 'SHP',
@@ -2200,7 +2200,7 @@ const countries = {
   SI: {
     name: 'Slovenia',
     native: 'Slovenija',
-    phone: '386',
+    code: '386',
     continent: 'EU',
     capital: 'Ljubljana',
     currency: 'EUR',
@@ -2211,7 +2211,7 @@ const countries = {
   SJ: {
     name: 'Svalbard and Jan Mayen',
     native: 'Svalbard og Jan Mayen',
-    phone: '4779',
+    code: '4779',
     continent: 'EU',
     capital: 'Longyearbyen',
     currency: 'NOK',
@@ -2222,7 +2222,7 @@ const countries = {
   SK: {
     name: 'Slovakia',
     native: 'Slovensko',
-    phone: '421',
+    code: '421',
     continent: 'EU',
     capital: 'Bratislava',
     currency: 'EUR',
@@ -2233,7 +2233,7 @@ const countries = {
   SL: {
     name: 'Sierra Leone',
     native: 'Sierra Leone',
-    phone: '232',
+    code: '232',
     continent: 'AF',
     capital: 'Freetown',
     currency: 'SLL',
@@ -2244,7 +2244,7 @@ const countries = {
   SM: {
     name: 'San Marino',
     native: 'San Marino',
-    phone: '378',
+    code: '378',
     continent: 'EU',
     capital: 'City of San Marino',
     currency: 'EUR',
@@ -2255,7 +2255,7 @@ const countries = {
   SN: {
     name: 'Senegal',
     native: 'Sénégal',
-    phone: '221',
+    code: '221',
     continent: 'AF',
     capital: 'Dakar',
     currency: 'XOF',
@@ -2266,7 +2266,7 @@ const countries = {
   SO: {
     name: 'Somalia',
     native: 'Soomaaliya',
-    phone: '252',
+    code: '252',
     continent: 'AF',
     capital: 'Mogadishu',
     currency: 'SOS',
@@ -2277,7 +2277,7 @@ const countries = {
   SR: {
     name: 'Suriname',
     native: 'Suriname',
-    phone: '597',
+    code: '597',
     continent: 'SA',
     capital: 'Paramaribo',
     currency: 'SRD',
@@ -2288,7 +2288,7 @@ const countries = {
   SS: {
     name: 'South Sudan',
     native: 'South Sudan',
-    phone: '211',
+    code: '211',
     continent: 'AF',
     capital: 'Juba',
     currency: 'SSP',
@@ -2299,7 +2299,7 @@ const countries = {
   ST: {
     name: 'São Tomé and Príncipe',
     native: 'São Tomé e Príncipe',
-    phone: '239',
+    code: '239',
     continent: 'AF',
     capital: 'São Tomé',
     currency: 'STN',
@@ -2310,7 +2310,7 @@ const countries = {
   SV: {
     name: 'El Salvador',
     native: 'El Salvador',
-    phone: '503',
+    code: '503',
     continent: 'NA',
     capital: 'San Salvador',
     currency: 'SVC,USD',
@@ -2321,7 +2321,7 @@ const countries = {
   SX: {
     name: 'Sint Maarten',
     native: 'Sint Maarten',
-    phone: '1721',
+    code: '1721',
     continent: 'NA',
     capital: 'Philipsburg',
     currency: 'ANG',
@@ -2332,7 +2332,7 @@ const countries = {
   SY: {
     name: 'Syria',
     native: 'سوريا',
-    phone: '963',
+    code: '963',
     continent: 'AS',
     capital: 'Damascus',
     currency: 'SYP',
@@ -2343,7 +2343,7 @@ const countries = {
   SZ: {
     name: 'Swaziland',
     native: 'Swaziland',
-    phone: '268',
+    code: '268',
     continent: 'AF',
     capital: 'Lobamba',
     currency: 'SZL',
@@ -2354,7 +2354,7 @@ const countries = {
   TC: {
     name: 'Turks and Caicos Islands',
     native: 'Turks and Caicos Islands',
-    phone: '1649',
+    code: '1649',
     continent: 'NA',
     capital: 'Cockburn Town',
     currency: 'USD',
@@ -2365,7 +2365,7 @@ const countries = {
   TD: {
     name: 'Chad',
     native: 'Tchad',
-    phone: '235',
+    code: '235',
     continent: 'AF',
     capital: `N'Djamena`,
     currency: 'XAF',
@@ -2376,7 +2376,7 @@ const countries = {
   TF: {
     name: 'French Southern Territories',
     native: 'Territoire des Terres australes et antarctiques fr',
-    phone: '262',
+    code: '262',
     continent: 'AN',
     capital: 'Port-aux-Français',
     currency: 'EUR',
@@ -2387,7 +2387,7 @@ const countries = {
   TG: {
     name: 'Togo',
     native: 'Togo',
-    phone: '228',
+    code: '228',
     continent: 'AF',
     capital: 'Lomé',
     currency: 'XOF',
@@ -2398,7 +2398,7 @@ const countries = {
   TH: {
     name: 'Thailand',
     native: 'ประเทศไทย',
-    phone: '66',
+    code: '66',
     continent: 'AS',
     capital: 'Bangkok',
     currency: 'THB',
@@ -2409,7 +2409,7 @@ const countries = {
   TJ: {
     name: 'Tajikistan',
     native: 'Тоҷикистон',
-    phone: '992',
+    code: '992',
     continent: 'AS',
     capital: 'Dushanbe',
     currency: 'TJS',
@@ -2420,7 +2420,7 @@ const countries = {
   TK: {
     name: 'Tokelau',
     native: 'Tokelau',
-    phone: '690',
+    code: '690',
     continent: 'OC',
     capital: 'Fakaofo',
     currency: 'NZD',
@@ -2431,7 +2431,7 @@ const countries = {
   TL: {
     name: 'East Timor',
     native: 'Timor-Leste',
-    phone: '670',
+    code: '670',
     continent: 'OC',
     capital: 'Dili',
     currency: 'USD',
@@ -2442,7 +2442,7 @@ const countries = {
   TM: {
     name: 'Turkmenistan',
     native: 'Türkmenistan',
-    phone: '993',
+    code: '993',
     continent: 'AS',
     capital: 'Ashgabat',
     currency: 'TMT',
@@ -2453,7 +2453,7 @@ const countries = {
   TN: {
     name: 'Tunisia',
     native: 'تونس',
-    phone: '216',
+    code: '216',
     continent: 'AF',
     capital: 'Tunis',
     currency: 'TND',
@@ -2464,7 +2464,7 @@ const countries = {
   TO: {
     name: 'Tonga',
     native: 'Tonga',
-    phone: '676',
+    code: '676',
     continent: 'OC',
     capital: `Nuku'alofa`,
     currency: 'TOP',
@@ -2475,7 +2475,7 @@ const countries = {
   TR: {
     name: 'Turkey',
     native: 'Türkiye',
-    phone: '90',
+    code: '90',
     continent: 'AS',
     capital: 'Ankara',
     currency: 'TRY',
@@ -2486,7 +2486,7 @@ const countries = {
   TT: {
     name: 'Trinidad and Tobago',
     native: 'Trinidad and Tobago',
-    phone: '1868',
+    code: '1868',
     continent: 'NA',
     capital: 'Port of Spain',
     currency: 'TTD',
@@ -2497,7 +2497,7 @@ const countries = {
   TV: {
     name: 'Tuvalu',
     native: 'Tuvalu',
-    phone: '688',
+    code: '688',
     continent: 'OC',
     capital: 'Funafuti',
     currency: 'AUD',
@@ -2508,7 +2508,7 @@ const countries = {
   TW: {
     name: 'Taiwan',
     native: '臺灣',
-    phone: '886',
+    code: '886',
     continent: 'AS',
     capital: 'Taipei',
     currency: 'TWD',
@@ -2519,7 +2519,7 @@ const countries = {
   TZ: {
     name: 'Tanzania',
     native: 'Tanzania',
-    phone: '255',
+    code: '255',
     continent: 'AF',
     capital: 'Dodoma',
     currency: 'TZS',
@@ -2530,7 +2530,7 @@ const countries = {
   UA: {
     name: 'Ukraine',
     native: 'Україна',
-    phone: '380',
+    code: '380',
     continent: 'EU',
     capital: 'Kyiv',
     currency: 'UAH',
@@ -2541,7 +2541,7 @@ const countries = {
   UG: {
     name: 'Uganda',
     native: 'Uganda',
-    phone: '256',
+    code: '256',
     continent: 'AF',
     capital: 'Kampala',
     currency: 'UGX',
@@ -2552,7 +2552,7 @@ const countries = {
   UM: {
     name: 'U.S. Minor Outlying Islands',
     native: 'United States Minor Outlying Islands',
-    phone: '1',
+    code: '1',
     continent: 'OC',
     capital: '',
     currency: 'USD',
@@ -2563,7 +2563,7 @@ const countries = {
   US: {
     name: 'United States',
     native: 'United States',
-    phone: '1',
+    code: '1',
     continent: 'NA',
     capital: 'Washington D.C.',
     currency: 'USD,USN,USS',
@@ -2574,7 +2574,7 @@ const countries = {
   UY: {
     name: 'Uruguay',
     native: 'Uruguay',
-    phone: '598',
+    code: '598',
     continent: 'SA',
     capital: 'Montevideo',
     currency: 'UYI,UYU',
@@ -2585,7 +2585,7 @@ const countries = {
   UZ: {
     name: 'Uzbekistan',
     native: 'O‘zbekiston',
-    phone: '998',
+    code: '998',
     continent: 'AS',
     capital: 'Tashkent',
     currency: 'UZS',
@@ -2596,7 +2596,7 @@ const countries = {
   VA: {
     name: 'Vatican City',
     native: 'Vaticano',
-    phone: '379',
+    code: '379',
     continent: 'EU',
     capital: 'Vatican City',
     currency: 'EUR',
@@ -2607,7 +2607,7 @@ const countries = {
   VC: {
     name: 'Saint Vincent and the Grenadines',
     native: 'Saint Vincent and the Grenadines',
-    phone: '1784',
+    code: '1784',
     continent: 'NA',
     capital: 'Kingstown',
     currency: 'XCD',
@@ -2618,7 +2618,7 @@ const countries = {
   VE: {
     name: 'Venezuela',
     native: 'Venezuela',
-    phone: '58',
+    code: '58',
     continent: 'SA',
     capital: 'Caracas',
     currency: 'VES',
@@ -2629,7 +2629,7 @@ const countries = {
   VG: {
     name: 'British Virgin Islands',
     native: 'British Virgin Islands',
-    phone: '1284',
+    code: '1284',
     continent: 'NA',
     capital: 'Road Town',
     currency: 'USD',
@@ -2640,7 +2640,7 @@ const countries = {
   VI: {
     name: 'U.S. Virgin Islands',
     native: 'United States Virgin Islands',
-    phone: '1340',
+    code: '1340',
     continent: 'NA',
     capital: 'Charlotte Amalie',
     currency: 'USD',
@@ -2651,7 +2651,7 @@ const countries = {
   VN: {
     name: 'Vietnam',
     native: 'Việt Nam',
-    phone: '84',
+    code: '84',
     continent: 'AS',
     capital: 'Hanoi',
     currency: 'VND',
@@ -2662,7 +2662,7 @@ const countries = {
   VU: {
     name: 'Vanuatu',
     native: 'Vanuatu',
-    phone: '678',
+    code: '678',
     continent: 'OC',
     capital: 'Port Vila',
     currency: 'VUV',
@@ -2673,7 +2673,7 @@ const countries = {
   WF: {
     name: 'Wallis and Futuna',
     native: 'Wallis et Futuna',
-    phone: '681',
+    code: '681',
     continent: 'OC',
     capital: 'Mata-Utu',
     currency: 'XPF',
@@ -2684,7 +2684,7 @@ const countries = {
   WS: {
     name: 'Samoa',
     native: 'Samoa',
-    phone: '685',
+    code: '685',
     continent: 'OC',
     capital: 'Apia',
     currency: 'WST',
@@ -2695,7 +2695,7 @@ const countries = {
   XK: {
     name: 'Kosovo',
     native: 'Republika e Kosovës',
-    phone: '377,381,383,386',
+    code: '377,381,383,386',
     continent: 'EU',
     capital: 'Pristina',
     currency: 'EUR',
@@ -2706,7 +2706,7 @@ const countries = {
   YE: {
     name: 'Yemen',
     native: 'اليَمَن',
-    phone: '967',
+    code: '967',
     continent: 'AS',
     capital: `Sana'a`,
     currency: 'YER',
@@ -2717,7 +2717,7 @@ const countries = {
   YT: {
     name: 'Mayotte',
     native: 'Mayotte',
-    phone: '262',
+    code: '262',
     continent: 'AF',
     capital: 'Mamoudzou',
     currency: 'EUR',
@@ -2728,7 +2728,7 @@ const countries = {
   ZA: {
     name: 'South Africa',
     native: 'South Africa',
-    phone: '27',
+    code: '27',
     continent: 'AF',
     capital: 'Pretoria',
     currency: 'ZAR',
@@ -2739,7 +2739,7 @@ const countries = {
   ZM: {
     name: 'Zambia',
     native: 'Zambia',
-    phone: '260',
+    code: '260',
     continent: 'AF',
     capital: 'Lusaka',
     currency: 'ZMW',
@@ -2750,7 +2750,7 @@ const countries = {
   ZW: {
     name: 'Zimbabwe',
     native: 'Zimbabwe',
-    phone: '263',
+    code: '263',
     continent: 'AF',
     capital: 'Harare',
     currency: 'USD,ZAR,BWP,GBP,AUD,CNY,INR,JPY',
@@ -2767,7 +2767,7 @@ const getCountryToSelect = () => {
       id: key,
       name: countries[key].name,
       emoji: countries[key].emoji,
-      phone: countries[key].phone
+      code: countries[key].code
     })
   })
   return result

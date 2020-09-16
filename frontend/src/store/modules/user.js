@@ -3,6 +3,7 @@ import user from '@/api/user'
 const FETCHING_USERS = 'FETCHING_USERS'
 const SWITCH_USER_NEW_MODAL = 'SWITCH_USER_NEW_MODAL'
 const SWITCH_USER_EDIT_MODAL = 'SWITCH_USER_EDIT_MODAL'
+const SWITCH_USER_SHOW_MODAL = 'SWITCH_USER_SHOW_MODAL'
 const USER_CREATED = 'USER_CREATED'
 const USER_EDIT = 'USER_EDIT'
 const USER_UPDATED = 'USER_UPDATED'
@@ -16,6 +17,7 @@ const SET_USER_AVATAR = 'SET_USER_AVATAR'
 const state = {
   showNewModal: false,
   showEditModal: false,
+  showShowModal: false,
   users: [],
   avatar: '',
   loading: false,
@@ -63,11 +65,13 @@ const mutations = {
   [SWITCH_USER_EDIT_MODAL](state, showModal) {
     state.showEditModal = showModal
   },
+  [SWITCH_USER_SHOW_MODAL](state, showModal) {
+    state.showShowModal = showModal
+  },
   [USER_TABLE_LOADING](state, isLoading) {
     state.isUserTableLoading = isLoading
   },
   [FETCHING_USERS](state, users) {
-    console.log(users)
     state.users = users
   },
   [ENV_DATA_PROCESS](state, isActionInProgress) {
@@ -139,8 +143,15 @@ const actions = {
   toogleEditModal({ commit }, showModal) {
     commit(SWITCH_USER_EDIT_MODAL, showModal)
   },
+  toogleShowModal({ commit }, showModal) {
+    commit(SWITCH_USER_SHOW_MODAL, showModal)
+  },
   openEditModal({ commit }, userId) {
     commit(SWITCH_USER_EDIT_MODAL, true)
+    commit(USER_EDIT, userId)
+  },
+  openShowModal({ commit }, userId) {
+    commit(SWITCH_USER_SHOW_MODAL, true)
     commit(USER_EDIT, userId)
   },
   async getUsers({ commit }) {
