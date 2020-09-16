@@ -107,7 +107,7 @@ export const protectedRoute = [
       {
         path: '/resume',
         component: RouteWrapper,
-        redirect: '/resume/',
+        redirect: '/resume/user',
         meta: {
           title: 'resume',
           icon: 'mdi-chart-bar',
@@ -121,7 +121,7 @@ export const protectedRoute = [
               title: 'sell_product',
               icon: 'mdi-database-plus'
             },
-            component: () => import('@/views//user/ListUser')
+            component: () => import('@/views/user/ListUser')
           },
           {
             path: '/resume/sell_category.list',
@@ -130,7 +130,7 @@ export const protectedRoute = [
               title: 'sell_category',
               icon: 'mdi-database-plus'
             },
-            component: () => import('@/views//user/ListUser')
+            component: () => import('@/views/user/ListUser')
           },
           {
             path: '/resume/sell_employment.list',
@@ -139,7 +139,7 @@ export const protectedRoute = [
               title: 'sell_employment',
               icon: 'mdi-database-plus'
             },
-            component: () => import('@/views//user/ListUser')
+            component: () => import('@/views/user/ListUser')
           },
           {
             path: '/resume/sell_types_payment.list',
@@ -148,14 +148,14 @@ export const protectedRoute = [
               title: 'sell_types_payment',
               icon: 'mdi-database-plus'
             },
-            component: () => import('@/views//user/ListUser')
+            component: () => import('@/views/user/ListUser')
           },
         ]
       },
       {
         path: '/articles',
         component: RouteWrapper,
-        redirect: '/articles/',
+        redirect: '/articles/user',
         meta: {
           title: 'articles',
           icon: 'mdi-shopping',
@@ -169,7 +169,7 @@ export const protectedRoute = [
               title: 'product_list',
               icon: 'mdi-database-plus'
             },
-            component: () => import('@/views//user/ListUser')
+            component: () => import('@/views/user/ListUser')
           },
           {
             path: '/articles/category.list',
@@ -178,7 +178,7 @@ export const protectedRoute = [
               title: 'category_list',
               icon: 'mdi-database-plus'
             },
-            component: () => import('@/views//user/ListUser')
+            component: () => import('@/views/user/ListUser')
           },
           {
             path: '/articles/modifiers.list',
@@ -187,7 +187,7 @@ export const protectedRoute = [
               title: 'modifiers_list',
               icon: 'mdi-database-plus'
             },
-            component: () => import('@/views//user/ListUser')
+            component: () => import('@/views/user/ListUser')
           },
           {
             path: '/articles/discounts.list',
@@ -196,7 +196,7 @@ export const protectedRoute = [
               title: 'discounts_list',
               icon: 'mdi-database-plus'
             },
-            component: () => import('@/views//user/ListUser')
+            component: () => import('@/views/user/ListUser')
           },
         ]
       },
@@ -217,7 +217,7 @@ export const protectedRoute = [
               title: 'employment_list',
               icon: 'mdi-database-plus'
             },
-            component: () => import('@/views//user/ListUser')
+            component: () => import('@/views/user/ListUser')
           },
         ]
       },
@@ -238,7 +238,7 @@ export const protectedRoute = [
               title: 'client_list',
               icon: 'mdi-database-plus'
             },
-            component: () => import('@/views//user/ListUser')
+            component: () => import('@/views/user/ListUser')
           },
         ]
       },
@@ -259,7 +259,7 @@ export const protectedRoute = [
               title: 'user_list',
               icon: 'mdi-account'
             },
-            component: () => import('@/views//user/ListUser')
+            component: () => import('@/views/user/ListUser')
           },
         ]
       },
