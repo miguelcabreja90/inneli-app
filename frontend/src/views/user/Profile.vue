@@ -110,13 +110,13 @@
                     :label="$vuetify.lang.t('$vuetify.phone')"
                   />
                 </v-flex>
-                <v-flex xs12 md12>
+                <v-flex xs12 md8>
                   <v-text-field
                     v-model="userData.address"
                     :label="$vuetify.lang.t('$vuetify.address')"
                   />
                 </v-flex>
-                <v-flex xs12 md6>
+                <v-flex xs12 md4>
                   <v-select
                     v-bind:items="arrayCountry"
                     :rules="formRule.country"
@@ -134,9 +134,9 @@
                         ></v-list-item-content>
                       </template>
                       <template v-else>
-                        <v-list-item-avatar>
-                          {{ data.item.emoji }}
-                        </v-list-item-avatar>
+                        <v-list-item-avatar>{{
+                          data.item.emoji
+                        }}</v-list-item-avatar>
                         <v-list-item-content>
                           <v-list-item-title
                             v-html="data.item.name"
@@ -145,15 +145,6 @@
                       </template>
                     </template>
                   </v-select>
-                </v-flex>
-                <v-flex xs12 md6>
-                  <v-text-field
-                    counter="5"
-                    class="hiddenSpinner"
-                    v-model="userData.postalCode"
-                    :label="$vuetify.lang.t('$vuetify.postal_code')"
-                    type="number"
-                  />
                 </v-flex>
                 <v-flex xs12>
                   <v-textarea
