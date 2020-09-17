@@ -76,8 +76,7 @@ export default {
   messages: {
     refused: 'Failed: Connections refused.',
     success_avatar: 'The image was successfully saved.',
-    success_profile: 'The data has been updated.',
-    warning_delete: "You won't be able to revert this!"
+    warning_delete: "You won't be able to revert this!",
     success_profile: 'The data has been updated.',
     check_mail: 'An email has been sent with the details to change password.',
     password_success: 'The password was updated successfully.'

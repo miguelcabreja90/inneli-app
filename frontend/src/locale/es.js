@@ -104,7 +104,7 @@ export default {
     new: 'Nuevo {0}',
     edit: 'Editar {0}',
     show: 'Mostrar {0}',
-    delete: 'Eliminar {0}'
+    delete: 'Eliminar {0}',
     success_profile: 'Los datos han sido actualizados.',
     check_mail:
       'Se ha enviado un correo electrónico con los detalles para cambiar contraseña.',
