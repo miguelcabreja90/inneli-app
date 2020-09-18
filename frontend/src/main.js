@@ -8,7 +8,6 @@ import Notifications from './plugins/notifications'
 import App from './App.vue'
 import vuetify from './plugins/vuetify'
 import '@mdi/font/css/materialdesignicons.css'
-
 Vue.config.productionTip = false
 
 Vue.prototype.$Toast = Notifications.Toast

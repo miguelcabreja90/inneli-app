@@ -32,15 +32,29 @@ export default {
   wait: 'Please a wait...',
   // menu
   menu: {
+    setting: 'Setting',
     home: 'Home',
     dashboard: 'Dashboard',
     access_denied: 'Access Deny',
     verify: 'Email Verify',
     welcome: 'Welcome',
-    user_profile: 'User Profile',
-    profile: 'Profile',
-    settings: 'Setting',
-    logout: 'Logout'
+    profile: 'User Profile',
+    logout: 'Logout',
+    user_list: 'User List',
+    employment:'Employments',
+    employment_list:'Employment List',
+    client:'Client',
+    client_list:'Client List',
+    articles:'Articles',
+    category_list:'Category List',
+    product_list:'Product List',
+    modifiers_list:'Modifiers List',
+    discounts_list:'Discounts List',
+    resume:'Resume',
+    sell_product:'Sale by Products',
+    sell_category:'Sale by Categories',
+    sell_employment:'Sale by Employees',
+    sell_types_payment:'Sale by types of payment',
   },
   //settings
   settings: {
@@ -62,16 +76,36 @@ export default {
   messages: {
     refused: 'Failed: Connections refused.',
     success_avatar: 'The image was successfully saved.',
+    warning_delete: "You won't be able to revert this!",
     success_profile: 'The data has been updated.',
     check_mail: 'An email has been sent with the details to change password.',
     password_success: 'The password was updated successfully.'
   },
   //user
   user: {
+    user: 'User',
     edit_profile: 'Edit Profile',
     sub_profile: 'Complete your profile',
     btn_edit: 'Update'
+  }, //options
+  actions: {
+    actions: 'Actions',
+    accept: 'Accept',
+    search: 'Search',
+    new: 'New',
+    edit: 'Edit',
+    delete: 'Delete',
+    list: 'List',
+    save: 'Save',
+    cancel: 'Cancel',
+    close:'Close'
   },
-
+  titles: {
+    list: '{0} List',
+    new: 'New {0}',
+    edit: 'Edit {0}',
+    show:'Show {0}',
+    delete: 'Delete {0}'
+  },
   ...en
 }

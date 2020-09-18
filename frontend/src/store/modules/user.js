@@ -1,10 +1,9 @@
 import user from '@/api/user'
 
-const USER_ENABLED = true
-
 const FETCHING_USERS = 'FETCHING_USERS'
 const SWITCH_USER_NEW_MODAL = 'SWITCH_USER_NEW_MODAL'
 const SWITCH_USER_EDIT_MODAL = 'SWITCH_USER_EDIT_MODAL'
+const SWITCH_USER_SHOW_MODAL = 'SWITCH_USER_SHOW_MODAL'
 const USER_CREATED = 'USER_CREATED'
 const USER_EDIT = 'USER_EDIT'
 const USER_UPDATED = 'USER_UPDATED'
@@ -16,6 +15,9 @@ const SET_EDIT_USER = 'SET_EDIT_USER'
 const SET_USER_AVATAR = 'SET_USER_AVATAR'
 
 const state = {
+  showNewModal: false,
+  showEditModal: false,
+  showShowModal: false,
   users: [],
   avatar: '',
   loading: false,
@@ -52,7 +54,8 @@ const state = {
     avatar: ''
   },
   isUserTableLoading: false,
-  isActionInProgress: false
+  isActionInProgress: false,
+  isTableLoading: false
 }
 
 const mutations = {
@@ -61,6 +64,9 @@ const mutations = {
   },
   [SWITCH_USER_EDIT_MODAL](state, showModal) {
     state.showEditModal = showModal
+  },
+  [SWITCH_USER_SHOW_MODAL](state, showModal) {
+    state.showShowModal = showModal
   },
   [USER_TABLE_LOADING](state, isLoading) {
     state.isUserTableLoading = isLoading
@@ -88,12 +94,10 @@ const mutations = {
       aboutMe: '',
       avatar: ''
     }
+    state.saved = true
   },
   [USER_EDIT](state, userId) {
-    state.editUser = Object.assign(
-      {},
-      state.users.filter((node) => node.node.id === userId).shift().node
-    )
+    state.editUser = state.users.filter((node) => node.id === userId)[0]
   },
   [USER_UPDATED](state) {
     state.showEditModal = false
@@ -119,11 +123,14 @@ const mutations = {
     state.editUser.push(profile)
   },
   [USER_DELETED](state) {
-    console.log({ state })
+    state.saved = true
   },
   [SET_USER_AVATAR](state, avatar) {
     state.avatar = avatar
     state.saved = true
+  },
+  [FAILED_USER](state) {
+    state.saved = false
   }
 }
 
@@ -136,8 +143,15 @@ const actions = {
   toogleEditModal({ commit }, showModal) {
     commit(SWITCH_USER_EDIT_MODAL, showModal)
   },
+  toogleShowModal({ commit }, showModal) {
+    commit(SWITCH_USER_SHOW_MODAL, showModal)
+  },
   openEditModal({ commit }, userId) {
     commit(SWITCH_USER_EDIT_MODAL, true)
+    commit(USER_EDIT, userId)
+  },
+  openShowModal({ commit }, userId) {
+    commit(SWITCH_USER_SHOW_MODAL, true)
     commit(USER_EDIT, userId)
   },
   async getUsers({ commit }) {
@@ -145,26 +159,30 @@ const actions = {
     // noinspection JSUnresolvedVariable
     await user
       .fetchUsers()
-      .then(({ data }) => commit(FETCHING_USERS, data.users.edges))
+      .then(({ data }) => commit(FETCHING_USERS, data.data))
       .then(() => commit(USER_TABLE_LOADING, false))
       .catch((error) => commit(FAILED_USER, error))
   },
-  async createUser({ commit, dispatch }) {
+  async createUser({ commit, dispatch }, newUser) {
     commit(ENV_DATA_PROCESS, true)
+    commit('CLEAR_ERRORS', null, { root: true })
 
     await user
-      .createUser(state.newUser)
-      .then(() => commit(USER_CREATED))
-      .then(() => commit(ENV_DATA_PROCESS, false))
-      .then(() => dispatch('user/getUsers', null, { root: true }))
-      .catch((error) => commit(FAILED_USER, error))
+      .sendCreateRequest(newUser)
+      .then(() => {
+        commit(USER_CREATED)
+        commit(ENV_DATA_PROCESS, false)
+        dispatch('user/getUsers', null, { root: true })
+      })
+      .catch((error) => commit('SET_ERRORS', error, { root: true }))
   },
   async updateUser({ commit, dispatch }, profile) {
-    console.log(profile)
+    commit('CLEAR_ERRORS', null, { root: true })
     const request = profile ? profile : state.editUser
+
     await user
       .sendUpdateRequest(request)
-      .then(({ data }) => {
+      .then(() => {
         commit(USER_UPDATED)
         commit(ENV_DATA_PROCESS, false)
         dispatch('auth/getUserData', null, { root: true })
@@ -172,11 +190,15 @@ const actions = {
       .catch((error) => commit('SET_ERRORS', error, { root: true }))
   },
   async deleteUser({ commit, dispatch }, userId) {
+    commit('CLEAR_ERRORS', null, { root: true })
+
     await user
-      .deleteUser(userId)
-      .then(() => commit(USER_DELETED))
-      .then(() => dispatch('user/getUsers', null, { root: true }))
-      .catch((error) => commit(FAILED_USER, error))
+      .sendDeleteRequest(userId)
+      .then(() => {
+        commit(USER_DELETED)
+        dispatch('user/getUsers', null, { root: true })
+      })
+      .catch((error) => commit('SET_ERRORS', error, { root: true }))
   },
 
   async updateAvatar({ commit, dispatch }, file) {
@@ -185,7 +207,7 @@ const actions = {
       id: file.id,
       image: image
     }
-    await user.updateAvatar(sendData).then((response) => {
+    await user.updateAvatar(sendData).then(() => {
       commit(SET_USER_AVATAR, file.file.base64)
       dispatch('auth/getUserData', null, { root: true })
     })

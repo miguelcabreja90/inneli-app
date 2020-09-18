@@ -30,7 +30,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'firstName', 'lastName', 'email', 'password', 'username', 'address', 'city', 'phone', 'country', 'company', 'postalCode', 'aboutMe', 'photo'
+        'firstName', 'lastName', 'email', 'password', 'username', 'address', 'phone', 'country', 'company', 'aboutMe'
     ];
 
     /**
@@ -119,20 +119,20 @@ class User extends Authenticatable implements MustVerifyEmail
      * @param Request $request
      * @return User
      */
-    public function createUser(Request $request)
+    public function createUser( $request)
     {
         $user = new User();
 
         foreach ($this->fillable as $key => $value) {
             switch ($value) {
                 case 'password':
-                    if (!empty($request->get($value))) {
-                        $user->password = Hash::make($request->get($value));
+                    if (!empty($request[$value])) {
+                        $user->password = Hash::make($request[$value]);
                     }
                     break;
 
                 default:
-                    $user->$value = $request->get($value);
+                    $user->$value = $request[$value];
                     break;
             }
         }

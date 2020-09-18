@@ -70,7 +70,6 @@
 import Util from '@/util'
 import { mapActions, mapGetters } from 'vuex'
 import localStorage from '@/config/localStorage'
-
 export default {
   name: 'AppToolbar',
   props: {
@@ -133,12 +132,6 @@ export default {
           href: '#',
           title: this.$vuetify.lang.t('$vuetify.menu.profile'),
           click: this.handleProfile
-        },
-        {
-          icon: 'settings',
-          href: '#',
-          title: this.$vuetify.lang.t('$vuetify.menu.settings'),
-          click: this.handleSetting
         },
         {
           icon: 'mdi-logout',

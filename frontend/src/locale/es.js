@@ -32,15 +32,29 @@ export default {
   wait: 'Espere por favor...',
   // menu
   menu: {
+    setting: 'Configuración',
     home: 'Inicio',
     dashboard: 'Dashboard',
     access_denied: 'Acceso denegado',
     verify: 'Verificar Correo',
     welcome: 'Bienvenido',
-    user_profile: 'Perfil de Usuario',
     profile: 'Perfil',
-    settings: 'Ajustes',
-    logout: 'Salir'
+    logout: 'Salir',
+    user_list: 'Listado de Usuarios',
+    employment:'Empleados',
+    employment_list: 'Listado de Empleados',
+    client:'Cliente',
+    client_list: 'Listado de Clientes',
+    articles: 'Artículos',
+    category_list: 'Listado de Categorías',
+    product_list: 'Listado de Productos',
+    modifiers_list: 'Listado de Modifiadores',
+    discounts_list:' Listado de Descuentos',
+    resume: 'Resumen',
+    sell_product: 'Venta por Productos',
+    sell_category: 'Venta por Categorías',
+    sell_employment: 'Venta por Empleado',
+    sell_types_payment: 'Venta por tipos de pago',
   },
   //settings
   settings: {
@@ -61,6 +75,7 @@ export default {
   },
   //user
   user: {
+    user: 'Usuario',
     edit_profile: 'Editar Perfil',
     sub_profile: 'Complete su perfil',
     btn_edit: 'Actualizar'
@@ -68,6 +83,28 @@ export default {
   messages: {
     refused: 'Fallido: Conexión rechazada.',
     success_avatar: 'La imagen se salvado satisfactoriamente.',
+    success_profile: 'Los datos han sido actualizados.',
+    warning_delete: 'No se podrá revertir esta acción!'
+  },
+  //options
+  actions: {
+    actions: 'Acciones',
+    accept: 'Aceptar',
+    search: 'Buscar',
+    new: 'Nuevo',
+    edit: 'Editar',
+    delete: 'Eliminar',
+    list: 'Listar',
+    save: 'Guardar',
+    cancel: 'Cancelar',
+    close: 'Cerrar'
+  },
+  titles: {
+    list: 'Lista de {0}',
+    new: 'Nuevo {0}',
+    edit: 'Editar {0}',
+    show: 'Mostrar {0}',
+    delete: 'Eliminar {0}',
     success_profile: 'Los datos han sido actualizados.',
     check_mail:
       'Se ha enviado un correo electrónico con los detalles para cambiar contraseña.',

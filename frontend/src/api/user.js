@@ -2,12 +2,18 @@ import api from '@/config/api'
 
 export default {
   fetchUsers() {
-    return api.get('users')
+    return api.get('user')
+  },
+  sendCreateRequest(user) {
+    return api.post('users', user)
   },
   sendUpdateRequest(user) {
-    return api.put('users/' + user.id, user)
+    return api.put('user/' + user.id, user)
+  },
+  sendDeleteRequest(userId) {
+    return api.remove('user/' + userId)
   },
   updateAvatar(avatar) {
-    return api.post('users/avatar/' + avatar.id, avatar)
+    return api.post('user/avatar/' + avatar.id, avatar)
   }
 }
